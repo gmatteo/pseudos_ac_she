@@ -1,0 +1,48 @@
+# PaO3 scf
+
+autoparal 1
+ndtset 1
+optdriver 0
+
+# Occupation 
+occopt 3 #Fermi-Dirac
+tsmear 0.05
+smdelta 2
+ecutsm 0.5
+
+# optimization parameters
+optcell 0
+ionmov 0      
+tolmxf 1.0d-6
+chkprim 0
+chkdilatmx 0
+
+# SCF procedure  
+ixc 11
+iscf 17
+nstep 1000
+ecut 60
+tolvrs 1.0d-12
+
+# k-point grid
+kptopt 1
+ngkpt 5 5 5
+nshiftk 1
+shiftk  0.0 0.0 0.0
+
+# Definition of the atom types and unit cell
+ntypat 2
+znucl 91 8
+natom 8
+typat 2*1 6*2
+xcart
+0      0      0
+1.007466434      1.007466434      1.441042902
+0      1.007466434      0.720521451
+1.007466434      0      0.720521451
+1.007466434      1.007466434      0
+1.007466434      0      2.161564348
+0      1.007466434      2.161564348
+0      0      1.441042902
+
+acell  2*3.80767128    5.44635283  Angstrom
