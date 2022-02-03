@@ -1,0 +1,52 @@
+# AmO2 scf
+
+autoparal 1
+ndtset 1
+optdriver 0
+
+# Occupation 
+occopt 3 #Fermi-Dirac
+tsmear 0.05
+smdelta 2
+ecutsm 0.5
+
+# optimization parameters
+optcell 0
+ionmov 0      
+tolmxf 1.0d-6
+chkprim 0
+chkdilatmx 0
+
+# SCF procedure  
+ixc 11
+iscf 17
+nstep 1000
+ecut 60
+tolvrs 1.0d-12
+
+# k-point grid
+kptopt 1
+ngkpt 5 5 5
+nshiftk 1
+shiftk  0.0 0.0 0.0
+
+# Definition of the atom types and unit cell
+ntypat 2
+znucl  95  8
+natom 12
+typat 4*1 8*2
+xcart
+0      0      0
+0      1.382160301      1.382160301
+1.382160301      0      1.382160301
+1.382160301      1.382160301      0
+0.691080148      0.691080148      0.691080148
+2.073240449      2.073240449      0.691080148
+2.073240449      0.691080148      2.073240449
+0.691080148      2.073240449      2.073240449
+0.691080148      0.691080148      2.073240449
+2.073240449      2.073240449      2.073240449
+0.691080148      2.073240449      0.691080148
+2.073240449      0.691080148      0.691080148
+
+acell 3*5.22380885  Angstrom

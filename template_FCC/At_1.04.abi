@@ -1,0 +1,42 @@
+# At scf
+
+autoparal 1
+ndtset 1
+optdriver 0
+
+# Occupation 
+occopt 3 #Fermi-Dirac
+tsmear 0.001
+smdelta 2
+ecutsm 0.5
+nsppol 2
+nspden 2
+
+# optimization parameters
+optcell 0
+ionmov 0      
+tolmxf 1.0d-6
+chkprim 0
+chkdilatmx 0
+
+# SCF procedure  
+ixc 11
+iscf 17
+nstep 1000
+ecut 60
+tolvrs 1.0d-12
+
+# k-point grid
+kptopt 1
+ngkpt 15 15 15
+nshiftk 1
+shiftk  0.0 0.0 0.0
+
+# Definition of the atom types and unit cell
+ntypat 1
+znucl 85
+natom 1
+typat 1
+xred  0.0  0.0  0.0
+acell  3*3.855712   Angstrom
+angdeg  3*60.00
