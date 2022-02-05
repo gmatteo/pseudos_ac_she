@@ -25,7 +25,7 @@ U 92 10 8 4 both
 3
 # l rc ep ncon nbas qcut (lmax+1 lines, l's must be in order)
 0 1.25 0.0 4 8 10.5
-1 1.3 0.0 4 8 11.0
+1 1.3  0.0 4 8 11.0
 2 1.45 0.0 4 8 11.0
 3 1.45 0.0 4 8 11.0
 # LOCAL POTENTIAL

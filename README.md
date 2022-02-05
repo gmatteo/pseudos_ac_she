@@ -16,4 +16,8 @@ Th_5f.in: Decrease rc for d by 0.5
 
 Pa_5f.in: Optimize qcut, now ecut ~ 58
 
+U_5f.in: Optimize qcut, decrease core radii, now ecut ~58, previously it was ~68
+
+Np_5f.in: Optimize qcut, decrease core radii, now ecut ~58, previously it was ~62
+
 
