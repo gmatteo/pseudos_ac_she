@@ -48,3 +48,4 @@ Fb: decrease rc for p and d. Minor adjustment in qcut values. ecut ~96, previous
 Sg: decrease rc for p and d. Minor adjustment in qcut values. ecut ~98, previous ~108
 Bh: decrease rc for p and d. Minor adjustment in qcut values. ecut ~100, previous ~108
 Hs: decrease rc for p and d. Minor adjustment in qcut values. ecut ~102, previous ~108
+Mt: decrease rc for p and d. Minor adjustment in qcut values
