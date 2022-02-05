@@ -1,0 +1,50 @@
+{
+"basename": "Db.psp8",
+"ecuts": [
+87.0,
+89.0,
+91.0,
+93.0,
+95.0,
+97.0,
+99.0,
+101.0,
+103.0,
+105.0,
+107.0,
+115.0,
+117.0
+],
+"md5": "18db4395e00f56e3221a2a820c43dbe7",
+"ppgen_hints": {
+"high": {
+"ecut": 97.0,
+"pawecutdg": 97.0
+},
+"low": {
+"ecut": 89.0,
+"pawecutdg": 89.0
+},
+"normal": {
+"ecut": 93.0,
+"pawecutdg": 93.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "Db",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}

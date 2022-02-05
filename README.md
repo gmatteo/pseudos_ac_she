@@ -43,4 +43,5 @@ No_5f.in: decrease rc for d by 0.2. Minor adjustment in qcut values. ecut ~78
 Lr_5f.in: decrease rc for p by 0.2, d by 0.05. Minor adjustment in qcut values. ecut ~95 due to rc 1.2 for 5f.
           BTW: twpo possible configurations: [Rn]5f147s27p1 or 5f146d17s2
 
-Rf: decrease rc for p and d.  Minor adjustment in qcut values. ecut ~95, previous ~105
+Rf: decrease rc for p and d. Minor adjustment in qcut values. ecut ~95, previous ~105
+Fb: decrease rc for p and d. Minor adjustment in qcut values. ecut ~96, previous ~105
