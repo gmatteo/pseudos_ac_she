@@ -27,4 +27,6 @@ Pu_5f.in: decrease rc for d by 0.1, no change in qcut values.
  
 Am_5f.in: decrease rc for d by 0.2, no change in qcut values. ecut ~70
 
+Cm_5f.in: decrease rc for d by 0.2, minor adjustments in qcut values. ecut ~70
+
 
