@@ -36,4 +36,6 @@ Es_5f.in: decrease rc for d by 0.2. No change in qcut values. ecut ~75
 
 Fm_5f.in: decrease rc for d by 0.2. Minor adjustment in qcut values. ecut ~73
 
+Md_5f.in: decrease rc for d by 0.2. Minor adjustment in qcut values. ecut ~75
+
 
