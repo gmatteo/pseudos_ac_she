@@ -54,4 +54,6 @@ Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f,
 Cn: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous one ~160
 Ng: Minor adjustment in qcut values, ecut 125,  previous one ~128
 
-Fl: Add projector for f with eb = 0.05 to improve logder
+Fl: Add projector for f with eb = 0.05 to improve f-logder
+Mg: Add projector for f with eb = 0.05 to improve f-logder
+Lv: Add projector for f with eb = 0.05 to improve f-logder
