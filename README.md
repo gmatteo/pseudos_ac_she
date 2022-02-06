@@ -51,4 +51,7 @@ Hs: decrease rc for p and d. Minor adjustment in qcut values. ecut ~102, previou
 Mt: decrease rc for p and d. Minor adjustment in qcut values
 Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous one ~140
 Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous one ~140
-Cn: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous one ~60
+Cn: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous one ~160
+Ng: Minor adjustment in qcut values, ecut 125,  previous one ~128
+
+Fl: Add projector for f with eb = 0.05 to improve logder
