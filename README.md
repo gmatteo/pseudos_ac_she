@@ -43,11 +43,12 @@ No_5f.in: decrease rc for d by 0.2. Minor adjustment in qcut values. ecut ~78
 Lr_5f.in: decrease rc for p by 0.2, d by 0.05. Minor adjustment in qcut values. ecut ~95 due to rc 1.2 for 5f.
           BTW: twpo possible configurations: [Rn]5f147s27p1 or 5f146d17s2
 
-Rf: decrease rc for p and d. Minor adjustment in qcut values. ecut ~95, previous ~105
-Fb: decrease rc for p and d. Minor adjustment in qcut values. ecut ~96, previous ~105
-Sg: decrease rc for p and d. Minor adjustment in qcut values. ecut ~98, previous ~108
-Bh: decrease rc for p and d. Minor adjustment in qcut values. ecut ~100, previous ~108
-Hs: decrease rc for p and d. Minor adjustment in qcut values. ecut ~102, previous ~108
+Rf: decrease rc for p and d. Minor adjustment in qcut values. ecut ~95, previous one ~105
+Fb: decrease rc for p and d. Minor adjustment in qcut values. ecut ~96, previous one ~105
+Sg: decrease rc for p and d. Minor adjustment in qcut values. ecut ~98, previous one ~108
+Bh: decrease rc for p and d. Minor adjustment in qcut values. ecut ~100, previous one ~108
+Hs: decrease rc for p and d. Minor adjustment in qcut values. ecut ~102, previous one ~108
 Mt: decrease rc for p and d. Minor adjustment in qcut values
-Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous ~140
-Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous ~140
+Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous one ~140
+Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous one ~140
+Cn: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous one ~60
