@@ -58,3 +58,4 @@ Fl: Add projector for f with eb = 0.05 to improve f-logder
 Mg: Add projector for f with eb = 0.05 to improve f-logder
 Lv: Add projector for f with eb = 0.05 to improve f-logder
 Ts: Decrease rcs significantly. Add projector for f with eb = 0.05 to improve f-logder
+Og: Decrease rcs significantly e.g from 1.6 to 1.4. Add projector for f with eb = 0.05 to improve f-logder
