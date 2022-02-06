@@ -57,3 +57,4 @@ Ng: Minor adjustment in qcut values, ecut 125,  previous one ~128
 Fl: Add projector for f with eb = 0.05 to improve f-logder
 Mg: Add projector for f with eb = 0.05 to improve f-logder
 Lv: Add projector for f with eb = 0.05 to improve f-logder
+Ts: Decrease rcs significantly. Add projector for f with eb = 0.05 to improve f-logder
