@@ -49,5 +49,5 @@ Sg: decrease rc for p and d. Minor adjustment in qcut values. ecut ~98, previous
 Bh: decrease rc for p and d. Minor adjustment in qcut values. ecut ~100, previous ~108
 Hs: decrease rc for p and d. Minor adjustment in qcut values. ecut ~102, previous ~108
 Mt: decrease rc for p and d. Minor adjustment in qcut values
-Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f,  
-                             ecut 120,  previous ~140
+Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous ~140
+Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous ~140
