@@ -69,8 +69,8 @@ def make_relax_input(pseudo_path):
     djrepo_path = djrepo_path + ".djrepo"
     with open(djrepo_path) as fh:
         ppgen_hints = json.load(fh)["ppgen_hints"]
-        #ecut = ppgen_hints["high"]["ecut"] + 10
-        ecut = ppgen_hints["high"]["ecut"] + 40
+        ecut = ppgen_hints["high"]["ecut"] + 10
+        #ecut = ppgen_hints["high"]["ecut"] + 40
 
     print(f"running with ecut: {ecut}")
     symbol, z = pseudo.symbol, pseudo.Z
@@ -79,15 +79,14 @@ def make_relax_input(pseudo_path):
     import pymatgen.core.units as pmg_units
     a_ang = pmg_units.Length(a_bohr, "bohr").to("ang")
 
-    lattice = a_ang * np.array([
+    lattice = float(a_ang) * np.array([
         0,  1,  1,
         1,  0,  1,
         1,  1,  0]) / np.sqrt(2.0)
 
     coords = [[0, 0, 0]]
 
-    structure = abilab.Structure(lattice, species=[symbol], coords=coords, **kwargs)
-
+    structure = abilab.Structure(lattice, species=[symbol], coords=coords)
     #structure = abilab.Structure.fcc(a_bohr, species=[symbol], units="bohr")
 
     # Initialize the input
@@ -98,7 +97,7 @@ def make_relax_input(pseudo_path):
 
     inp.set_vars(
         paral_kgb=0,
-        #rmm_diis=1,
+        rmm_diis=1,
         nband=nband,
         # Occupation
         occopt=3, #Fermi-Dirac
@@ -111,7 +110,7 @@ def make_relax_input(pseudo_path):
         optcell=2,
         ionmov=2,
         tolmxf=1.0e-6,
-        #dilatmx=1.1,
+        dilatmx=1.1,
         #chkprim=0,
         chkdilatmx=0,
         # SCF procedure
