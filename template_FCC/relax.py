@@ -76,7 +76,7 @@ def make_relax_input(pseudo_path):
     key = f"{z}_{symbol}"
     a_bohr = AE_FCC_A0[key]
     import pymatgen.core.units as pmg_units
-    a_ang = pmg_units.Length(a_bohr, "bohr").to("ang")
+    a_ang = float(pmg_units.Length(a_bohr, "bohr").to("ang"))
 
     lattice = a_ang * np.array([
         0,  1,  1,
@@ -85,7 +85,7 @@ def make_relax_input(pseudo_path):
 
     coords = [[0, 0, 0]]
 
-    structure = abilab.Structure(lattice, species=[symbol], coords=coords, **kwargs)
+    structure = abilab.Structure(lattice, species=[symbol], coords=coords)
 
     #structure = abilab.Structure.fcc(a_bohr, species=[symbol], units="bohr")
 
