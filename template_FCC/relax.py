@@ -95,6 +95,8 @@ def make_relax_input(pseudo_path):
     nband = inp.num_valence_electrons // 2
     nband = max(np.ceil(nband * 1.2), nband + 10)
 
+    spinat = [0, 0, 6]
+
     inp.set_vars(
         paral_kgb=0,
         rmm_diis=1,
@@ -118,6 +120,7 @@ def make_relax_input(pseudo_path):
         iscf=17,
         nstep=1000,
         ecut=ecut,
+        spinat=spinat,
         #ecut=60,
         tolvrs=1.0e-12,
         # k-point grid
