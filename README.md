@@ -54,11 +54,13 @@ Ds: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f,
 Cn: decrease rc for p and d. Minor adjustment in qcut values, increase qc for f, ecut 120,  previous one ~160
 Ng: Minor adjustment in qcut values, ecut 125,  previous one ~128
 
-Fl: Add projector for f with eb = 0.05 to improve f-logder
-Mg: Add projector for f with eb = 0.05 to improve f-logder
-Lv: Add projector for f with eb = 0.05 to improve f-logder
-Ts: Decrease rcs significantly. Add projector for f with eb = 0.05 to improve f-logder
-Og: Decrease rcs significantly e.g from 1.6 to 1.4. Add projector for f with eb = 0.05 to improve f-logder
+Fl: Add projector for f with ep = 0.05 to improve f-logder
+Mg: Add projector for f with ep = 0.05 to improve f-logder
+Lv: Add projector for f with ep = 0.05 to improve f-logder
+Ts: Decrease rcs significantly. Add projector for f with ep = 0.05 to improve f-logder
+Og: Decrease rcs significantly e.g from 1.6 to 1.4. Add projector for f with ep = 0.05 to improve f-logder
 
 
 Fr: Add two projectos for f to improve logder.  Minor adjustment in qcut values. Ecut now ~35
+
+At: Decrease core radii using my new Po-spd.in as starting point. Add extra projector for f-channel with ep 0.05
