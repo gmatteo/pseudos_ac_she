@@ -64,3 +64,17 @@ Og: Decrease rcs significantly e.g from 1.6 to 1.4. Add projector for f with ep 
 Fr: Add two projectos for f to improve logder.  Minor adjustment in qcut values. Ecut now ~35
 
 At: Decrease core radii using my new Po-spd.in as starting point. Add extra projector for f-channel with ep 0.05
+
+
+######FCC COMPUTATIONAL DETAILS####
+Spin Orbit Coupling	no
+Spin Polarization	collinear (Z)
+Smearing Fermi-Dirac	0.001 Ha
+K-points	15 x 15 x 15
+
+######OXIDES COMPUTATIONAL DETAILS######
+Spin Orbit Coupling no
+Spin Polarization   collinear (Z)
+Smearing Fermi-Dirac    0.05 Ha
+K-points    5 x 5 x 5
+
