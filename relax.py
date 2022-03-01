@@ -57,9 +57,6 @@ AE_FCC_A0 = {
 "120_Ubn": 9.078847165,
 }
 
-
-
-
 def make_relax_input(pseudo_path):
 
     pseudo = abilab.Pseudo.from_file(pseudo_path)
@@ -69,7 +66,7 @@ def make_relax_input(pseudo_path):
     djrepo_path = djrepo_path + ".djrepo"
     with open(djrepo_path) as fh:
         ppgen_hints = json.load(fh)["ppgen_hints"]
-        ecut = ppgen_hints["high"]["ecut"] + 10
+        ecut = ppgen_hints["high"]["ecut"] + 20
         #ecut = ppgen_hints["high"]["ecut"] + 40
 
     print(f"running with ecut: {ecut}")
@@ -87,7 +84,6 @@ def make_relax_input(pseudo_path):
     coords = [[0, 0, 0]]
 
     structure = abilab.Structure(lattice, species=[symbol], coords=coords)
-    #structure = abilab.Structure.fcc(a_bohr, species=[symbol], units="bohr")
 
     # Initialize the input
     inp = abilab.AbinitInput(structure, pseudos=pseudo)
