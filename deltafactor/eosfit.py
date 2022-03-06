@@ -1,4 +1,4 @@
-# eosfit.py fits E(V) data to a Birch-Murnaghan equation of state. 
+# eosfit.py fits E(V) data to a Birch-Murnaghan equation of state.
 # Current version: 3.1
 #
 # Copyright (C) 2012 Kurt Lejaeghere <Kurt.Lejaeghere@UGent.be>, Center for
@@ -11,13 +11,13 @@
 #
 # eosfit.py is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for 
+# FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for
 # more details.
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with eosfit.py; if not, see <http://www.gnu.org/licenses/>.
 
-# The following code is based on the source code of eos.py from the Atomic 
+# The following code is based on the source code of eos.py from the Atomic
 # Simulation Environment (ASE) <https://wiki.fysik.dtu.dk/ase/>.
 
 # Python and numpy are required to use this script.
@@ -46,7 +46,7 @@ def BM(energies):
     if volume0 == 0:
         print('Error: No minimum could be found')
         exit()
-    
+
     derivV2 = 4./9. * x**5. * deriv2(x)
     derivV3 = (-20./9. * x**(13./2.) * deriv2(x) -
         8./27. * x**(15./2.) * deriv3(x))
@@ -55,42 +55,44 @@ def BM(energies):
 
     return volume0, bulk_modulus0, bulk_deriv0, residuals0
 
-usage = '''\
-Use: python eosfit.py filename
-    calculates the Birch-Murnaghan equation of state from a given file, 
-    containing in its columns the volumes in A^3/atom and energies in eV/atom,
-    respectively
-    output is printed in filename.eosout
---help gives an overview of all options
-'''
+if __name__ == "__main__":
 
-if len(argv) != 2:
-    print 'Error: Wrong number of arguments'
-    exit()
-else:
-    if argv[1] == '--help':
-        print usage            
+    usage = '''\
+    Use: python eosfit.py filename
+        calculates the Birch-Murnaghan equation of state from a given file,
+        containing in its columns the volumes in A^3/atom and energies in eV/atom,
+        respectively
+        output is printed in filename.eosout
+    --help gives an overview of all options
+    '''
+
+    if len(argv) != 2:
+        print('Error: Wrong number of arguments')
         exit()
-infile = argv[1]
+    else:
+        if argv[1] == '--help':
+            print(usage)
+            exit()
+    infile = argv[1]
 
-data = np.loadtxt(infile)
-volume, bulk_modulus, bulk_deriv, residuals = BM(data)
+    data = np.loadtxt(infile)
+    volume, bulk_modulus, bulk_deriv, residuals = BM(data)
 
-echarge = 1.60217733e-19
+    echarge = 1.60217733e-19
 
-outstr = '''\
-Equation Of State parameters - least squares fit of a Birch Murnaghan curve
+    outstr = '''\
+    Equation Of State parameters - least squares fit of a Birch Murnaghan curve
 
-%.5f \t %.5f \t %.3f
+    %.5f \t %.5f \t %.3f
 
-   V0 \t \t  B0 \t \t  BP
-[A^3/at] \t [GPa] \t \t [--] 
+       V0 \t \t  B0 \t \t  BP
+    [A^3/at] \t [GPa] \t \t [--]
 
-1-R^2: %f
+    1-R^2: %f
 
-''' % (volume, (bulk_modulus * echarge * 1.0e21), bulk_deriv, residuals[0])
+    ''' % (volume, (bulk_modulus * echarge * 1.0e21), bulk_deriv, residuals[0])
 
-outfile = open(infile+'.eosout', 'w')
-outfile.write(outstr)
+    outfile = open(infile+'.eosout', 'w')
+    outfile.write(outstr)
 
-outfile.close()
+    outfile.close()
