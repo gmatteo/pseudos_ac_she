@@ -301,10 +301,10 @@ class DfEcutFlow(Flow):
         #)
 
         # Compute deltafactor as a function of ecut
-        in_data["deltafactor"] = []
+        in_data["deltafactor"] = out = {}
         for work in self.works:
             entry = work.get_deltafactor_entry()
-            in_data["deltafactor"].append(entry)
+            out.update(entry)
 
         # Update djrepo file.
         print("in_data:\n", in_data)
