@@ -20,6 +20,8 @@ from pseudo_dojo.core.pseudos import dojopseudo_from_file, DojoTable
 #from pseudo_dojo.dojo.works import (DeltaFactory, GbrvFactory, GhostsFactory, GammaPhononFactory,
 #        RocksaltRelaxationFactory)
 
+from tools import DfEcutFlow, MyDojoReport
+
 logger = logging.getLogger(__name__)
 
 
@@ -44,13 +46,32 @@ logger = logging.getLogger(__name__)
 #    return build_flow(options)
 
 def dojo_rundf(options):
-    from tools import DfEcutFlow
+
     for pseudo in options.pseudos:
         flow = DfEcutFlow.from_pseudo(pseudo)
         flow.build_and_pickle_dump()
 
     return 0
 
+
+def dojo_plot(options):
+    for pseudo in options.pseudos:
+        path = pseudo.filepath.replace(".psp8", ".djrepo")
+        djrepo = MyDojoReport.from_file(path)
+
+        print(djrepo.get_pdframe("deltafactor"))
+        #print(djrepo.get_pdframe("deltafactor_prime"))
+
+        from abipy.tools.plotting import MplExpose
+        with MplExpose() as e:
+            e(djrepo.plot_ae_eos(show=False))
+            e(djrepo.plot_etotal_vs_ecut(show=False))
+            e(djrepo.plot_etotal_vs_ecut(inv_ecut=True, show=False))
+            e(djrepo.plot_deltafactor_convergence(xc=pseudo.xc, what=("-dfact_meV", "-dfactprime_meV"), show=False))
+            #djrepo.plot_deltafactor_eos()
+        return 0
+
+    return 0
 
 
 def main():
@@ -65,7 +86,6 @@ Usage example:
     dojodata.py figures .                  ==> Plot periodic table figures
     dojodata.py notebook H.psp8            ==> Generate ipython notebook and open it in the browser
     dojodata.py check table/*/*.psp8 -v --check-trials=gbrv_fcc,gbrv_bcc
-    dojodata.py raren .
 """
 
     def show_examples_and_exit(err_msg=None, error_code=1):
@@ -114,11 +134,11 @@ Usage example:
     plot_options_parser.add_argument("-e", "--eos", action="store_true", help="Plot EOS curve")
 
     p_rundf = subparsers.add_parser('rundf', parents=[copts_parser, plot_options_parser],
-                                    help=dojo_rundf.__doc__)
+                                    help=dojo_plot.__doc__)
 
     # Subparser for plot command.
-    #p_plot = subparsers.add_parser('plot', parents=[copts_parser, plot_options_parser],
-    #                               help=dojo_plot.__doc__)
+    p_plot = subparsers.add_parser('plot', parents=[copts_parser, plot_options_parser],
+                                   help=dojo_plot.__doc__)
 
     # Subparser for notebook command.
     #p_notebook = subparsers.add_parser('notebook', parents=[copts_parser],

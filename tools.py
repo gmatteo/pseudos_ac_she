@@ -5,16 +5,19 @@ import numpy as np
 import abipy.core.abinit_units as abu
 import abipy.flowtk as flowtk
 
+from monty.string import list_strings, is_string
 from monty.collections import AttrDict, dict2namedtuple
 from abipy.core.structure import Structure
 from abipy.flowtk.works import Work
 from abipy.flowtk.flows import Flow
 from abipy.flowtk.pseudos import Pseudo
 from abipy.abio.inputs import AbinitInput
+from abipy.tools.plotting import add_fig_kwargs, get_ax_fig_plt
 from deltafactor.eosfit import BM
 from pymatgen.core.periodic_table import Element
 
 from pseudo_dojo.util.dojo_eos import EOS
+from pseudo_dojo.core.dojoreport import DojoReport
 from pseudo_dojo.refdata.deltafactor import df_compute
 
 
@@ -79,6 +82,12 @@ class AeDfZ(dict):
             try:
                 data = np.loadtxt(path)
                 data[:,2] *= abu.Ha_to_eV
+                #volumes_ang = data[:,1]
+                #v0 = volumes_ang[3]
+                #for i in range(len(volumes_ang) - 1):
+                #    delta = 100 * (volumes_ang[i+1] - volumes_ang[i]) / v0
+                #    print(delta)
+
                 d = dict(alist_ang=data[:,0], volumes_ang=data[:,1], etotals_ev=data[:,2])
                 num_sites = 1
                 eos_fit = EOS.DeltaFactor().fit(d["volumes_ang"] / num_sites, d["etotals_ev"] / num_sites)
@@ -96,7 +105,7 @@ class AeDfZ(dict):
             path = os.path.join(root, basename)
             if not path.endswith(".txt"): continue
 
-            # Use z instead of element becayse pymatgen element does not support z >= 120.
+            # Use z instead of element because pymatgen element does not support z >= 120.
             z = int(basename.split("_")[0])
             #Element.from_Z(z)
 
@@ -307,7 +316,7 @@ class DfEcutFlow(Flow):
             out.update(entry)
 
         # Update djrepo file.
-        print("in_data:\n", in_data)
+        #print("in_data:\n", in_data)
         with open(self.djrepo_path, "w") as fh:
             #json.dump(in_data, fh) #, indent=4)
             from monty.json import MontyEncoder
@@ -423,6 +432,158 @@ def add_entry_to_dojoreport(self, entry, overwrite_data=False, pop_trial=False):
         # Write new dojo report and update the pseudo attribute
         file_report.json_write()
         self._pseudo.dojo_report = file_report
+
+
+class MyDojoReport(DojoReport):
+
+    @add_fig_kwargs
+    def plot_deltafactor_convergence(self, xc, code="WIEN2k", with_soc=False, what=None, ax_list=None, **kwargs):
+        """
+        Plot the convergence of the deltafactor parameters wrt ecut.
+
+        Args:
+            xc: String or XcFunc object specifying the XC functional. E.g "PBE" or XcFunc.from_name("PBE")
+            code: Reference code.
+            with_soc: If True, the results obtained with SOC are plotted (if available).
+            what:
+            ax_list: List of matplotlib Axes, if ax_list is None a new figure is created
+
+        Returns:
+            `matplotlib` figure or None if the deltafactor test is not present
+        """
+        trial = "deltafactor" if not with_soc else "deltafactor_soc"
+        if trial not in self:
+            cprint("dojo report does not contain trial: %s" % str(trial), "red")
+            return None
+
+        all_keys = ["dfact_meV", "dfactprime_meV", "v0", "b0_GPa", "b1"]
+        if what is None:
+            keys = all_keys
+        else:
+            what = list_strings(what)
+            if what[0].startswith("-"):
+                # Exclude keys
+                what = [w[1:] for w in what]
+                keys = [k for k in all_keys if k not in what]
+            else:
+                keys = what
+
+        # Get reference entry
+        #reference = df_database(xc=xc).get_entry(symbol=self.symbol, code=code)
+        element = Element[self.symbol]
+        reference = get_aedf_z()[element.Z]
+        #print("Reference data:", reference)
+
+        # Get DataFrame.
+        frame = self.get_pdframe(trial, *keys)
+        ecuts = np.array(frame["ecut"])
+
+        import matplotlib.pyplot as plt
+        if ax_list is None:
+            fig, ax_list = plt.subplots(nrows=len(keys), ncols=1, sharex=True, squeeze=False)
+            ax_list = ax_list.ravel()
+        else:
+            fig = plt.gcf()
+
+        if len(keys) != len(ax_list):
+            raise ValueError("len(keys)=%s != len(ax_list)=%s" % (len(keys), len(ax_list)))
+
+        for i, (ax, key) in enumerate(zip(ax_list, keys)):
+            values = np.array(frame[key])
+            refval = getattr(reference, key)
+            # Plot difference pseudo - ref.
+            #print("ecuts", ecuts, "values", values)
+            psmae_diff = values - refval
+            ax.plot(ecuts, psmae_diff, "o-")
+
+            # Add vertical lines at hints.
+            if self.has_hints:
+                vmin, vmax = psmae_diff.min(), psmae_diff.max()
+                for acc in self.ALL_ACCURACIES:
+                    ax.vlines(self["hints"][acc]["ecut"], vmin, vmax,
+                              colors=self.ACC2COLOR[acc], linestyles="dashed")
+
+            ax.grid(True)
+            ax.set_ylabel(r"$\Delta$" + key)
+            if i == len(keys) - 1: ax.set_xlabel("Ecut [Ha]")
+
+            xmin, xmax = min(ecuts), max(ecuts)
+            if key == "dfactprime_meV":
+                # Add horizontal lines (used to find hints for ecut).
+                last = values[-1]
+                for pad, acc in zip(self.ATOLS, self.ALL_ACCURACIES):
+                    color = self.ACC2COLOR[acc]
+                    ax.hlines(y=last + pad, xmin=xmin, xmax=xmax, colors=color, linewidth=1.5, linestyles='dashed')
+                    ax.hlines(y=last - pad, xmin=xmin, xmax=xmax, colors=color, linewidth=1.5, linestyles='dashed')
+                # Set proper limits so that we focus on the relevant region.
+                #ax.set_ylim(last - 1.1*self.ATOLS[0], last + 1.1*self.ATOLS[0])
+            else:
+                ax.hlines(y=0., xmin=xmin, xmax=xmax, colors="black", linewidth=2, linestyles='dashed')
+
+        plt.tight_layout()
+
+        return fig
+
+
+    @add_fig_kwargs
+    def plot_ae_eos(self, ax=None, **kwargs):
+
+        ax, fig, plt = get_ax_fig_plt(ax)
+        cmap = kwargs.pop("cmap", plt.get_cmap("jet"))
+
+        # Get DataFrame.
+        trial = "deltafactor" #if not with_soc else "deltafactor_soc"
+        frame = self.get_pdframe(trial, "num_sites", "volumes", "etotals")
+        ecuts = frame["ecut"]
+        num_sites = np.array(frame["num_sites"])
+        assert np.all(num_sites == num_sites[0])
+        num_sites = num_sites[0]
+
+        # Get reference entry
+        #reference = df_database(xc=xc).get_entry(symbol=self.symbol, code=code)
+        element = Element[self.symbol]
+        reference = get_aedf_z()[element.Z]
+        #print("Reference data:", reference)
+
+        ys = reference.etotals_ev - np.min(reference.etotals_ev)
+        #ax.plot(reference.volumes_ang, ys, label="AE1")
+
+        # Use same fit as the one employed for the deltafactor.
+        eos_fit = EOS.DeltaFactor().fit(reference.volumes_ang/num_sites, ys/num_sites)
+        eos_fit.plot(ax=ax, text=False, label="AE", alpha=1, show=False)
+
+        for i, ecut in enumerate(ecuts):
+            # Subframe with this value of ecut.
+            ecut_frame = frame.loc[frame["ecut"] == ecut]
+            assert ecut_frame.shape[0] == 1
+            # Extract volumes and energies for this ecut.
+            volumes = (np.array(list(ecut_frame["volumes"].values), dtype=float)).flatten()
+            etotals = (np.array(list(ecut_frame["etotals"].values), dtype=float)).flatten()
+
+            ys = etotals - etotals.min()
+            #ax.plot(volumes, ys)
+
+            # Use same fit as the one employed for the deltafactor.
+            eos_fit = EOS.DeltaFactor().fit(volumes/num_sites, ys/num_sites)
+            eos_fit.plot(ax=ax, text=False, label="ecut %.1f" % ecut, color=cmap(i/len(ecuts), alpha=1), show=False)
+
+        #ac_energies_ev = np.array([
+        #    -693873.030574180,
+        #    -693873.037386880,
+        #    -693873.041159130,
+        #    -693873.042077440,
+        #    -693873.040319370,
+        #    -693873.036053050,
+        #    -693873.029437540,
+        #    ])
+        #ax.plot(reference.volumes_ang, ac_energies_ev - ac_energies_ev.min(), label="AE_excel")
+
+        ax.grid(True)
+        ax.legend(loc='best', shadow=True, frameon=True) #fancybox=True)
+
+
+        return fig
+
 
 
 if __name__ == "__main__":
