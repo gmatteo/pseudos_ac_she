@@ -57,12 +57,17 @@ def dojo_plot(options):
         path = pseudo.filepath.replace(".psp8", ".djrepo")
         djrepo = MyDojoReport.from_file(path)
 
-        print(djrepo.get_pdframe("deltafactor"))
+        df = djrepo.get_pdframe("deltafactor")
+        print(df.keys())
+        df = df[["ecut", "dfact_meV", "dfactprime_meV", "v0", "b0_GPa", "b1"]]
+        print(df)
+        last_deltaf = df["dfact_meV"].values[-1]
+        #print(last_deltaf)
         #print(djrepo.get_pdframe("deltafactor_prime"))
 
         from abipy.tools.plotting import MplExpose
         with MplExpose() as e:
-            e(djrepo.plot_ae_eos(show=False))
+            e(djrepo.plot_ae_eos(text=f"delta = {last_deltaf: .2f}", show=False))
             e(djrepo.plot_etotal_vs_ecut(show=False))
             e(djrepo.plot_etotal_vs_ecut(inv_ecut=True, show=False))
             e(djrepo.plot_deltafactor_convergence(xc=pseudo.xc, what=("-dfact_meV", "-dfactprime_meV"), show=False))

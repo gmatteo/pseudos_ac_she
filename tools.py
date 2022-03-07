@@ -473,7 +473,7 @@ class MyDojoReport(DojoReport):
 
 
     @add_fig_kwargs
-    def plot_ae_eos(self, ax=None, **kwargs):
+    def plot_ae_eos(self, ax=None, text=None, **kwargs):
 
         ax, fig, plt = get_ax_fig_plt(ax)
         cmap = kwargs.pop("cmap", plt.get_cmap("jet"))
@@ -515,6 +515,8 @@ class MyDojoReport(DojoReport):
             eos_fit.plot(ax=ax, text=False, label="ecut %.1f" % ecut, color=cmap(i/len(ecuts), alpha=1), show=False)
 
         ax.grid(True)
+        if text is not None:
+            ax.set_title(text)
         ax.legend(loc='best', shadow=True, frameon=True) #fancybox=True)
 
 

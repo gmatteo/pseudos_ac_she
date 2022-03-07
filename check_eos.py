@@ -4,6 +4,8 @@ import sys
 import os
 import numpy as np
 
+import abipy.core.abinit_units as abu
+
 from pseudo_dojo.util.dojo_eos import EOS
 from pseudo_dojo.refdata.deltafactor import df_compute
 
@@ -12,8 +14,10 @@ def main():
     path = sys.argv[1]
 
     # V [ang3]       AE (ev)             Abinit (eV)
+    # V [ang3]       AE (Ha)             Abinit (eV)
     data = np.loadtxt(path)
     volumes, ae_enes, ps_enes = data[:, 0], data[:, 1], data[:, 2]
+    ae_enes = ae_enes * abu.Ha_eV
     ae_enes = ae_enes - ae_enes.min()
     ps_enes = ps_enes - ps_enes.min()
     num_sites = 1
