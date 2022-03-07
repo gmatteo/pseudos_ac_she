@@ -46,8 +46,11 @@ def dojo_rundf(options):
 
     for pseudo in options.pseudos:
         flow = DfEcutFlow.from_pseudo(pseudo)
-        flow.build_and_pickle_dump()
-        #flow.start_scheduler()
+        #flow.build_and_pickle_dump()
+        sched = flow.make_scheduler()
+        print(sched)
+        sched.start()
+
 
     return 0
 
