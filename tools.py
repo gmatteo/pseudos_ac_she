@@ -366,6 +366,7 @@ def make_input_unary(pseudo, a_ang, do_relax, ecut=None):
         ngkpt=[15, 15, 15],  # FIXME
         nshiftk=1,
         shiftk=[0.0, 0.0, 0.0],
+        prtwf=0,
     )
 
     if do_relax:
