@@ -1,4 +1,3 @@
-import sys
 import os
 import json
 import numpy as np
@@ -7,58 +6,57 @@ import abipy.flowtk as flowtk
 
 from monty.string import list_strings, is_string
 from monty.collections import AttrDict, dict2namedtuple
+from pymatgen.core.periodic_table import Element
 from abipy.core.structure import Structure
 from abipy.flowtk.works import Work
 from abipy.flowtk.flows import Flow
 from abipy.flowtk.pseudos import Pseudo
 from abipy.abio.inputs import AbinitInput
 from abipy.tools.plotting import add_fig_kwargs, get_ax_fig_plt
-from deltafactor.eosfit import BM
-from pymatgen.core.periodic_table import Element
-
+#from deltafactor.eosfit import BM
 from pseudo_dojo.util.dojo_eos import EOS
 from pseudo_dojo.core.dojoreport import DojoReport
 from pseudo_dojo.refdata.deltafactor import df_compute
 
 
 
-AE_FCC_A0_BOHR = {
-"85_At"	: 7.191602243,
-"87_Fr"	: 10.385617352,
-"88_Ra"	: 8.843815553,
-"89_Ac"	: 7.593414710,
-"90_Th"	: 6.758367409,
-"91_Pa"	: 6.220412926,
-"92_U"	: 5.903319246,
-"93_Np"	: None,
-"94_Pu"	:6.460780896,
-"95_Am"	:6.923665533,
-"96_Cm"	:6.661556739,
-"97_Bk"	: None,
-"98_Cf"	:6.203849952,
-"99_Es"	: None,
-"100_Fm":6.673581066,
-"101_Md": None,
-"102_No" :7.218033842,
-"103_Lr" :6.607962216,
-"104_Rf" :6.177085761,
-"105_Db" :5.878951057,
-"106_Sg" :5.655914411,
-"107_Bh" :5.507431070,
-"108_Hs" :5.424292569,
-"109_Mt" :5.441005307,
-"110_Ds" :5.574234778,
-"111_Rg" :5.856726158,
-"112_Cn" :7.440280753,
-"113_Nh" :7.052079983,
-"114_Fl" :7.089273573,
-"115_Mc": None,
-"116_Lv" :7.134838649,
-"117_Ts": 7.455648006,
-"118_Og": 9.610763498,
-"119_Uue": 9.926738935,
-"120_Ubn": 9.078847165,
-}
+#AE_FCC_A0_BOHR = {
+#"85_At"	: 7.191602243,
+#"87_Fr"	: 10.385617352,
+#"88_Ra"	: 8.843815553,
+#"89_Ac"	: 7.593414710,
+#"90_Th"	: 6.758367409,
+#"91_Pa"	: 6.220412926,
+#"92_U"	: 5.903319246,
+#"93_Np"	: None,
+#"94_Pu"	:6.460780896,
+#"95_Am"	:6.923665533,
+#"96_Cm"	:6.661556739,
+#"97_Bk"	: None,
+#"98_Cf"	:6.203849952,
+#"99_Es"	: None,
+#"100_Fm":6.673581066,
+#"101_Md": None,
+#"102_No" :7.218033842,
+#"103_Lr" :6.607962216,
+#"104_Rf" :6.177085761,
+#"105_Db" :5.878951057,
+#"106_Sg" :5.655914411,
+#"107_Bh" :5.507431070,
+#"108_Hs" :5.424292569,
+#"109_Mt" :5.441005307,
+#"110_Ds" :5.574234778,
+#"111_Rg" :5.856726158,
+#"112_Cn" :7.440280753,
+#"113_Nh" :7.052079983,
+#"114_Fl" :7.089273573,
+#"115_Mc": None,
+#"116_Lv" :7.134838649,
+#"117_Ts": 7.455648006,
+#"118_Og": 9.610763498,
+#"119_Uue": 9.926738935,
+#"120_Ubn": 9.078847165,
+#}
 
 
 _AEDF_Z = None
@@ -235,7 +233,7 @@ class DeltaUnaryWork(Work):
 
         ae = get_aedf_z()[pseudo.Z]
         for a_ang in ae.alist_ang:
-            print("a_ang", a_ang)
+            #print("a_ang", a_ang)
             scf_inp = make_input_unary(pseudo, a_ang, do_relax=False, ecut=ecut)
             work.register_scf_task(scf_inp)
 
@@ -259,7 +257,7 @@ class DfEcutFlow(Flow):
     @classmethod
     def from_pseudo(cls, pseudo):
 
-        print(pseudo)
+        #print(pseudo)
         root = os.path.dirname(pseudo.filepath)
         workdir = os.path.join(root, os.path.basename(pseudo.filepath) + "_flow")
         flow = cls(workdir=workdir)
@@ -270,9 +268,6 @@ class DfEcutFlow(Flow):
         with open(flow.djrepo_path) as fh:
             d = json.load(fh)
             ppgen_hints = d["ppgen_hints"]
-            #ecut = ppgen_hints["high"]["ecut"] + 20
-            #ecut = ppgen_hints["low"]["ecut"]
-            #flow.ecut_list = [ecut]
             flow.ecut_list = d["ecuts"]
 
         #print(f"running with ecut: {ecut}")
@@ -285,7 +280,6 @@ class DfEcutFlow(Flow):
         #    work.register_relax_task(relax_inp.new_with_vars(ecut=ecut))
         #flow.register_work(work)
 
-        #scf_inp = make_input_unary(pseudo, a_ang, do_relax=False)
         for ecut in flow.ecut_list:
             flow.register_work(DeltaUnaryWork.from_pseudo_ecut(pseudo, ecut))
 
@@ -316,9 +310,7 @@ class DfEcutFlow(Flow):
             out.update(entry)
 
         # Update djrepo file.
-        #print("in_data:\n", in_data)
         with open(self.djrepo_path, "w") as fh:
-            #json.dump(in_data, fh) #, indent=4)
             from monty.json import MontyEncoder
             json.dump(in_data, fh, indent=-1, sort_keys=True, cls=MontyEncoder)
 
@@ -349,21 +341,19 @@ def make_input_unary(pseudo, a_ang, do_relax, ecut=None):
         #rmm_diis=1,
         nband=nband,
         # Occupation
-        occopt=3, #Fermi-Dirac
+        occopt=3, # Fermi-Dirac
         tsmear=0.001,
         #smdelta 2,
         ecutsm=0.5,
-        nsppol=2,  # FIXME
-        #nsppol=1,
+        nsppol=2,
+        #nsppol=1, # FIXME
         # SCF procedure
         iscf=17,
         nstep=1000,
         spinat=spinat,
-        #tolvrs=1.0e-12,
-        toldfe=1.0e-10,
         # k-point grid
-        #ngkpt=[1, 1, 1],
-        ngkpt=[15, 15, 15],  # FIXME
+        #ngkpt=[1, 1, 1], # FIXME
+        ngkpt=[15, 15, 15],
         nshiftk=1,
         shiftk=[0.0, 0.0, 0.0],
     )
@@ -374,64 +364,20 @@ def make_input_unary(pseudo, a_ang, do_relax, ecut=None):
             optcell=2,
             ionmov=2,
             tolmxf=1.0e-6,
+            tolvrs=1.0e-12,
             dilatmx=1.1,
             #chkprim=0,
             #chkdilatmx=0,
+        )
+    else:
+        inp.set_vars(
+            toldfe=1.0e-10,
         )
 
     if ecut is not None:
         inp["ecut"] = ecut
 
     return inp
-
-
-def add_entry_to_dojoreport(self, entry, overwrite_data=False, pop_trial=False):
-    """
-    Write/update the DOJO_REPORT section of the pseudopotential.
-    Important parameters such as the name of the dojo_trial and the energy cutoff
-    are provided by the sub-class.
-    Client code is responsible for preparing the dictionary with the data.
-
-    Args:
-        entry: Dictionary with results.
-        overwrite_data: If False, the routine raises an exception if this entry is
-            already filled.
-        pop_trial: True if the trial should be removed before adding the new entry.
-    """
-    djrepo = self.djrepo_path
-    self.history.info("Writing dojreport data to %s" % djrepo)
-
-    # Update file content with Filelock.
-    with FileLock(djrepo):
-        # Read report from file.
-        file_report = DojoReport.from_file(djrepo)
-
-        # Create new entry if not already there
-        dojo_trial = self.dojo_trial
-
-        if pop_trial:
-            file_report.pop(dojo_trial, None)
-
-        if dojo_trial not in file_report:
-            file_report[dojo_trial] = {}
-
-        # Convert float to string with 1 decimal digit.
-        dojo_ecut = "%.1f" % self.ecut
-
-        # Check that we are not going to overwrite data.
-        if dojo_ecut in file_report[dojo_trial]:
-            if not overwrite_data:
-                raise RuntimeError("dojo_ecut %s already exists in %s. Cannot overwrite data" %
-                        (dojo_ecut, dojo_trial))
-            else:
-                file_report[dojo_trial].pop(dojo_ecut)
-
-        # Update file_report by adding the new entry and write new file
-        file_report[dojo_trial][dojo_ecut] = entry
-
-        # Write new dojo report and update the pseudo attribute
-        file_report.json_write()
-        self._pseudo.dojo_report = file_report
 
 
 class MyDojoReport(DojoReport):
@@ -566,17 +512,6 @@ class MyDojoReport(DojoReport):
             # Use same fit as the one employed for the deltafactor.
             eos_fit = EOS.DeltaFactor().fit(volumes/num_sites, ys/num_sites)
             eos_fit.plot(ax=ax, text=False, label="ecut %.1f" % ecut, color=cmap(i/len(ecuts), alpha=1), show=False)
-
-        #ac_energies_ev = np.array([
-        #    -693873.030574180,
-        #    -693873.037386880,
-        #    -693873.041159130,
-        #    -693873.042077440,
-        #    -693873.040319370,
-        #    -693873.036053050,
-        #    -693873.029437540,
-        #    ])
-        #ax.plot(reference.volumes_ang, ac_energies_ev - ac_energies_ev.min(), label="AE_excel")
 
         ax.grid(True)
         ax.legend(loc='best', shadow=True, frameon=True) #fancybox=True)

@@ -11,15 +11,12 @@ import copy
 import numpy as np
 import logging
 import abipy.abilab as abilab
+import abipy.flowtk as flowtk
 
 from monty.termcolor import cprint
 from monty.functools import prof_main
-#from abipy.flowtk.pseudos import Pseudo
-import abipy.flowtk as flowtk
-from pseudo_dojo.core.pseudos import dojopseudo_from_file, DojoTable
-#from pseudo_dojo.dojo.works import (DeltaFactory, GbrvFactory, GhostsFactory, GammaPhononFactory,
-#        RocksaltRelaxationFactory)
 
+from pseudo_dojo.core.pseudos import dojopseudo_from_file, DojoTable
 from tools import DfEcutFlow, MyDojoReport
 
 logger = logging.getLogger(__name__)
@@ -50,6 +47,7 @@ def dojo_rundf(options):
     for pseudo in options.pseudos:
         flow = DfEcutFlow.from_pseudo(pseudo)
         flow.build_and_pickle_dump()
+        #flow.start_scheduler()
 
     return 0
 
@@ -72,6 +70,8 @@ def dojo_plot(options):
         return 0
 
     return 0
+
+
 
 
 def main():
@@ -172,17 +172,10 @@ Usage example:
 
     #p_nbtable = subparsers.add_parser('nbtable', parents=[copts_parser], help=dojo_nbtable.__doc__)
 
-    # Subparser for dist command.
-    #p_dist = subparsers.add_parser('dist', parents=[copts_parser], help=dojo_dist.__doc__)
-
-    # Subparser for trials command.
-    #p_trials = subparsers.add_parser('trials', parents=[copts_parser], help=dojo_trials.__doc__)
-    #p_trials.add_argument("--savefig", type=str, default="", help="Save plot to savefig file")
-
     # Subparser for check command.
-    def parse_trials(s):
-        if s is None: return s
-        return s.split(",")
+    #def parse_trials(s):
+    #    if s is None: return s
+    #    return s.split(",")
 
     #p_check = subparsers.add_parser('check', parents=[copts_parser], help=dojo_check.__doc__)
     #p_check.add_argument("--check-trials", type=parse_trials, default=None, help="List of trials to check")
