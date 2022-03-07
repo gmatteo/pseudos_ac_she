@@ -1,5 +1,6 @@
 ######FCC non magentic AE calculations#######
-Element	 a / bhor
+#Element	 a / bhor
+
 90_Th	6.758380680
 91_Pa	6.225551885
 92_U	

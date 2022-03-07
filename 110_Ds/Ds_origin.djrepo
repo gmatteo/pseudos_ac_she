@@ -1,0 +1,50 @@
+{
+"basename": "Ds_origin.psp8",
+"ecuts": [
+133.0,
+135.0,
+137.0,
+139.0,
+141.0,
+143.0,
+145.0,
+147.0,
+149.0,
+151.0,
+153.0,
+161.0,
+163.0
+],
+"md5": "64a260ecb5efcb9ff4240b4e620f078d",
+"ppgen_hints": {
+"high": {
+"ecut": 143.0,
+"pawecutdg": 143.0
+},
+"low": {
+"ecut": 106.0,
+"pawecutdg": 106.0
+},
+"normal": {
+"ecut": 111.0,
+"pawecutdg": 111.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "Ds",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}

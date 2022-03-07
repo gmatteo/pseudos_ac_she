@@ -1,0 +1,50 @@
+{
+"basename": "At_origin.psp8",
+"ecuts": [
+25.0,
+27.0,
+29.0,
+31.0,
+33.0,
+35.0,
+37.0,
+39.0,
+41.0,
+43.0,
+45.0,
+53.0,
+55.0
+],
+"md5": "a777887d5936527fe333c766639321cb",
+"ppgen_hints": {
+"high": {
+"ecut": 35.0,
+"pawecutdg": 35.0
+},
+"low": {
+"ecut": 27.0,
+"pawecutdg": 27.0
+},
+"normal": {
+"ecut": 28.0,
+"pawecutdg": 28.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "At",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}

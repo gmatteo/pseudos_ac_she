@@ -367,8 +367,6 @@ def make_input_unary(pseudo, a_ang, do_relax, ecut=None):
             tolmxf=1.0e-6,
             tolvrs=1.0e-12,
             dilatmx=1.1,
-            #chkprim=0,
-            #chkdilatmx=0,
         )
     else:
         inp.set_vars(
