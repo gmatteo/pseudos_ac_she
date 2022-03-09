@@ -1,33 +1,33 @@
 {
 "basename": "Cf_5f.psp8",
 "ecuts": [
-75.0,
-77.0,
-79.0,
-81.0,
-83.0,
-85.0,
-87.0,
-89.0,
-91.0,
-93.0,
-95.0,
-103.0,
-105.0
+82.0,
+84.0,
+86.0,
+88.0,
+90.0,
+92.0,
+94.0,
+96.0,
+98.0,
+100.0,
+102.0,
+110.0,
+112.0
 ],
-"md5": "61daec2ed74269bb4010bfc3238ecb60",
+"md5": "4ce6df9cf9018da2fb63d54dd5f685ae",
 "ppgen_hints": {
 "high": {
-"ecut": 85.0,
-"pawecutdg": 85.0
+"ecut": 92.0,
+"pawecutdg": 92.0
 },
 "low": {
-"ecut": 78.0,
-"pawecutdg": 78.0
+"ecut": 84.0,
+"pawecutdg": 84.0
 },
 "normal": {
-"ecut": 82.0,
-"pawecutdg": 82.0
+"ecut": 88.0,
+"pawecutdg": 88.0
 }
 },
 "pseudo_type": "NC",
