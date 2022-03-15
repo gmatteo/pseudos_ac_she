@@ -1,13 +1,19 @@
-# 92_U     
-# 93_Np    X
-# 94_Pu
-# 95_Am
-# 96_Cm
-# 97_Bk    X
-# 98_Cf
-# 99_Es    X
-# 100_Fm
-# 101_Md   X
+# Magnetization take from Hirshfeld 
+# null means that the calculation is still running
+{
+"92_U": -0.892,
+"93_Np": "null",
+"94_Pu": -5.785, 
+"95_Am": -7.321,
+"96_Cm": -7.026,
+"97_Bk": "null",
+"98_Cf": -4.164,
+"99_Es":  "null",
+"100_Fm": -1.640,
+"101_Md": "null"
+}
+<END JSON>
+
 
 
 ----------------------------------------------------------

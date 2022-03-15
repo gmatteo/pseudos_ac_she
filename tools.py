@@ -99,6 +99,19 @@ class AeDfZ(dict):
 
 
         root = os.path.join(os.path.dirname(__file__), "AE_calcs")
+
+        mag_file = os.path.join(root, "..", "Magnetization.txt")
+        lines = open(mag_file, "rt").readlines()
+        i = lines.index("<END JSON>\n")
+        json_string = " ".join([l for l in lines[:i] if not l.startswith("#")])
+        #print(json_string)
+        mag = json.loads(json_string)
+        mag_z = {}
+        for k in mag:
+            z = int(k.split("_")[0])
+            mag_z[z] = mag[k]
+        #print(mag_z)
+
         for basename in os.listdir(root):
             path = os.path.join(root, basename)
             if not path.endswith(".txt"): continue
@@ -109,6 +122,8 @@ class AeDfZ(dict):
 
             if path.endswith("_ae.txt") and not path.endswith("_ox_ae.txt"):
                 self[z] = parse_ae(path)
+                self[z]["mag"] = mag_z.get(z, 0.0)
+                print(self[z])
 
 
 #if path.endswith("_ox_ae.txt"):
@@ -232,21 +247,32 @@ class DeltaUnaryWork(Work):
         #a_ang = AE_FCC_A0_BOHR[key] * abu.Bohr_Ang
 
         ae = get_aedf_z()[pseudo.Z]
+
         for a_ang in ae.alist_ang:
             #print("a_ang", a_ang)
-            scf_inp = make_input_unary(pseudo, a_ang, do_relax=False, ecut=ecut)
+            scf_inp = make_input_unary(pseudo, a_ang, ae["mag"], do_relax=False, ecut=ecut)
             work.register_scf_task(scf_inp)
 
         return work
 
     def get_deltafactor_entry(self):
-        etotals = self.read_etotals(unit="eV")
+        #etotals = self.read_etotals(unit="eV")
+        etotals, mag_list = [], []
+
+        for task in self:
+            with task.open_gsr() as gsr:
+                etot = gsr.reader.read_value("etotal") * abu.Ha_eV
+                etotals.append(etot)
+                mag_list.append(gsr.ebands.get_collinear_mag())
+
         num_sites = 1
         volumes = [task.input.structure.volume for task in self]
 
         d, eos_fit = _dojo_dfact_results(self.dojo_pseudo, num_sites, volumes, etotals)
         print("[%s]" % self.dojo_pseudo.symbol, "eos_fit:", eos_fit)
         print("Ecut %.1f, dfact = %.3f meV, dfactprime %.3f meV" % (self.ecut, d["dfact_meV"], d["dfactprime_meV"]))
+        print("mag_list:", mag_list)
+        d["mag_list"] = mag_list
 
         dojo_ecut = "%.1f" % self.ecut
         return {dojo_ecut: d}
@@ -274,7 +300,7 @@ class DfEcutFlow(Flow):
         #symbol, z = pseudo.symbol, pseudo.Z
         #key = f"{z}_{symbol}"
         #a_ang = AE_FCC_A0_BOHR[key] * abu.Bohr_Ang
-        #relax_inp = make_input_unary(pseudo, a_ang, do_relax=True)
+        #relax_inp = make_input_unary(pseudo, a_ang, mag, do_relax=True)
         #work = flowtk.Work()
         #for ecut in flow.ecut_list:
         #    work.register_relax_task(relax_inp.new_with_vars(ecut=ecut))
@@ -317,7 +343,7 @@ class DfEcutFlow(Flow):
         return True
 
 
-def make_input_unary(pseudo, a_ang, do_relax, ecut=None):
+def make_input_unary(pseudo, a_ang, do_relax, mag, ecut=None):
 
     lattice = float(a_ang) * np.array([
         0,  1,  1,
@@ -331,10 +357,18 @@ def make_input_unary(pseudo, a_ang, do_relax, ecut=None):
     # Initialize the input
     inp = AbinitInput(structure, pseudos=pseudo)
 
+    if mag == 0.0:
+        nsppol = 1
+        spinat = None
+    else:
+        nsppol=2
+        if mag is None:
+            spinat = [0, 0, 6]
+        else:
+            spinat = [0, 0, mag]
+
     nband = inp.num_valence_electrons // 2
     nband = max(np.ceil(nband * 1.2), nband + 10)
-
-    spinat = [0, 0, 6]
 
     inp.set_vars(
         paral_kgb=0,
@@ -345,11 +379,11 @@ def make_input_unary(pseudo, a_ang, do_relax, ecut=None):
         tsmear=0.001,
         #smdelta 2,
         ecutsm=0.5,
-        nsppol=2,
-        #nsppol=1, # FIXME
         # SCF procedure
         iscf=17,
         nstep=1000,
+        nsppol=nsppol,
+        #nsppol=2, # FIXME
         spinat=spinat,
         # k-point grid
         #ngkpt=[1, 1, 1], # FIXME
