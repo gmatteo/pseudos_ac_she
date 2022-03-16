@@ -343,7 +343,7 @@ class DfEcutFlow(Flow):
         return True
 
 
-def make_input_unary(pseudo, a_ang, do_relax, mag, ecut=None):
+def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
 
     lattice = float(a_ang) * np.array([
         0,  1,  1,
