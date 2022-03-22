@@ -34,7 +34,7 @@
 #
 # LOCAL POTENTIAL
 # lloc, lpopt,  rc(5),   dvloc0
-    4     5    0.7         2
+    4     5    1.0         2
 #
 # VANDERBILT-KLEINMAN-BYLANDER PROJECTORs
 # l, nproj, debl  (lmax+1 lines, l's in order)
