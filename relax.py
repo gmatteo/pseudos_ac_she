@@ -72,7 +72,7 @@ def dojo_plot(options):
         with MplExpose() as e:
             e(djrepo.plot_ae_eos(text=f"delta = {last_deltaf: .2f}", show=False))
             e(djrepo.plot_etotal_vs_ecut(show=False))
-            e(djrepo.plot_etotal_vs_ecut(inv_ecut=True, show=False))
+            #e(djrepo.plot_etotal_vs_ecut(inv_ecut=True, show=False))
             e(djrepo.plot_deltafactor_convergence(xc=pseudo.xc, what=("-dfact_meV", "-dfactprime_meV"), show=False))
             #djrepo.plot_deltafactor_eos()
         return 0
