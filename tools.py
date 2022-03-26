@@ -505,10 +505,10 @@ class MyDojoReport(DojoReport):
 
 
     @add_fig_kwargs
-    def plot_ae_eos(self, ax=None, text=None, **kwargs):
+    def plot_ae_eos(self, ax=None, text=None, cmap="viridis", **kwargs):
 
         ax, fig, plt = get_ax_fig_plt(ax)
-        cmap = kwargs.pop("cmap", plt.get_cmap("jet"))
+        cmap = plt.get_cmap(cmap)
 
         # Get DataFrame.
         trial = "deltafactor" #if not with_soc else "deltafactor_soc"
@@ -529,7 +529,7 @@ class MyDojoReport(DojoReport):
 
         # Use same fit as the one employed for the deltafactor.
         eos_fit = EOS.DeltaFactor().fit(reference.volumes_ang/num_sites, ys/num_sites)
-        eos_fit.plot(ax=ax, text=False, label="AE", alpha=1, show=False)
+        eos_fit.plot(ax=ax, text=False, label="AE", color="k", marker="^", alpha=1, show=False)
 
         for i, ecut in enumerate(ecuts):
             # Subframe with this value of ecut.
@@ -544,7 +544,7 @@ class MyDojoReport(DojoReport):
 
             # Use same fit as the one employed for the deltafactor.
             eos_fit = EOS.DeltaFactor().fit(volumes/num_sites, ys/num_sites)
-            eos_fit.plot(ax=ax, text=False, label="ecut %.1f" % ecut, color=cmap(i/len(ecuts), alpha=1), show=False)
+            eos_fit.plot(ax=ax, text=False, label="ecut %.1f" % ecut, color=cmap(i/len(ecuts), alpha=0.8), show=False)
 
         ax.grid(True)
         if text is not None:

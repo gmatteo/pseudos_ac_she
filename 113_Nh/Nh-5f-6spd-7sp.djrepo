@@ -1,0 +1,50 @@
+{
+"basename": "Nh-5f-6spd-7sp.psp8",
+"ecuts": [
+72.0,
+74.0,
+76.0,
+78.0,
+80.0,
+82.0,
+84.0,
+86.0,
+88.0,
+90.0,
+92.0,
+100.0,
+102.0
+],
+"md5": "2e83c66e5dfa8943c67a81e07d49371e",
+"ppgen_hints": {
+"high": {
+"ecut": 82.0,
+"pawecutdg": 82.0
+},
+"low": {
+"ecut": 76.0,
+"pawecutdg": 76.0
+},
+"normal": {
+"ecut": 79.0,
+"pawecutdg": 79.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "Nh",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}
