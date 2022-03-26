@@ -61,9 +61,9 @@ def dojo_plot(options):
         djrepo = MyDojoReport.from_file(path)
 
         df = djrepo.get_pdframe("deltafactor")
-        print(df.keys())
+        #print(df.keys())
         df = df[["ecut", "dfact_meV", "dfactprime_meV", "v0", "b0_GPa", "b1"]]
-        print(df)
+        #print(df)
         last_deltaf = df["dfact_meV"].values[-1]
         #print(last_deltaf)
         #print(djrepo.get_pdframe("deltafactor_prime"))

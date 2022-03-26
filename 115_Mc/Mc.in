@@ -26,6 +26,8 @@
 # PSEUDOPOTENTIAL AND OPTIMIZATION
 # lmax
 3
+#
+#   l,   rc,      ep,       ncon, nbas, qcut
 0 1.6 0.0  4 8 9.0
 1 1.6 0.0  4 8 9.0
 2 1.6 0.0  4 9 9.0

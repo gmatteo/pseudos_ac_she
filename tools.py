@@ -123,7 +123,7 @@ class AeDfZ(dict):
             if path.endswith("_ae.txt") and not path.endswith("_ox_ae.txt"):
                 self[z] = parse_ae(path)
                 self[z]["mag"] = mag_z.get(z, 0.0)
-                print(self[z])
+                #print(self[z])
 
 
 #if path.endswith("_ox_ae.txt"):
@@ -271,7 +271,7 @@ class DeltaUnaryWork(Work):
         d, eos_fit = _dojo_dfact_results(self.dojo_pseudo, num_sites, volumes, etotals)
         print("[%s]" % self.dojo_pseudo.symbol, "eos_fit:", eos_fit)
         print("Ecut %.1f, dfact = %.3f meV, dfactprime %.3f meV" % (self.ecut, d["dfact_meV"], d["dfactprime_meV"]))
-        print("mag_list:", mag_list)
+        #print("mag_list:", mag_list)
         d["mag_list"] = mag_list
 
         dojo_ecut = "%.1f" % self.ecut
@@ -510,6 +510,8 @@ class MyDojoReport(DojoReport):
         ax, fig, plt = get_ax_fig_plt(ax)
         cmap = plt.get_cmap(cmap)
 
+        ppgen_ecuts = set([self["ppgen_hints"][acc]["ecut"] for acc in ("low", "normal", "high")])
+
         # Get DataFrame.
         trial = "deltafactor" #if not with_soc else "deltafactor_soc"
         frame = self.get_pdframe(trial, "num_sites", "volumes", "etotals")
@@ -532,6 +534,8 @@ class MyDojoReport(DojoReport):
         eos_fit.plot(ax=ax, text=False, label="AE", color="k", marker="^", alpha=1, show=False)
 
         for i, ecut in enumerate(ecuts):
+            #if ecut not in ppgen_ecuts: continue
+            if i not in (0, len(ecuts) -1): continue
             # Subframe with this value of ecut.
             ecut_frame = frame.loc[frame["ecut"] == ecut]
             assert ecut_frame.shape[0] == 1
