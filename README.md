@@ -1,3 +1,10 @@
+# AE results
+
+Weird results for AE EOS of 100_Fm
+
+
+
+
 # pseudos_ac_she
 
 5f 91-92 rifare 
