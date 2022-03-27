@@ -1,0 +1,50 @@
+{
+"basename": "Cm-5spdf-6spd-7s.psp8",
+"ecuts": [
+80.0,
+82.0,
+84.0,
+86.0,
+88.0,
+90.0,
+92.0,
+94.0,
+96.0,
+98.0,
+100.0,
+108.0,
+110.0
+],
+"md5": "90aebf8adee1be1da6aae07261047501",
+"ppgen_hints": {
+"high": {
+"ecut": 90.0,
+"pawecutdg": 90.0
+},
+"low": {
+"ecut": 81.0,
+"pawecutdg": 81.0
+},
+"normal": {
+"ecut": 86.0,
+"pawecutdg": 86.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "Cm",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}
