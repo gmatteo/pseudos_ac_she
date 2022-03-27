@@ -1,6 +1,6 @@
 # ATOM AND REFERENCE CONFIGURATION
 # atsym   z       nc   nv     iexc    psfile
-   Am   95.00     10    8      4       both
+   Fm  100.00     10    8      4      both
 #
 #   n    l    f  (nc+nv lines)
     1    0    2.00
@@ -16,7 +16,7 @@
     5    0    2.00
     5    1    6.00
     5    2   10.00
-    5    3    6.90
+    5    3   11.90
     6    0    2.00
     6    1    6.00
     6    2    0.10
@@ -26,14 +26,15 @@
    3
 #
 #   l,    rc,      ep,      ncon,  nbas,   qcut  (lmax+1 lines, l's must be in order)
-0 1.15 0.0 4 8 14.5
-1 1.2  0.0 4 8 12.5
-2 1.1 0.0 4 8 12.5
-3 1.15 0.0 4 8 13.5
+0 1.15 0.0 4 8 13.5
+1 1.15 0.0 4 8 13.0
+2 1.15 0.0 4 8 12.5
+3 1.15 0.0 4 8 14.5
+#
 #
 # LOCAL POTENTIAL
 # lloc, lpopt,  rc(5),   dvloc0
-    4     5    1.1        2
+    4     5    1.1         0
 #
 # VANDERBILT-KLEINMAN-BYLANDER PROJECTORs
 # l, nproj, debl  (lmax+1 lines, l's in order)
@@ -44,7 +45,7 @@
 #
 # MODEL CORE CHARGE
 # icmod, fcfact, rcfact
-3  5.0   1.4
+3   5.0   1.43 
 #
 # LOG DERIVATIVE ANALYSIS
 # epsh1, epsh2, depsh
