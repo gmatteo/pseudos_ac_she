@@ -46,7 +46,8 @@
 # MODEL CORE CHARGE
 # icmod, fcfact, rcfact
 #3  4.8545   1.2018
-3  4.8545   1.45
+#3  4.8545   1.45
+3  3.8   1.55
 #
 # LOG DERIVATIVE ANALYSIS
 # epsh1, epsh2, depsh
