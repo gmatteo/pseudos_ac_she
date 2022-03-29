@@ -1,4 +1,4 @@
-# Magnetization take from Hirshfeld 
+# Magnetization taken from Hirshfeld 
 # null means that the calculation is still running
 {
 "92_U": -0.892,
