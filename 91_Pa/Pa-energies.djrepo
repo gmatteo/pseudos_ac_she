@@ -1,0 +1,50 @@
+{
+"basename": "Pa-energies.psp8",
+"ecuts": [
+135.0,
+137.0,
+139.0,
+141.0,
+143.0,
+145.0,
+147.0,
+149.0,
+151.0,
+153.0,
+155.0,
+163.0,
+165.0
+],
+"md5": "bae8ca4ba16586e59b3d551debc05b8f",
+"ppgen_hints": {
+"high": {
+"ecut": 145.0,
+"pawecutdg": 145.0
+},
+"low": {
+"ecut": 136.0,
+"pawecutdg": 136.0
+},
+"normal": {
+"ecut": 140.0,
+"pawecutdg": 140.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "Pa",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}
