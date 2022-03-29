@@ -1,33 +1,33 @@
 {
 "basename": "U_5f_new.psp8",
 "ecuts": [
-77.0,
-79.0,
-81.0,
-83.0,
-85.0,
-87.0,
-89.0,
-91.0,
-93.0,
-95.0,
-97.0,
-105.0,
-107.0
+82.0,
+84.0,
+86.0,
+88.0,
+90.0,
+92.0,
+94.0,
+96.0,
+98.0,
+100.0,
+102.0,
+110.0,
+112.0
 ],
-"md5": "b7b89fee2fb598a6121a9d73dcbabd9a",
+"md5": "50cf94c7fa71e23289893e97f15fcf7e",
 "ppgen_hints": {
 "high": {
-"ecut": 87.0,
-"pawecutdg": 87.0
+"ecut": 92.0,
+"pawecutdg": 92.0
 },
 "low": {
-"ecut": 77.0,
-"pawecutdg": 77.0
+"ecut": 82.0,
+"pawecutdg": 82.0
 },
 "normal": {
-"ecut": 83.0,
-"pawecutdg": 83.0
+"ecut": 87.0,
+"pawecutdg": 87.0
 }
 },
 "pseudo_type": "NC",
