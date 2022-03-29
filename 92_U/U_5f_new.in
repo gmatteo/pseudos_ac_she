@@ -24,19 +24,19 @@ U 92 10 8 4 both
 # lmax
 3
 # l rc ep ncon nbas qcut (lmax+1 lines, l's must be in order)
-0 1.1 0.0 4 8 13.5
-1 1.0 0.0 4 8 13.5
-2 1.0 0.0 4 8 14.5
-3 1.1 0.0 4 8 14.5
+0 1.2 0.0 4 8 13.5
+1 1.2 0.0 4 8 13.5
+2 1.22 0.0 4 8 14.5
+3 1.15 0.0 4 8 13.5
 # LOCAL POTENTIAL
 # lloc lpopt rc5 dvloc0
-4 5 1.0 0.0
+4 5 1.0 0
 # VANDERBILT-KLEINMAN-BYLANDER PROJECTORs
 # l nproj debl (lmax+1 lines, l's in order
 0 3 2.5
 1 2 1.5
 2 2 1.5
-3 2 3.0
+3 2 2.5
 # MODEL CORE CHARGE
 # icmod fcfact rcfact
 3 5.0 1.42
