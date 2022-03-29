@@ -18,19 +18,19 @@ U 92 10 8 4 both
 5 3 3.0
 6 0 2.0
 6 1 6.0
-6 2 1
+6 2 1.0
 7 0 2.0
 # PSEUDOPOTENTIAL AND OPTIMIZATION
 # lmax
 3
 # l rc ep ncon nbas qcut (lmax+1 lines, l's must be in order)
-0 1.10 0.0 4 8 12.5
-1 1.10 0.0 4 8 12.5
-2 1.15 0.0 4 8 12.5
-3 1.15 0.0 4 8 13.5
+0 1.2 0.0 4 8 12.5
+1 1.2 0.0 4 8 12.5
+2 1.2 0.0 4 8 12.5
+3 1.2 0.0 4 8 13.5
 # LOCAL POTENTIAL
 # lloc lpopt rc5 dvloc0
-4 5 1.0 0.0
+4 5 1.2 0.0
 # VANDERBILT-KLEINMAN-BYLANDER PROJECTORs
 # l nproj debl (lmax+1 lines, l's in order
 0 3 2.5
