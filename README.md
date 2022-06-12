@@ -1,8 +1,6 @@
 # AE results
 
-Weird results for AE EOS of 100_Fm
-
-
+Weird results for AE EOS of 100_Fm  ------> REDONE AND UPDATED #CT
 
 
 # pseudos_ac_she
@@ -79,7 +77,7 @@ Spin Polarization	collinear (Z)
 Smearing Fermi-Dirac	0.001 Ha
 K-points	15 x 15 x 15
 
-######OXIDES COMPUTATIONAL DETAILS######
+######OXIDES COMPUTATIONAL DETAILS######   ------- WE DO NOT USE THESE RESULTS FOR THE PAPER  #CT
 Spin Orbit Coupling no
 Spin Polarization   collinear (Z)
 Smearing Fermi-Dirac    0.05 Ha
