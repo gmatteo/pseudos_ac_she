@@ -83,3 +83,10 @@ Spin Polarization   collinear (Z)
 Smearing Fermi-Dirac    0.05 Ha
 K-points    5 x 5 x 5
 
+##########DATA FOR PAPERS ###############
+1) Delta-Gauge (meV) (FCC system)
+2) Lattice percentage difference between AE and PW (FCC system)
+3) Plot of hints
+4) Delta-Gauge (meV) vs hints
+5) Difference between V0 B0 and B0' obtained with AE and PW (FCC system)
+
