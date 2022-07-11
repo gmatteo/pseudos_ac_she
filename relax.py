@@ -80,21 +80,23 @@ def dojo_plot(options):
     return 0
 
 
-
-
 def main():
     def str_examples():
         return """\
 Usage example:
-    dojodata.py plot H.psp8                ==> Plot dojo data for pseudo H.psp8
-    dojodata.py compare H.psp8 H-low.psp8  ==> Plot and compare dojo data for pseudos H.psp8 and H-low.psp8
-    dojodata.py nbcompare H.psp8 H-low.psp8 ==> Plot and compare dojo data in ipython notebooks.
-    dojodata.py trials H.psp8 -r 1
-    dojodata.py table .                    ==> Build table (find all psp8 files within current directory)
-    dojodata.py figures .                  ==> Plot periodic table figures
-    dojodata.py notebook H.psp8            ==> Generate ipython notebook and open it in the browser
-    dojodata.py check table/*/*.psp8 -v --check-trials=gbrv_fcc,gbrv_bcc
+
+    relax.py plot H.psp8                ==> Plot dojo data for pseudo H.psp8
+    relax.py rundf H.psp8               ==> Plot dojo data for pseudo H.psp8
 """
+
+    #dojodata.py compare H.psp8 H-low.psp8  ==> Plot and compare dojo data for pseudos H.psp8 and H-low.psp8
+    #dojodata.py nbcompare H.psp8 H-low.psp8 ==> Plot and compare dojo data in ipython notebooks.
+    #dojodata.py trials H.psp8 -r 1
+    #dojodata.py table .                    ==> Build table (find all psp8 files within current directory)
+    #dojodata.py figures .                  ==> Plot periodic table figures
+    #dojodata.py notebook H.psp8            ==> Generate ipython notebook and open it in the browser
+    #dojodata.py check table/*/*.psp8 -v --check-trials=gbrv_fcc,gbrv_bcc
+
 
     def show_examples_and_exit(err_msg=None, error_code=1):
         """Display the usage of the script."""
