@@ -1,7 +1,17 @@
+# Finalized
+
+85_At: Take At_new.psp8 Much faster convergence
+87_Fr:  Take Fr.psp8. Smoother convergence 
+
+
+
+
+
+
+
 # AE results
 
 Weird results for AE EOS of 100_Fm  ------> REDONE AND UPDATED #CT
-
 
 # pseudos_ac_she
 
