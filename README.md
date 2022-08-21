@@ -6,6 +6,9 @@
 89_Ac: Take Ac_new
 90_Th: Running Th_new_new
 91_Pa: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new
+92_U: Running U_5f_new
+93_Np: AE EOS looks OK but best pseudo has 15.50 df!
+94_Pu: Take Pu-5spdf-6spd-7s.psp8
 
 # AE results
 
