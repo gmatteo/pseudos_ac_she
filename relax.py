@@ -15,32 +15,15 @@ import abipy.flowtk as flowtk
 
 from monty.termcolor import cprint
 from monty.functools import prof_main
+from monty.os.path import find_exts
+from tabulate import tabulate
+from abipy.tools.plotting import MplExpose, PanelExpose, get_ax_fig_plt, get_axarray_fig_plt
 
 from pseudo_dojo.core.pseudos import dojopseudo_from_file, DojoTable
 from tools import DfEcutFlow, MyDojoReport
 
 logger = logging.getLogger(__name__)
 
-
-#def build_flow(options):
-#    extra = options.extra
-#    if extra is None:
-#        raise RuntimeError("This script requires `-e PSEUDO_PATH`")
-#
-#    from tools import MyFlow
-#    flow = MyFlow.from_pseudo_path(extra)
-#
-#    return flow
-
-
-#@flowtk.flow_main
-#def main(options):
-#    """
-#    This is our main function that will be invoked by the script.
-#    flow_main is a decorator implementing the command line interface.
-#    Command line args are stored in `options`.
-#    """
-#    return build_flow(options)
 
 def dojo_rundf(options):
 
@@ -51,8 +34,44 @@ def dojo_rundf(options):
         print(sched)
         sched.start()
 
-
     return 0
+
+
+def _plot_ae_eos_from_djrepo(djrepo, ax=None, show=False):
+    df = djrepo.get_pdframe("deltafactor")
+    df = df[["ecut", "dfact_meV", "dfactprime_meV", "v0", "b0_GPa", "b1"]]
+    last_deltaf = df["dfact_meV"].values[-1]
+    last_delta_prime = df["dfactprime_meV"].values[-1]
+    #djrepo.basename
+    text = f"Delta = {last_deltaf: .2f}, Delta' = {last_delta_prime: .2f} " + djrepo["basename"]
+    fig = djrepo.plot_ae_eos(text=text, ax=ax, show=show)
+    return fig
+
+
+def _plot_from_djrepos(djrepo_list, pseudos, what):
+
+    num_plots, ncols, nrows = len(djrepo_list), 1, 1
+    if num_plots > 1:
+        ncols = 1
+        nrows = (num_plots // ncols) + (num_plots % ncols)
+
+    ax_list, fig, plt = get_axarray_fig_plt(None, nrows=nrows, ncols=ncols,
+                                            sharex=False, sharey=False, squeeze=False)
+
+    ax_list = ax_list.ravel()
+    if num_plots % ncols != 0: ax_list[-1].axis('off')
+
+    for (ax, djrepo, pseudo) in zip(ax_list, djrepo_list, pseudos):
+        if what == "eos":
+            _plot_ae_eos_from_djrepo(djrepo, ax=ax, show=False)
+        elif what == "conv":
+            djrepo.plot_deltafactor_convergence(xc=pseudo.xc, what=("-dfact_meV", "-dfactprime_meV"), ax=ax, show=False)
+        else:
+            raise ValueError(f"Invalid what: {what})")
+
+    fig.tight_layout()
+
+    return fig
 
 
 def dojo_plot(options):
@@ -60,22 +79,174 @@ def dojo_plot(options):
         path = pseudo.filepath.replace(".psp8", ".djrepo")
         djrepo = MyDojoReport.from_file(path)
 
-        df = djrepo.get_pdframe("deltafactor")
-        #print(df.keys())
-        df = df[["ecut", "dfact_meV", "dfactprime_meV", "v0", "b0_GPa", "b1"]]
-        #print(df)
-        last_deltaf = df["dfact_meV"].values[-1]
-        #print(last_deltaf)
-        #print(djrepo.get_pdframe("deltafactor_prime"))
+        #df = djrepo.get_pdframe("deltafactor")
+        #df = df[["ecut", "dfact_meV", "dfactprime_meV", "v0", "b0_GPa", "b1"]]
+        #last_deltaf = df["dfact_meV"].values[-1]
+        #last_delta_prime = df["dfactprime_meV"].values[-1]
 
-        from abipy.tools.plotting import MplExpose
-        with MplExpose() as e:
-            e(djrepo.plot_ae_eos(text=f"delta = {last_deltaf: .2f}", show=False))
+        #with MplExpose() as e:
+        with PanelExpose(title=path) as e:
+            #e(djrepo.plot_ae_eos(text=f"Delta = {last_deltaf: .2f}, Delta' = {last_delta_prime: .2f}", show=False))
+            e(_plot_ae_eos_from_djrepo(djrepo))
             e(djrepo.plot_etotal_vs_ecut(show=False))
-            #e(djrepo.plot_etotal_vs_ecut(inv_ecut=True, show=False))
             e(djrepo.plot_deltafactor_convergence(xc=pseudo.xc, what=("-dfact_meV", "-dfactprime_meV"), show=False))
             #djrepo.plot_deltafactor_eos()
+
+    return 0
+
+
+def dojo_compare(options):
+    """Compare DOJO results for multiple pseudos."""
+    pseudos = options.pseudos
+
+    dojo_table(options)
+
+    djrepo_list = []
+    for pseudo in pseudos:
+        path = pseudo.filepath.replace(".psp8", ".djrepo")
+        djrepo_list.append(MyDojoReport.from_file(path))
+
+    #with MplExpose() as e:
+    with PanelExpose(title="Compare Pseudos") as e:
+        e(pseudos.dojo_compare(what=options.what_plot, show=False)[0])
+        e(_plot_from_djrepos(djrepo_list, options.pseudos, "eos"))
+        e(_plot_from_djrepos(djrepo_list, options.pseudos, "conv"))
+
+    return 0
+
+
+def dojo_table(options):
+    """Build and show a pandas table."""
+    pseudos = options.pseudos
+    data, errors = pseudos.get_dojo_dataframe()
+    if errors:
+        cprint("get_dojo_dataframe returned %s errors" % len(errors), "red")
+        if options.verbose:
+            for i, e in enumerate(errors): print("[%s]" % i, e)
+
+    if options.best:
+        print("Selecting best pseudos according to deltafactor")
+        best_frame = data.select_best()
+        if options.json: best_frame.to_json('table.json')
+
+        print(tabulate(best_frame, headers="keys"))
+        print(tabulate(best_frame.describe(), headers="keys"))
+        #best_frame["high_dfact_meV"].hist(bins=100)
+        #import matplotlib.pyplot as plt
+        #plt.show()
         return 0
+
+    accuracies = ["normal", "high"]
+    keys = ["dfact_meV", "dfactprime_meV", "v0", "b0_GPa", "b1", "ecut_deltafactor", "ecut_hint"]
+    if options.json:
+        accuracies = ["low", "normal", "high"]
+        keys.append("phonon")
+
+    columns = ["symbol"] + [acc + "_" + k for k in keys for acc in accuracies]
+
+    #data = data[data["high_dfact_meV"] <= data["high_dfact_meV"].mean()]
+    #data = data[data["high_dfact_meV"] <= 9]
+
+    try:
+        data["low_dfact_abserr"] = data["low_dfact_meV"] - data["high_dfact_meV"]
+        data["normal_dfact_abserr"] = data["normal_dfact_meV"] - data["high_dfact_meV"]
+        data["low_dfact_rerr"] = 100 * (data["low_dfact_meV"] - data["high_dfact_meV"]) / data["high_dfact_meV"]
+        data["normal_dfact_rerr"] = 100 * (data["normal_dfact_meV"] - data["high_dfact_meV"]) / data["high_dfact_meV"]
+
+        for k in ["v0", "b0_GPa", "b1"]:
+            data["low_" + k + "_abserr"] = data["low_" + k] - data["high_" + k]
+            data["normal_" + k + "_abserr"] = data["normal_" + k] - data["high_" + k]
+            data["low_" + k + "_rerr"] = 100 * (data["low_" + k] - data["high_" + k]) / data["high_" + k]
+            data["normal_" + k + "_rerr"] = 100 * (data["normal_" + k] - data["high_" + k]) / data["high_" + k]
+    except Exception as exc:
+        cprint("Python exception: %s" % type(exc), "red")
+        if options.verbose: print(exc)
+
+    try:
+        for acc in accuracies:
+            data[acc + "_abs_fcc"] = abs(data[acc + "_gbrv_fcc_a0_rel_err"])
+            data[acc + "_abs_bcc"] = abs(data[acc + "_gbrv_bcc_a0_rel_err"])
+    except KeyError:
+        cprint('no GBRV data', "magenta")
+
+    try:
+        wrong = data[data["high_b1"] < 0]
+        if not wrong.empty:
+            cprint("WRONG".center(80, "*"), "red")
+            print(wrong)
+    except Exception as exc:
+        print(exc)
+
+    if options.json: data.to_json('table.json')
+
+    try:
+        data = data[
+                 [acc + "_dfact_meV" for acc in accuracies]
+               + [acc + "_dfactprime_meV" for acc in accuracies]
+               + [acc + "_ecut_deltafactor" for acc in accuracies]
+               + [acc + "_gbrv_fcc_a0_rel_err" for acc in accuracies]
+               + [acc + "_gbrv_bcc_a0_rel_err" for acc in accuracies]
+               + [acc + "_abs_fcc" for acc in accuracies]
+               + [acc + "_abs_bcc" for acc in accuracies]
+               + [acc + "_ecut_hint" for acc in accuracies]
+                   ]
+    except KeyError:
+        data = data[
+                 [acc + "_dfact_meV" for acc in accuracies]
+               + [acc + "_ecut_deltafactor" for acc in accuracies]
+               + [acc + "_dfactprime_meV" for acc in accuracies]
+               + [acc + "_ecut_hint" for acc in accuracies]
+                   ]
+
+    print("\nONCVPSP TABLE:\n")
+    tablefmt = "grid"
+    floatfmt = ".2f"
+
+    columns = [acc + "_dfact_meV" for acc in accuracies]
+    columns += [acc + "_ecut_deltafactor" for acc in accuracies]
+
+    print(tabulate(data[columns], headers="keys", tablefmt=tablefmt, floatfmt=floatfmt))
+    if len(data) > 5:
+        print(tabulate(data[columns].describe(), headers="keys", tablefmt=tablefmt, floatfmt=floatfmt))
+
+    """
+    columns = [acc + "_dfactprime_meV" for acc in accuracies]
+    columns += [acc + "_ecut_deltafactor" for acc in accuracies]
+    print(tabulate(data[columns], headers="keys", tablefmt=tablefmt, floatfmt=floatfmt))
+    if len(data) > 5:
+        print(tabulate(data[columns].describe(), headers="keys", tablefmt=tablefmt, floatfmt=floatfmt))
+
+    try:
+        columns = [acc + "_gbrv_fcc_a0_rel_err" for acc in accuracies]
+        columns += [acc + "_gbrv_bcc_a0_rel_err" for acc in accuracies]
+        columns += [acc + "_abs_fcc" for acc in accuracies]
+        columns += [acc + "_abs_bcc" for acc in accuracies]
+        print(tabulate(data[columns], headers="keys", tablefmt=tablefmt, floatfmt=floatfmt))
+        if len(data) > 5:
+            print(tabulate(data[columns].describe(), headers="keys", tablefmt=tablefmt, floatfmt=floatfmt))
+    except KeyError as exc:
+        cprint('No GBRV data', "red")
+        if options.verbose: print("Python exception:\n", str(exc))
+    """
+
+    columns = [acc + "_ecut_hint" for acc in accuracies]
+    print(tabulate(data[columns], headers="keys", tablefmt=tablefmt, floatfmt=floatfmt))
+    if len(data) > 5:
+        print(tabulate(data[columns].describe(), headers="keys", tablefmt=tablefmt, floatfmt=floatfmt))
+
+    #print(data.to_string(columns=columns))
+
+    if len(data) > 5:
+        bad = data[data["high_dfact_meV"] > data["high_dfact_meV"].mean() + data["high_dfact_meV"].std()]
+        good = data[data["high_dfact_meV"] < data["high_dfact_meV"].mean()]
+        print("\nPSEUDOS with high_dfact > mean plus one std (%.3f + %.3f):\n" % (
+              data["high_dfact_meV"].mean(), data["high_dfact_meV"].std())) # ".center(80, "*"))
+        print(tabulate(bad[["high_dfact_meV", "high_ecut_deltafactor"]], headers="keys",
+             tablefmt=tablefmt, floatfmt=floatfmt))
+
+    #gbrv_fcc_bad = data[data["high_gbrv_fcc_a0_rerr"] > (data["high_gbrv_fcc_a0_rerr"].abs()).mean()]
+    #print("\nPSEUDOS with high_dfact > mean:\n") # ".center(80, "*"))
+    #print(tabulate(bad, headers="keys", tablefmt=tablefmt, floatfmt=floatfmt))
 
     return 0
 
@@ -86,10 +257,10 @@ def main():
 Usage example:
 
     relax.py plot H.psp8                ==> Plot dojo data for pseudo H.psp8
-    relax.py rundf H.psp8               ==> Plot dojo data for pseudo H.psp8
+    relax.py rundf H.psp8                ==> Plot dojo data for pseudo H.psp8
 """
 
-    #dojodata.py compare H.psp8 H-low.psp8  ==> Plot and compare dojo data for pseudos H.psp8 and H-low.psp8
+    #relax.py compare H.psp8 H-low.psp8  ==> Plot and compare dojo data for pseudos H.psp8 and H-low.psp8
     #dojodata.py nbcompare H.psp8 H-low.psp8 ==> Plot and compare dojo data in ipython notebooks.
     #dojodata.py trials H.psp8 -r 1
     #dojodata.py table .                    ==> Build table (find all psp8 files within current directory)
@@ -163,8 +334,14 @@ Usage example:
     #                        help="Don't use temporary file for notebook.")
 
     # Subparser for compare.
-    #p_compare = subparsers.add_parser('compare', parents=[copts_parser, plot_options_parser],
-    #                                  help=dojo_compare.__doc__)
+    p_compare = subparsers.add_parser('compare', parents=[copts_parser, plot_options_parser],
+                                      help=dojo_compare.__doc__)
+
+    p_compare.add_argument("-j", '--json', default=False, action="store_true",
+                         help="Dump table in json format to file table.json")
+    p_compare.add_argument("-b", '--best', default=False, action="store_true",
+                         help="Select best pseudos according to deltafactor")
+
 
     # Subparser for nbcompare.
     #p_nbcompare = subparsers.add_parser('nbcompare', parents=[copts_parser, plot_options_parser],
@@ -174,11 +351,11 @@ Usage example:
     #p_figures = subparsers.add_parser('figures', parents=[copts_parser], help=dojo_figures.__doc__)
 
     # Subparser for table command.
-    #p_table = subparsers.add_parser('table', parents=[copts_parser], help=dojo_table.__doc__)
-    #p_table.add_argument("-j", '--json', default=False, action="store_true",
-    #                     help="Dump table in json format to file table.json")
-    #p_table.add_argument("-b", '--best', default=False, action="store_true",
-    #                     help="Select best pseudos according to deltafactor")
+    p_table = subparsers.add_parser('table', parents=[copts_parser], help=dojo_table.__doc__)
+    p_table.add_argument("-j", '--json', default=False, action="store_true",
+                         help="Dump table in json format to file table.json")
+    p_table.add_argument("-b", '--best', default=False, action="store_true",
+                         help="Select best pseudos according to deltafactor")
 
     #p_nbtable = subparsers.add_parser('nbtable', parents=[copts_parser], help=dojo_nbtable.__doc__)
 

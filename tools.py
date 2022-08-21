@@ -505,7 +505,7 @@ class MyDojoReport(DojoReport):
 
 
     @add_fig_kwargs
-    def plot_ae_eos(self, ax=None, text=None, cmap="viridis", **kwargs):
+    def plot_ae_eos(self, ax=None, text=None, cmap="jet", **kwargs):
 
         ax, fig, plt = get_ax_fig_plt(ax)
         cmap = plt.get_cmap(cmap)
@@ -555,9 +555,7 @@ class MyDojoReport(DojoReport):
             ax.set_title(text)
         ax.legend(loc='best', shadow=True, frameon=True) #fancybox=True)
 
-
         return fig
-
 
 
 if __name__ == "__main__":

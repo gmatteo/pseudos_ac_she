@@ -71,19 +71,21 @@ Fr: Add two projectos for f to improve logder.  Minor adjustment in qcut values.
 At: Decrease core radii using my new Po-spd.in as starting point. Add extra projector for f-channel with ep 0.05
 
 
-######FCC COMPUTATIONAL DETAILS####
+### FCC COMPUTATIONAL DETAILS####
+
 Spin Orbit Coupling	no
 Spin Polarization	collinear (Z)
 Smearing Fermi-Dirac	0.001 Ha
 K-points	15 x 15 x 15
 
-######OXIDES COMPUTATIONAL DETAILS######   ------- WE DO NOT USE THESE RESULTS FOR THE PAPER  #CT
+### OXIDES COMPUTATIONAL DETAILS
+------- WE DO NOT USE THESE RESULTS FOR THE PAPER  #CT
 Spin Orbit Coupling no
 Spin Polarization   collinear (Z)
 Smearing Fermi-Dirac    0.05 Ha
 K-points    5 x 5 x 5
 
-##########DATA FOR PAPERS ###############
+### DATA FOR PAPERS
 1) Delta-Gauge (meV) (FCC system)
 2) Lattice percentage difference between AE and PW (FCC system)
 3) Plot of hints
