@@ -5,13 +5,7 @@
 88_Ra: Rerunning Ra_new.psp8
 89_Ac: Take Ac_new
 90_Th: Running Th_new_new
-91_Pa: AE EOS looks OK but best pseudo has 5.44 df
-
-
-
-
-
-
+91_Pa: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new
 
 # AE results
 
