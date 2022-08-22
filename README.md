@@ -9,6 +9,10 @@
 92_U: Running U_5f_new
 93_Np: AE EOS looks OK but best pseudo has 15.50 df!
 94_Pu: Take Pu-5spdf-6spd-7s.psp8
+95_Am: Running Am-5spdf-6spd-7s.psp8
+96_Cm: Take Cm-5spdf-6spd-7s.out
+97_Bk: AE EOS looks suspicious. New results are needed.
+98_Cf: Take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
 
 # AE results
 
