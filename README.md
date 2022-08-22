@@ -20,7 +20,12 @@
 102_No: All pseudos are good, should find compromise btw accuracy and convergence ratio
 103_Lr: Running: Lr_5f_new.psp8
 104_Rf: Runniung Rf_new
-105_Db: Running Db.in
+105_Db: Running Db.in, AE EOS looks OK.
+106_Sg: Take Sg.psp8
+107_Bh: Take Bh.psp8 Perhaps, one can accelerate a bit the convergence.
+108_Hs: Take Hs.psp8
+109_Mt: Take Mt.psp8
+110_Ds: running Ds_new
 
 
 # AE results
