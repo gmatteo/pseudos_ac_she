@@ -11,8 +11,15 @@
 94_Pu: Take Pu-5spdf-6spd-7s.psp8
 95_Am: Running Am-5spdf-6spd-7s.psp8
 96_Cm: Take Cm-5spdf-6spd-7s.out
-97_Bk: AE EOS looks suspicious. New results are needed.
-98_Cf: Take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
+97_Bk: FIXME AE EOS looks suspicious. New results are needed.
+98_Cf: Running Cf-5spdf-6spd-7s.psp8. If this does not fix the proble, 
+       take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
+99_Es: FIXME: AE EOS is completely wrong!
+100_Fm: FIXME: AE EOS is completely wrong!
+101_Md: FIXME: AE EOS is suspicious
+102_No: All pseudos are good, should find compromise btw accuracy and convergence ratio
+103_Lr: Running: Lr_5f_new.psp8
+
 
 # AE results
 
