@@ -19,6 +19,8 @@
 101_Md: FIXME: AE EOS is suspicious
 102_No: All pseudos are good, should find compromise btw accuracy and convergence ratio
 103_Lr: Running: Lr_5f_new.psp8
+104_Rf: Runniung Rf_new
+105_Db: Running Db.in
 
 
 # AE results
