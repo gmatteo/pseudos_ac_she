@@ -4,22 +4,22 @@
 87_Fr:  Take Fr.psp8. Smoother convergence 
 88_Ra: Rerunning Ra_new.psp8
 89_Ac: Take Ac_new
-90_Th: Running Th_new_new
-91_Pa: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new
-92_U: Running U_5f_new
+90_Th: Running Th_5f_new_new: : Much better
+91_Pa: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: Does not improve XXX
+92_U: Running U_5f_new: Does not improve XXX
 93_Np: AE EOS looks OK but best pseudo has 15.50 df!
 94_Pu: Take Pu-5spdf-6spd-7s.psp8
-95_Am: Running Am-5spdf-6spd-7s.psp8
+95_Am: Running Am-5spdf-6spd-7s.psp8: Does not improve: Take Am_5f_origin
 96_Cm: Take Cm-5spdf-6spd-7s.out
 97_Bk: FIXME AE EOS looks suspicious. New results are needed.
-98_Cf: Running Cf-5spdf-6spd-7s.psp8. If this does not fix the proble, 
+98_Cf: Running Cf-5spdf-6spd-7s.psp8. If this does not fix the problem, 
        take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
-99_Es: FIXME: AE EOS is completely wrong!
+99_Es:  FIXME: AE EOS is completely wrong!
 100_Fm: FIXME: AE EOS is completely wrong!
 101_Md: FIXME: AE EOS is suspicious
 102_No: All pseudos are good, should find compromise btw accuracy and convergence ratio
-103_Lr: Running: Lr_5f_new.psp8
-104_Rf: Runniung Rf_new
+103_Lr: Running: Lr_5f_new.psp8: Take: Lr_5f_new
+104_Rf: Running Rf_new
 105_Db: Running Db.in, AE EOS looks OK.
 106_Sg: Take Sg.psp8
 107_Bh: Take Bh.psp8 Perhaps, one can accelerate a bit the convergence.
@@ -27,6 +27,13 @@
 109_Mt: Take Mt.psp8
 110_Ds: running Ds_new
 111_Rg: running Rg.in
+112_Rg: running Cn_new.in
+113_Nh: Requires extra work
+114_Fl: Take Fl.psp8
+115_Mc: Take Mc.psp8
+116_Lv: Requires extra work
+117_Ts: Requires extra work, use Ts.in as starting point
+118_Og: ???
 
 
 # AE results
