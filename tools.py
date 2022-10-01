@@ -535,7 +535,8 @@ class MyDojoReport(DojoReport):
 
         for i, ecut in enumerate(ecuts):
             #if ecut not in ppgen_ecuts: continue
-            if i not in (0, len(ecuts) -1): continue
+            #if i not in (0, len(ecuts) -1): continue
+            if i not in (2, len(ecuts) -1): continue
             # Subframe with this value of ecut.
             ecut_frame = frame.loc[frame["ecut"] == ecut]
             assert ecut_frame.shape[0] == 1
@@ -560,3 +561,5 @@ class MyDojoReport(DojoReport):
 
 if __name__ == "__main__":
     aedf_z = get_aedf_z()
+    for key, value in aedf_z.items():
+        print(key, value)

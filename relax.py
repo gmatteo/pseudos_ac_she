@@ -29,7 +29,12 @@ def dojo_rundf(options):
 
     for pseudo in options.pseudos:
         flow = DfEcutFlow.from_pseudo(pseudo)
-        #flow.build_and_pickle_dump()
+        #print("# a, volume [Ang]")
+        #for task in flow[0]:
+        #    structure = task.input.structure
+        #    print(structure.lattice.abc[0], structure.volume)
+        #sys.exit(1)
+
         sched = flow.make_scheduler()
         print(sched)
         sched.start()
