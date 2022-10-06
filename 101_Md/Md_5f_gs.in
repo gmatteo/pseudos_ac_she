@@ -1,6 +1,6 @@
 # ATOM AND REFERENCE CONFIGURATION
 # atsym   z       nc   nv     iexc    psfile
-   Md  101.00     10    8      4      both
+   Md  101.00     10    7      4      both
 #
 #   n    l    f  (nc+nv lines)
     1    0    2.00
@@ -16,10 +16,9 @@
     5    0    2.00
     5    1    6.00
     5    2   10.00
-    5    3   12.90
+    5    3   13.00
     6    0    2.00
     6    1    6.00
-    6    2    0.10
     7    0    2.00
 # PSEUDOPOTENTIAL AND OPTIMIZATION
 # lmax

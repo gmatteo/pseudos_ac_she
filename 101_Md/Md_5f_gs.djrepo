@@ -1,5 +1,5 @@
 {
-"basename": "Md_5f.psp8",
+"basename": "Md_5f_gs.psp8",
 "ecuts": [
 67.0,
 69.0,
@@ -15,7 +15,7 @@
 95.0,
 97.0
 ],
-"md5": "2f1ebe51fb356d43550809f73b29d39f",
+"md5": "60662e84fb7c55d22e059132364996d8",
 "ppgen_hints": {
 "high": {
 "ecut": 77.0,
