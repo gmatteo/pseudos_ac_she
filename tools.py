@@ -253,6 +253,16 @@ class DeltaUnaryWork(Work):
             scf_inp = make_input_unary(pseudo, a_ang, ae["mag"], do_relax=False, ecut=ecut)
             work.register_scf_task(scf_inp)
 
+        connect = True
+        if connect:
+            middle = len(work) // 2
+            filetype = "WFK"
+            for i, task in enumerate(work[:middle]):
+                task.add_deps({work[i + 1]: filetype})
+
+            for i, task in enumerate(work[middle+1:]):
+                task.add_deps({work[middle + i]: filetype})
+
         return work
 
     def get_deltafactor_entry(self):
@@ -503,7 +513,6 @@ class MyDojoReport(DojoReport):
 
         return fig
 
-
     @add_fig_kwargs
     def plot_ae_eos(self, ax=None, text=None, cmap="jet", **kwargs):
 
@@ -537,6 +546,7 @@ class MyDojoReport(DojoReport):
             #if ecut not in ppgen_ecuts: continue
             #if i not in (0, len(ecuts) -1): continue
             if i not in (2, len(ecuts) -1): continue
+
             # Subframe with this value of ecut.
             ecut_frame = frame.loc[frame["ecut"] == ecut]
             assert ecut_frame.shape[0] == 1
