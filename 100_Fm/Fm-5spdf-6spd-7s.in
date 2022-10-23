@@ -26,10 +26,10 @@
    3
 #
 #   l,    rc,      ep,      ncon,  nbas,   qcut  (lmax+1 lines, l's must be in order)
-0 1.15 0.0 4 8 13.5
-1 1.15 0.0 4 8 13.0
-2 1.15 0.0 4 8 12.5
-3 1.35 0.0 4 8 13.50
+0 1.2 0.0 4 8 13.5
+1 1.2 0.0 4 8 13.5
+2 1.2 0.0 4 8 13.5
+3 1.35 0.0 4 8 14.5
 #
 #
 # LOCAL POTENTIAL
@@ -45,7 +45,7 @@
 #
 # MODEL CORE CHARGE
 # icmod, fcfact, rcfact
-3   2.5   1.43 
+3   2.5   1.43
 #
 # LOG DERIVATIVE ANALYSIS
 # epsh1, epsh2, depsh
