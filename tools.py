@@ -248,12 +248,15 @@ class DeltaUnaryWork(Work):
 
         ae = get_aedf_z()[pseudo.Z]
 
+        connect = True
+
         for a_ang in ae.alist_ang:
             #print("a_ang", a_ang)
             scf_inp = make_input_unary(pseudo, a_ang, ae["mag"], do_relax=False, ecut=ecut)
+            if connect: scf_inp["prtwf"] = 1
             work.register_scf_task(scf_inp)
 
-        connect = True
+
         if connect:
             middle = len(work) // 2
             filetype = "WFK"
