@@ -256,15 +256,16 @@ class DeltaUnaryWork(Work):
             if connect: scf_inp["prtwf"] = 1
             work.register_scf_task(scf_inp)
 
-
         if connect:
             middle = len(work) // 2
             filetype = "WFK"
             for i, task in enumerate(work[:middle]):
-                task.add_deps({work[i + 1]: filetype})
+                #task.add_deps({work[i + 1]: filetype})
+                task.add_deps({work[middle]: filetype})
 
             for i, task in enumerate(work[middle+1:]):
-                task.add_deps({work[middle + i]: filetype})
+                #task.add_deps({work[middle + i]: filetype})
+                task.add_deps({work[middle]: filetype})
 
         return work
 
