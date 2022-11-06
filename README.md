@@ -11,9 +11,10 @@
 93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running new pseudo
 
 94_Pu: OK: Take my version. Much better.
+95_Am: Reasonable. Take Am_5f_origin?
 
-95_Am: Running Am-5spdf-6spd-7s.psp8: Does not improve: Take Am_5f_origin
-96_Cm: Take Cm-5spdf-6spd-7s.out
+96_Cm: OK Take my version Cm-5spdf-6spd-7s.out
+
 97_Bk: FIXME AE EOS looks suspicious. New results are needed.
 98_Cf: Running Cf-5spdf-6spd-7s.psp8. If this does not fix the problem, 
        take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
