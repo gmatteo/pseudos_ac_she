@@ -31,7 +31,7 @@
 
 113_Nh: Requires extra work
 114_Fl: OK: Take my Fl.psp8 with f-projector (0.42 vs 1.25)
-115_Mc: Take Mc.psp8
+115_Mc: OK: Take Mc_new.psp8 with f-projector (1.56 vs 3.08 origin)
 116_Lv: Requires extra work
 117_Ts: Requires extra work, use Ts.in as starting point
 118_Og: ???
