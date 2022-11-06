@@ -2,7 +2,7 @@
 
 85_At: OK: At-spd. May try At-d
 87_Fr: OK Take Fr.psp8. Smoother convergence 
-88_Ra: Reasonable: Ra_origin ?
+88_Ra: OK-Reasonable: Ra_origin ?
 89_Ac: OK. my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK. Take my version. Much better
 
@@ -11,13 +11,13 @@
 93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running new pseudo
 
 94_Pu: OK: Take my version. Much better.
-95_Am: Reasonable. Take Am_5f_origin?
-
-96_Cm: OK Take my version Cm-5spdf-6spd-7s.out
+95_Am: OK-Reasonable. Take Am_5f_origin?
+96_Cm: OK Take my version. Harder but more accurate.
 
 97_Bk: FIXME AE EOS looks suspicious. New results are needed.
-98_Cf: Running Cf-5spdf-6spd-7s.psp8. If this does not fix the problem, 
-       take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
+
+98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
+
 99_Es:  FIXME: AE EOS is completely wrong!
 100_Fm: FIXME: AE EOS is completely wrong!
 101_Md: FIXME: AE EOS is suspicious
