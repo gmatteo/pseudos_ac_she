@@ -1,10 +1,11 @@
 # Finalized
 
-85_At: Take At_new.psp8 Much faster convergence and projector for f
+85_At: OK: At-spd. May try At-d
+87_Fr: OK Take Fr.psp8. Smoother convergence 
+88_Ra: Reasonable: Ra_origin ?
+89_Ac: OK. my version with projector for empty f makes a huge difference wrt origin.
 
-87_Fr:  Take Fr.psp8. Smoother convergence 
-88_Ra: Rerunning Ra_new.psp8
-89_Ac: Take Ac_new
+
 90_Th: Running Th_5f_new_new: : Much better
 91_Pa: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: Does not improve XXX
 92_U: Running U_5f_new: Does not improve XXX
