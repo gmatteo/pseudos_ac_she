@@ -20,12 +20,12 @@
 103_Lr: OK-TODO: Take: Lr_5f_origin
 104_Rf: OK-TODO: Take Rf.psp8 algthugh convergence in ecut can be improved
 105_Db: OK: Take Db.psp8
-
 106_Sg: OK: Take Sg_origin.psp8
-107_Bh: Take Bh.psp8 Perhaps, one can accelerate a bit the convergence.
-108_Hs: Take Hs.psp8
-109_Mt: Take Mt.psp8
-110_Ds: running Ds_new
+107_Bh: OK-TODO Take Bh.psp8 Perhaps, one can accelerate a bit the convergence.
+108_Hs: OK-TODO: Take Hs.psp8: Perhaps, one can accelerate a bit the convergence.
+109_Mt: OK-TODO: Take Mt.psp8, Perhaps, one can accelerate a bit the convergence.
+
+110_Ds: OK: Take my version with smoother MCC and 0.93 vs 2.79 from origin
 111_Rg: running Rg.in
 112_Rg: running Cn_new.in
 113_Nh: Requires extra work
