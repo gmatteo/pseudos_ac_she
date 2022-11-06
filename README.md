@@ -8,9 +8,10 @@
 
 91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: Does not improve XXX
 92_U:  FIXME: Running U_5f_new: Does not improve XXX
-93_Np: AE EOS looks OK but best pseudo has 15.50 df! Running new pseudo
+93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running new pseudo
 
-94_Pu: Take Pu-5spdf-6spd-7s.psp8
+94_Pu: OK: Take my version. Much better.
+
 95_Am: Running Am-5spdf-6spd-7s.psp8: Does not improve: Take Am_5f_origin
 96_Cm: Take Cm-5spdf-6spd-7s.out
 97_Bk: FIXME AE EOS looks suspicious. New results are needed.
