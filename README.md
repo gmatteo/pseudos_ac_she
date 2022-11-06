@@ -1,13 +1,14 @@
 # Finalized
 
-85_At: Take At_new.psp8 Much faster convergence
+85_At: Take At_new.psp8 Much faster convergence and projector for f
+
 87_Fr:  Take Fr.psp8. Smoother convergence 
 88_Ra: Rerunning Ra_new.psp8
 89_Ac: Take Ac_new
 90_Th: Running Th_5f_new_new: : Much better
 91_Pa: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: Does not improve XXX
 92_U: Running U_5f_new: Does not improve XXX
-93_Np: AE EOS looks OK but best pseudo has 15.50 df!
+93_Np: AE EOS looks OK but best pseudo has 15.50 df! Running new pseudo
 94_Pu: Take Pu-5spdf-6spd-7s.psp8
 95_Am: Running Am-5spdf-6spd-7s.psp8: Does not improve: Take Am_5f_origin
 96_Cm: Take Cm-5spdf-6spd-7s.out
