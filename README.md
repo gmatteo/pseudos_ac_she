@@ -1,23 +1,27 @@
 # Finalized
 
-85_At: OK: At-spd. May try At-d
-87_Fr: OK Take Fr.psp8. Smoother convergence 
+85_At: OK: At-spd. May add At-d version
+87_Fr: OK: Take Fr.psp8. Smoother convergence 
 88_Ra: OK-Reasonable: Ra_origin ?
-89_Ac: OK. my version with projector for empty f makes a huge difference wrt origin.
-90_Th: OK. Take my version. Much better
+89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
+90_Th: OK: Take my version. Much better
+
 91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: Does not improve XXX
 92_U:  FIXME: Running U_5f_new: Does not improve XXX
 93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running new pseudo
+
 94_Pu: OK: Take my version. Much better.
 95_Am: OK-Reasonable. Take Am_5f_origin?
-96_Cm: OK Take my version. Harder but more accurate.
+96_Cm: OK: Take my version. Harder but more accurate.
+
 97_Bk: FIXME AE EOS looks suspicious. New results are needed.
+
 98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
 99_Es:  FIXME: AE EOS is completely wrong!
 100_Fm: FIXME: AE EOS now looks good but pseudos are not!
 101_Md: FIXME: AE EOS is suspicious
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
-103_Lr: OK-TODO: Take: Lr_5f_origin
+103_Lr: OK: Take: my Lr_5f, smoother convergece
 104_Rf: OK-TODO: Take Rf.psp8 algthugh convergence in ecut can be improved
 105_Db: OK: Take Db.psp8
 106_Sg: OK: Take Sg_origin.psp8
@@ -32,9 +36,8 @@
 114_Fl: OK: Take my Fl.psp8 with f-projector (0.42 vs 1.25)
 115_Mc: OK: Take Mc_new.psp8 with f-projector (1.56 vs 3.08 origin)
 116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
-117_Ts: Requires extra work, use Ts.in as starting point
+117_Ts: TODO: Requires extra work, use Ts.in as starting point or maybe recompute AE EOS?
 118_Og: ???
-
 
 # AE results
 
