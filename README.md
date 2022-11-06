@@ -4,9 +4,8 @@
 87_Fr: OK Take Fr.psp8. Smoother convergence 
 88_Ra: Reasonable: Ra_origin ?
 89_Ac: OK. my version with projector for empty f makes a huge difference wrt origin.
+90_Th: OK. Take my version. Much better
 
-
-90_Th: Running Th_5f_new_new: : Much better
 91_Pa: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: Does not improve XXX
 92_U: Running U_5f_new: Does not improve XXX
 93_Np: AE EOS looks OK but best pseudo has 15.50 df! Running new pseudo
