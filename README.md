@@ -22,7 +22,7 @@
 101_Md: FIXME: AE EOS is suspicious
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
 103_Lr: OK: Take: my Lr_5f, smoother convergece
-104_Rf: OK-TODO: Take Rf.psp8 (1.47 vs 2.58 from origin)
+104_Rf: OK: Take Rf.psp8 (1.47 vs 2.58 from origin)
 105_Db: OK: Take Db.psp8
 106_Sg: OK: Take Sg_origin.psp8
 107_Bh: OK: Take my version (1.50 vs 3.89 from origin)
