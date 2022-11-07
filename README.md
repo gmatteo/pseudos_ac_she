@@ -31,7 +31,6 @@
 110_Ds: OK: Take my version with smoother MCC and 0.93 vs 2.79 from origin
 111_Rg: OK: Take my Rg. Much smoother
 112_Cn: OK-TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
-
 113_Nh: FIXME: Requires extra work
 114_Fl: OK: Take my Fl.psp8 with f-projector (0.42 vs 1.25)
 115_Mc: OK: Take Mc_new.psp8 with f-projector (1.56 vs 3.08 origin)
