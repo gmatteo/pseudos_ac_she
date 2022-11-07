@@ -25,8 +25,8 @@
 104_Rf: OK-TODO: Take Rf.psp8 although convergence in ecut can be improved, RUNNING  Rf_new
 105_Db: OK: Take Db.psp8
 106_Sg: OK: Take Sg_origin.psp8
-107_Bh: OK-TODO Take Bh.psp8 Perhaps, one can accelerate a bit the convergence. RUNNINg Bh_new
-108_Hs: OK-TODO: Take Hs.psp8: Perhaps, one can accelerate a bit the convergence.
+107_Bh: OK-TODO Take Bh.psp8 Perhaps, one can accelerate a bit the convergence. RUNNING Bh_new 2
+108_Hs: OK: Take my Hs.psp8: (0.65 vs 2.82 from origin)  Perhaps, one can accelerate a bit the convergence.
 109_Mt: OK-TODO: Take Mt.psp8, Perhaps, one can accelerate a bit the convergence.
 110_Ds: OK: Take my version with smoother MCC and 0.93 vs 2.79 from origin
 111_Rg: OK: Take my Rg. Much smoother
