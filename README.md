@@ -19,7 +19,7 @@
 98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
 99_Es:  FIXME: AE EOS is completely wrong!
 100_Fm: FIXME: AE EOS now looks good but pseudos are not!
-101_Md: FIXME: AE EOS is suspicious
+101_Md: FIXME: AE EOS is suspicious and should be recomputed
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
 103_Lr: OK: Take: my Lr_5f, smoother convergece
 104_Rf: OK: Take Rf.psp8 (1.47 vs 2.58 from origin)
@@ -31,12 +31,12 @@
 110_Ds: OK: Take my version with smoother MCC and 0.93 vs 2.79 from origin
 111_Rg: OK: Take my Rg. Much smoother
 112_Cn: OK-TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
-113_Nh: FIXME: Requires extra work
+113_Nh: FIXME: Requires extra work. AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
 114_Fl: OK: Take my Fl.psp8 with f-projector (0.42 vs 1.25)
 115_Mc: OK: Take Mc_new.psp8 with f-projector (1.56 vs 3.08 origin)
 116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
-117_Ts: TODO: Requires extra work, use Ts.in as starting point or maybe recompute AE EOS?
-118_Og: ???
+117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
+118_Og: FIXME: Can't manage to get decent pseudo for this!
 
 # AE results
 
