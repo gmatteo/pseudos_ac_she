@@ -1,5 +1,20 @@
 # Finalized
 
+# Magnetization taken from Hirshfeld 
+# null means that the calculation is still running
+{
+"92_U": -0.892,
+"93_Np": -2.695,
+"94_Pu": -5.785, 
+"95_Am": -7.321,
+"96_Cm": -7.026,
+"97_Bk": -5.459,
+"98_Cf": -4.164,
+"99_Es": -2.906,
+"100_Fm": -1.643,
+"101_Md": -0.419
+}
+
 85_At: OK: At-spd. May add At-d version
 87_Fr: OK: Take Fr.psp8. Smoother convergence 
 88_Ra: OK-Reasonable: Ra_origin ?
@@ -8,7 +23,7 @@
 
 91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: Does not improve XXX
 92_U:  FIXME: Running U_5f_new: Does not improve XXX
-93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running new pseudo
+93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running Np_5f_new.psp8
 
 94_Pu: OK: Take my version. Much better.
 95_Am: OK-Reasonable. Take Am_5f_origin?
@@ -105,7 +120,7 @@ Ts: Decrease rcs significantly. Add projector for f with ep = 0.05 to improve f-
 Og: Decrease rcs significantly e.g from 1.6 to 1.4. Add projector for f with ep = 0.05 to improve f-logder
 
 
-Fr: Add two projectos for f to improve logder.  Minor adjustment in qcut values. Ecut now ~35
+Fr: Add two prrojectos for f to improve logder.  Minor adjustment in qcut values. Ecut now ~35
 
 At: Decrease core radii using my new Po-spd.in as starting point. Add extra projector for f-channel with ep 0.05
 
