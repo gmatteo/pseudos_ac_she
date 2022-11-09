@@ -1,7 +1,9 @@
 # Finalized
 
+```
 # Magnetization taken from Hirshfeld 
 # null means that the calculation is still running
+
 {
 "92_U": -0.892,
 "93_Np": -2.695,
@@ -14,23 +16,21 @@
 "100_Fm": -1.643,
 "101_Md": -0.419
 }
+```
 
+```
 85_At: OK: At-spd. May add At-d version
 87_Fr: OK: Take Fr.psp8. Smoother convergence 
 88_Ra: OK-Reasonable: Ra_origin ?
 89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Take my version. Much better
-
 91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: Does not improve XXX
 92_U:  FIXME: Running U_5f_new: Does not improve XXX
 93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running Np_5f_new.psp8
-
 94_Pu: OK: Take my version. Much better.
 95_Am: OK-Reasonable. Take Am_5f_origin?
 96_Cm: OK: Take my version. Harder but more accurate.
-
 97_Bk: FIXME AE EOS looks suspicious. New results are needed.
-
 98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
 99_Es:  FIXME: AE EOS is completely wrong!
 100_Fm: FIXME: AE EOS now looks good but pseudos are not!
@@ -52,6 +52,7 @@
 116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
 117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
 118_Og: FIXME: Can't manage to get decent pseudo for this!
+```
 
 # AE results
 
