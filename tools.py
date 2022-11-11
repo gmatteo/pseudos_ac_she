@@ -372,14 +372,18 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
     inp = AbinitInput(structure, pseudos=pseudo)
 
     if mag == 0.0:
-        nsppol = 1
-        spinat = None
+        nsppol, spinat = 1, None
+        nsppol, spinat = 2, [0, 0, 8]
     else:
-        nsppol=2
+        nsppol = 2
         if mag is None:
-            spinat = [0, 0, 6]
+            #spinat = [0, 0, 6]
+            spinat = [0, 0, 8]
         else:
-            spinat = [0, 0, mag]
+            #spinat = [0, 0, mag]
+            spinat = [0, 0, 8]
+
+    print(f"Using nsppol: {nsppol} with spinat {spinat}")
 
     nband = inp.num_valence_electrons // 2
     nband = max(np.ceil(nband * 1.2), nband + 10)
@@ -397,7 +401,6 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
         iscf=17,
         nstep=1000,
         nsppol=nsppol,
-        #nsppol=2, # FIXME
         spinat=spinat,
         # k-point grid
         #ngkpt=[1, 1, 1], # FIXME
@@ -573,7 +576,25 @@ class MyDojoReport(DojoReport):
         return fig
 
 
+def check_data(z, data):
+    from pymatgen.core.lattice import Lattice
+    tol = 1e-4
+    print(f"Testing volume for z: {z} with tol: {tol}")
+    for a_ang, vol in zip(data["alist_ang"], data["volumes_ang"]):
+        lattice = float(a_ang) * np.array([
+            0,  1,  1,
+            1,  0,  1,
+            1,  1,  0]) / np.sqrt(2.0)
+        lattice = Lattice(lattice)
+
+        adiff = abs(vol - lattice.volume)
+        if adiff > tol:
+            print(f"Inexact a/vol for z: {z}: volume from file:", vol, ", volume from a", lattice.volume, "adiff", adiff)
+
 if __name__ == "__main__":
+    from pprint import pprint, pformat
     aedf_z = get_aedf_z()
-    for key, value in aedf_z.items():
-        print(key, value)
+    for z, data in aedf_z.items():
+        #print(z, pformat(data))
+
+        check_data(z, data)

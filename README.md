@@ -18,15 +18,25 @@
 }
 ```
 
+TODO: 
+
+1) Check FCC lattice parameters and V0
+
+DONE with abstol 1-e4 
+
+    Inexact a/vol for z: 99: volume from file: 27.76 , volume from a 27.764687391143916 adiff 0.004687391143914255
+
+2) Use nsppol 2 with spinat 6. Usually 8 for all SHEs
+
 ```
 85_At: OK: At-spd. May add At-d version
 87_Fr: OK: Take Fr.psp8. Smoother convergence 
 88_Ra: OK-Reasonable: Ra_origin ?
 89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Take my version. Much better
-91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: Does not improve XXX
-92_U:  FIXME: Running U_5f_new: Does not improve XXX
-93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running Np_5f_new.psp8
+91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: IMPORTANT NO-MAG.
+92_U:  FIXME: Running U_5f_new: Does not improve XXX            IMPORTANT
+93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running Np_5f_new.psp8   IMPORTANT
 94_Pu: OK: Take my version. Much better.
 95_Am: OK-Reasonable. Take Am_5f_origin?
 96_Cm: OK: Take my version. Harder but more accurate.
