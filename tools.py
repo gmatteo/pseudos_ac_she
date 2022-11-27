@@ -112,18 +112,33 @@ class AeDfZ(dict):
             mag_z[z] = mag[k]
         #print(mag_z)
 
+        # For these elementsm, we use the non-magnetic configuration with suffix `_ae_NM.txt`.
+        black_list = {
+             "100_ae.txt",
+             "101_ae.txt",
+             "94_ae.txt",
+             "96_ae.txt",
+             "99_ae.txt",
+        }
+
         for basename in os.listdir(root):
             path = os.path.join(root, basename)
             if not path.endswith(".txt"): continue
+            if basename in black_list: continue
 
             # Use z instead of element because pymatgen element does not support z >= 120.
             z = int(basename.split("_")[0])
             #Element.from_Z(z)
 
-            if path.endswith("_ae.txt") and not path.endswith("_ox_ae.txt"):
+            if (path.endswith("_ae.txt") or path.endswith("_ae_NM.txt")) and not path.endswith("_ox_ae.txt"):
+                if z in self:
+                    raise ValueError(f"Found multiple files for z: {z}")
+
                 self[z] = parse_ae(path)
                 self[z]["mag"] = mag_z.get(z, 0.0)
-                #print(self[z])
+                #if z == 94:
+                #    print("Parsing path", path)
+                #    print(self[z])
 
 
 #if path.endswith("_ox_ae.txt"):
@@ -248,7 +263,8 @@ class DeltaUnaryWork(Work):
 
         ae = get_aedf_z()[pseudo.Z]
 
-        connect = True
+        #connect = True
+        connect = False
 
         for a_ang in ae.alist_ang:
             #print("a_ang", a_ang)
@@ -373,15 +389,15 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
 
     if mag == 0.0:
         nsppol, spinat = 1, None
-        nsppol, spinat = 2, [0, 0, 8]
+        #nsppol, spinat = 2, [0, 0, 8]
     else:
         nsppol = 2
         if mag is None:
             #spinat = [0, 0, 6]
             spinat = [0, 0, 8]
         else:
-            #spinat = [0, 0, mag]
-            spinat = [0, 0, 8]
+            spinat = [0, 0, mag]
+            #spinat = [0, 0, 8]
 
     print(f"Using nsppol: {nsppol} with spinat {spinat}")
 
@@ -576,10 +592,10 @@ class MyDojoReport(DojoReport):
         return fig
 
 
-def check_data(z, data):
+def check_data(z, data, verbose=0):
     from pymatgen.core.lattice import Lattice
     tol = 1e-4
-    print(f"Testing volume for z: {z} with tol: {tol}")
+    if verbose: print(f"Testing volume for z: {z} with tol: {tol}")
     for a_ang, vol in zip(data["alist_ang"], data["volumes_ang"]):
         lattice = float(a_ang) * np.array([
             0,  1,  1,
@@ -596,5 +612,4 @@ if __name__ == "__main__":
     aedf_z = get_aedf_z()
     for z, data in aedf_z.items():
         #print(z, pformat(data))
-
-        check_data(z, data)
+        check_data(z, data, verbose=0)
