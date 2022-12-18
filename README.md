@@ -1,40 +1,80 @@
 # Finalized
 
-85_At: Take At_new.psp8 Much faster convergence
-87_Fr:  Take Fr.psp8. Smoother convergence 
-88_Ra: Rerunning Ra_new.psp8
-89_Ac: Take Ac_new
-90_Th: Running Th_5f_new_new: : Much better
-91_Pa: AE EOS looks OK but best pseudo has 5.44 df. Running Pa_5f_new: Does not improve XXX
-92_U: Running U_5f_new: Does not improve XXX
-93_Np: AE EOS looks OK but best pseudo has 15.50 df!
-94_Pu: Take Pu-5spdf-6spd-7s.psp8
-95_Am: Running Am-5spdf-6spd-7s.psp8: Does not improve: Take Am_5f_origin
-96_Cm: Take Cm-5spdf-6spd-7s.out
-97_Bk: FIXME AE EOS looks suspicious. New results are needed.
-98_Cf: Running Cf-5spdf-6spd-7s.psp8. If this does not fix the problem, 
-       take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
-99_Es:  FIXME: AE EOS is completely wrong!
-100_Fm: FIXME: AE EOS is completely wrong!
-101_Md: FIXME: AE EOS is suspicious
-102_No: All pseudos are good, should find compromise btw accuracy and convergence ratio
-103_Lr: Running: Lr_5f_new.psp8: Take: Lr_5f_new
-104_Rf: Running Rf_new
-105_Db: Running Db.in, AE EOS looks OK.
-106_Sg: Take Sg.psp8
-107_Bh: Take Bh.psp8 Perhaps, one can accelerate a bit the convergence.
-108_Hs: Take Hs.psp8
-109_Mt: Take Mt.psp8
-110_Ds: running Ds_new
-111_Rg: running Rg.in
-112_Rg: running Cn_new.in
-113_Nh: Requires extra work
-114_Fl: Take Fl.psp8
-115_Mc: Take Mc.psp8
-116_Lv: Requires extra work
-117_Ts: Requires extra work, use Ts.in as starting point
-118_Og: ???
+```
+# Magnetization taken from Hirshfeld 
+# null means that the calculation is still running
 
+{
+"92_U": -0.892,   FIXME
+"93_Np": -2.695,  FIXME
+"94_Pu": -5.785,  OK
+"95_Am": -7.321,  OK
+"96_Cm": -7.026,  OK
+"97_Bk": -5.459,  FIXME
+"98_Cf": -4.164,  OK
+"99_Es": -2.906,  FIXME
+"100_Fm": -1.643, FIXME
+"101_Md": -0.419  FIXME
+}
+```
+
+Non-magnetic elelements for which we still have strong disagreement between AE and NC PS:
+
+113_Nh
+117_Ts
+118_Og
+
+
+
+TODO: 
+
+1) Check FCC lattice parameters and V0
+
+DONE with abstol 1-e4 
+
+    Inexact a/vol for z: 99: volume from file: 27.76 , volume from a 27.764687391143916 adiff 0.004687391143914255
+
+2) Use nsppol 2 with spinat 6. Usually 8 for all SHEs
+
+```
+85_At: OK: At-spd. May add At-d version
+87_Fr: OK: Take Fr.psp8. Smoother convergence 
+88_Ra: OK-Reasonable: Ra_origin ?
+89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
+90_Th: OK: Take my version. Much better
+91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df. IMPORTANT NO-MAG.
+        Tested with nsppol 2 and spinat (0 0 8). No significant change
+92_U:  FIXME: Running U_5f_new: Does not improve XXX            IMPORTANT
+93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running Np_5f_new.psp8   IMPORTANT
+94_Pu: OK: Take my version. Much better.
+95_Am: OK-Reasonable. Take Am_5f_origin?
+96_Cm: OK: Take my version. Harder but more accurate.
+97_Bk: FIXME AE EOS looks suspicious. New results are needed.
+98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
+99_Es:  FIXME: AE EOS is completely wrong!
+100_Fm: FIXME: AE EOS now looks good but pseudos are not!
+101_Md: FIXME: AE EOS is suspicious and should be recomputed
+102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
+103_Lr: OK: Take: my Lr_5f, smoother convergece
+104_Rf: OK: Take Rf.psp8 (1.47 vs 2.58 from origin)
+105_Db: OK: Take Db.psp8
+106_Sg: OK: Take Sg_origin.psp8
+107_Bh: OK: Take my version (1.50 vs 3.89 from origin)
+108_Hs: OK: Take my Hs.psp8: (0.65 vs 2.82 from origin)  Perhaps, one can accelerate a bit the convergence.
+109_Mt: OK: Take my Mt.psp8 (2.8 vs 4.99) and improve convergence rate.
+110_Ds: OK: Take my version with smoother MCC and 0.93 vs 2.79 from origin
+111_Rg: OK: Take my Rg. Much smoother
+112_Cn: OK-TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
+113_Nh: FIXME: Requires extra work. AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
+        Tested with nsppol 2 and spinat (0 0 8). No significant change
+114_Fl: OK: Take my Fl.psp8 with f-projector (0.42 vs 1.25)
+115_Mc: OK: Take Mc_new.psp8 with f-projector (1.56 vs 3.08 origin)
+116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
+117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
+        tested with nsppol 2 and spinat (0 0 8). No significant change
+118_Og: FIXME: Can't manage to get decent pseudo for this!
+        running with nsppol 2 and spinat (0 0 8). No significant change
+```
 
 # AE results
 
@@ -103,7 +143,7 @@ Ts: Decrease rcs significantly. Add projector for f with ep = 0.05 to improve f-
 Og: Decrease rcs significantly e.g from 1.6 to 1.4. Add projector for f with ep = 0.05 to improve f-logder
 
 
-Fr: Add two projectos for f to improve logder.  Minor adjustment in qcut values. Ecut now ~35
+Fr: Add two prrojectos for f to improve logder.  Minor adjustment in qcut values. Ecut now ~35
 
 At: Decrease core radii using my new Po-spd.in as starting point. Add extra projector for f-channel with ep 0.05
 

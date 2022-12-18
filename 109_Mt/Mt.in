@@ -30,7 +30,7 @@
 0 1.1 0.0 4 8 13.5
 1 1.1 0.0 4 8 14.0
 2 1.1 0.0 4 8 14.0
-3 1.2 0.0 4 8 14.6
+3 1.2 0.0 4 8 15.5
 #
 # LOCAL POTENTIAL
 # lloc, lpopt,  rc(5),   dvloc0
@@ -46,7 +46,7 @@
 # MODEL CORE CHARGE
 # icmod, fcfact, rcfact
 #3    10.6904    1.0348
-3    5    1.4
+3    3    1.4
 #
 # LOG DERIVATIVE ANALYSIS
 # epsh1, epsh2, depsh
