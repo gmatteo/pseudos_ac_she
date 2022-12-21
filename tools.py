@@ -112,18 +112,33 @@ class AeDfZ(dict):
             mag_z[z] = mag[k]
         #print(mag_z)
 
+        # For these elementsm, we use the non-magnetic configuration with suffix `_ae_NM.txt`.
+        black_list = {
+             "100_ae.txt",
+             "101_ae.txt",
+             "94_ae.txt",
+             "96_ae.txt",
+             "99_ae.txt",
+        }
+
         for basename in os.listdir(root):
             path = os.path.join(root, basename)
             if not path.endswith(".txt"): continue
+            if basename in black_list: continue
 
             # Use z instead of element because pymatgen element does not support z >= 120.
             z = int(basename.split("_")[0])
             #Element.from_Z(z)
 
-            if path.endswith("_ae.txt") and not path.endswith("_ox_ae.txt"):
+            if (path.endswith("_ae.txt") or path.endswith("_ae_NM.txt")) and not path.endswith("_ox_ae.txt"):
+                if z in self:
+                    raise ValueError(f"Found multiple files for z: {z}")
+
                 self[z] = parse_ae(path)
                 self[z]["mag"] = mag_z.get(z, 0.0)
-                #print(self[z])
+                #if z == 94:
+                #    print("Parsing path", path)
+                #    print(self[z])
 
 
 #if path.endswith("_ox_ae.txt"):
@@ -248,10 +263,25 @@ class DeltaUnaryWork(Work):
 
         ae = get_aedf_z()[pseudo.Z]
 
+        #connect = True
+        connect = False
+
         for a_ang in ae.alist_ang:
             #print("a_ang", a_ang)
             scf_inp = make_input_unary(pseudo, a_ang, ae["mag"], do_relax=False, ecut=ecut)
+            if connect: scf_inp["prtwf"] = 1
             work.register_scf_task(scf_inp)
+
+        if connect:
+            middle = len(work) // 2
+            filetype = "WFK"
+            for i, task in enumerate(work[:middle]):
+                #task.add_deps({work[i + 1]: filetype})
+                task.add_deps({work[middle]: filetype})
+
+            for i, task in enumerate(work[middle+1:]):
+                #task.add_deps({work[middle + i]: filetype})
+                task.add_deps({work[middle]: filetype})
 
         return work
 
@@ -358,14 +388,18 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
     inp = AbinitInput(structure, pseudos=pseudo)
 
     if mag == 0.0:
-        nsppol = 1
-        spinat = None
+        nsppol, spinat = 1, None
+        #nsppol, spinat = 2, [0, 0, 8]
     else:
-        nsppol=2
+        nsppol = 2
         if mag is None:
-            spinat = [0, 0, 6]
+            #spinat = [0, 0, 6]
+            spinat = [0, 0, 8]
         else:
             spinat = [0, 0, mag]
+            #spinat = [0, 0, 8]
+
+    print(f"Using nsppol: {nsppol} with spinat {spinat}")
 
     nband = inp.num_valence_electrons // 2
     nband = max(np.ceil(nband * 1.2), nband + 10)
@@ -383,7 +417,6 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
         iscf=17,
         nstep=1000,
         nsppol=nsppol,
-        #nsppol=2, # FIXME
         spinat=spinat,
         # k-point grid
         #ngkpt=[1, 1, 1], # FIXME
@@ -503,7 +536,6 @@ class MyDojoReport(DojoReport):
 
         return fig
 
-
     @add_fig_kwargs
     def plot_ae_eos(self, ax=None, text=None, cmap="jet", **kwargs):
 
@@ -535,7 +567,9 @@ class MyDojoReport(DojoReport):
 
         for i, ecut in enumerate(ecuts):
             #if ecut not in ppgen_ecuts: continue
-            if i not in (0, len(ecuts) -1): continue
+            #if i not in (0, len(ecuts) -1): continue
+            if i not in (2, len(ecuts) -1): continue
+
             # Subframe with this value of ecut.
             ecut_frame = frame.loc[frame["ecut"] == ecut]
             assert ecut_frame.shape[0] == 1
@@ -558,5 +592,24 @@ class MyDojoReport(DojoReport):
         return fig
 
 
+def check_data(z, data, verbose=0):
+    from pymatgen.core.lattice import Lattice
+    tol = 1e-4
+    if verbose: print(f"Testing volume for z: {z} with tol: {tol}")
+    for a_ang, vol in zip(data["alist_ang"], data["volumes_ang"]):
+        lattice = float(a_ang) * np.array([
+            0,  1,  1,
+            1,  0,  1,
+            1,  1,  0]) / np.sqrt(2.0)
+        lattice = Lattice(lattice)
+
+        adiff = abs(vol - lattice.volume)
+        if adiff > tol:
+            print(f"Inexact a/vol for z: {z}: volume from file:", vol, ", volume from a", lattice.volume, "adiff", adiff)
+
 if __name__ == "__main__":
+    from pprint import pprint, pformat
     aedf_z = get_aedf_z()
+    for z, data in aedf_z.items():
+        #print(z, pformat(data))
+        check_data(z, data, verbose=0)
