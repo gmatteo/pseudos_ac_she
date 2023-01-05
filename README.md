@@ -12,9 +12,9 @@
 "96_Cm": -7.026,  OK
 "97_Bk": -5.459,  FIXME
 "98_Cf": -4.164,  OK
-"99_Es": -2.906,  FIXME
-"100_Fm": -1.643, FIXME
-"101_Md": -0.419  FIXME
+"99_Es": -2.906,  FIXME  NOW OK WITH Es_5f_origin and NM Reference
+"100_Fm": -1.643, FIXME  delta with NM reference is better than previous one but not perfect
+"101_Md": -0.419  FIXME  delta with NM reference is better than previous one but not perfect
 }
 ```
 
@@ -23,7 +23,6 @@ Non-magnetic elelements for which we still have strong disagreement between AE a
 113_Nh
 117_Ts
 118_Og
-
 
 
 TODO: 

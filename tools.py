@@ -112,13 +112,23 @@ class AeDfZ(dict):
             mag_z[z] = mag[k]
         #print(mag_z)
 
-        # For these elementsm, we use the non-magnetic configuration with suffix `_ae_NM.txt`.
+        # For these elements, we use the non-magnetic configuration with suffix `_ae_NM.txt`.
         black_list = {
+             #"94_ae.txt",
+             #"96_ae.txt",
+             "94_ae_NM.txt",
+             "96_ae_NM.txt",
+             "99_ae.txt",
              "100_ae.txt",
              "101_ae.txt",
-             "94_ae.txt",
-             "96_ae.txt",
-             "99_ae.txt",
+             # New
+             "91_ae_NM.txt",
+             "92_ae_NM.txt",
+             "93_ae_NM.txt",
+             "98_ae_NM.txt",
+             "113_ae_NM.txt",
+             "117_ae_NM.txt",
+             "118_ae_NM.txt",
         }
 
         for basename in os.listdir(root):
