@@ -1,17 +1,18 @@
 # Magnetization taken from Hirshfeld 
 # null means that the calculation is still running
 {
-"92_U": -0.892,
-"93_Np": -2.695,
 "95_Am": -7.321,
 "97_Bk": -5.459,
-"98_Cf": -4.164
+
 }
 <END JSON>
 
 # Now these elements are considered in the non-magnetic phase.
+"92_U": -0.892,
+"93_Np": -2.695,
 "94_Pu": -5.785, 
 "96_Cm": -7.026,
+"98_Cf": -4.164
 "99_Es": -2.906,
 "100_Fm": -1.643,
 "101_Md": -0.419

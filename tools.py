@@ -97,7 +97,6 @@ class AeDfZ(dict):
                 print("Error in path", path)
                 raise exc
 
-
         root = os.path.join(os.path.dirname(__file__), "AE_calcs")
 
         mag_file = os.path.join(root, "..", "Magnetization.txt")
@@ -122,13 +121,13 @@ class AeDfZ(dict):
              "100_ae.txt",
              "101_ae.txt",
              # New
-             "91_ae_NM.txt",
-             "92_ae_NM.txt",
-             "93_ae_NM.txt",
-             "98_ae_NM.txt",
-             "113_ae_NM.txt",
-             "117_ae_NM.txt",
-             "118_ae_NM.txt",
+             "91_ae.txt",
+             "92_ae.txt",
+             "93_ae.txt",
+             "98_ae.txt",
+             "113_ae.txt",
+             "117_ae.txt",
+             "118_ae.txt",
         }
 
         for basename in os.listdir(root):
