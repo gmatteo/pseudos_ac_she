@@ -2,8 +2,7 @@
 # null means that the calculation is still running
 {
 "95_Am": -7.321,
-"97_Bk": -5.459,
-
+"97_Bk": -5.459
 }
 <END JSON>
 
