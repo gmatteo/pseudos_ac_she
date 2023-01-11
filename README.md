@@ -42,14 +42,19 @@ DONE with abstol 1-e4
 89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Take my version. Much better
 91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df. IMPORTANT NO-MAG.
-        Tested with nsppol 2 and spinat (0 0 8). No significant change
+       Tested with nsppol 2 and spinat (0 0 8). No significant change
+       RUNNING NOMAG version
 92_U:  FIXME: Running U_5f_new: Does not improve XXX            IMPORTANT
+       RUNNING NOMAG version
 93_Np: FIXME: AE EOS looks OK but best pseudo has 15.50 df! Running Np_5f_new.psp8   IMPORTANT
+       RUNNING NOMAG version
 94_Pu: OK: Take my version. Much better.
 95_Am: OK-Reasonable. Take Am_5f_origin?
 96_Cm: OK: Take my version. Harder but more accurate.
 97_Bk: FIXME AE EOS looks suspicious. New results are needed.
 98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
+        RUNNING NOMAG version
+        MAG VERSION GAVE BETTER RESULTS
 99_Es:  FIXME: AE EOS is completely wrong!
 100_Fm: FIXME: AE EOS now looks good but pseudos are not!
 101_Md: FIXME: AE EOS is suspicious and should be recomputed
@@ -66,13 +71,16 @@ DONE with abstol 1-e4
 112_Cn: OK-TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
 113_Nh: FIXME: Requires extra work. AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
         Tested with nsppol 2 and spinat (0 0 8). No significant change
+        RUNNING NOMAG version
 114_Fl: OK: Take my Fl.psp8 with f-projector (0.42 vs 1.25)
 115_Mc: OK: Take Mc_new.psp8 with f-projector (1.56 vs 3.08 origin)
 116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
 117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
         tested with nsppol 2 and spinat (0 0 8). No significant change
+        RUNNING NOMAG version
 118_Og: FIXME: Can't manage to get decent pseudo for this!
         running with nsppol 2 and spinat (0 0 8). No significant change
+        RUNNING NOMAG version
 ```
 
 # AE results
