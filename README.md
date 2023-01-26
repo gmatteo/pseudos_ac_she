@@ -56,7 +56,8 @@ DONE with abstol 1-e4
        Now using new AE NOMAG as reference but MAG VERSION GAVE BETTER RESULTS
 99_Es: ITWAS_FIXME: Now using AE NOMAG as reference. Kind of Ok with df 0.51
 100_Fm: XXX FIXME: AE EOS now looks good but pseudos are not!
-101_Md: FIXME: AE EOS is suspicious and should be recomputed
+101_Md: FIXME: AE EOS is suspicious and should be recomputed. df 1.41
+        ITWAS_FIXME: Now the AE EOS is slightly better (a bit smoother but jumps are still visible) df 0.66.  
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
 103_Lr: OK: Take: my Lr_5f, smoother convergece
 104_Rf: OK: Take Rf.psp8 (1.47 vs 2.58 from origin)
