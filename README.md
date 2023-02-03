@@ -51,7 +51,8 @@ DONE with abstol 1-e4
 94_Pu: OK: Take my version. Much better.
 95_Am: OK-Reasonable. Take Am_5f_origin?
 96_Cm: OK: Take my version. Harder but more accurate.
-97_Bk: FIXME AE EOS looks suspicious. New AE results are needed.
+97_Bk: FIXME AE EOS looks suspicious. 
+       TODO: New AE results are needed.
 98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
        Now using new AE NOMAG as reference but MAG VERSION GAVE BETTER RESULTS
 99_Es: ITWAS_FIXME: Now using AE NOMAG as reference. Kind of Ok with df 0.51
