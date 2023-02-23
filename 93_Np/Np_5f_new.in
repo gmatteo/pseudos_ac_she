@@ -15,10 +15,10 @@ Np 93 10 8 4 both
 5 0 2.0
 5 1 6.0
 5 2 10.0
-5 3 4.0
+5 3 3.0  # 4 in GS
 6 0 2.0
 6 1 6.0
-6 2 1.0
+6 2 2.0  # Promote an electron from 5f to 6d
 7 0 2.0
 # PSEUDOPOTENTIAL AND OPTIMIZATION
 # lmax
