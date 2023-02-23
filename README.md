@@ -55,8 +55,10 @@ DONE with abstol 1-e4
        TODO: New AE results are needed.
 98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
        Now using new AE NOMAG as reference but MAG VERSION GAVE BETTER RESULTS
+       RERUNNING WITH NEW DATA (NO IMPROVEMENT)
 99_Es: ITWAS_FIXME: Now using AE NOMAG as reference. Kind of Ok with df 0.51
 100_Fm: XXX FIXME: AE EOS now looks good but pseudos are not!
+       RERUNNING WITH NEW DATA (NO IMPROVEMENT)
 101_Md: FIXME: AE EOS is suspicious and should be recomputed. df 1.41
         ITWAS_FIXME: Now the AE EOS is slightly better (a bit smoother but jumps are still visible) df 0.66.  
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
@@ -79,10 +81,42 @@ DONE with abstol 1-e4
 117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
         tested with nsppol 2 and spinat (0 0 8). No significant change
         Now using AE NOMAG as reference but best df ~ 2.7
+        RERUNNING WITH NEW DATA
 118_Og: FIXME: Can't manage to get decent pseudo for this!
         running with nsppol 2 and spinat (0 0 8). No significant change
         Now using AE NOMAG as reference, best df ~ 0.84 but PS EOS is completely off (small b0 here)
+        RERUNNING WITH NEW DATA
 ```
+
+ 100_Fm/Fm-5spdf-6spd-7s.djrepo | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 100_Fm/Fm_5f.djrepo            | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 100_Fm/Fm_5f_origin.djrepo     | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 117_Ts/Ts.djrepo               | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 117_Ts/Ts_high.djrepo          | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 117_Ts/Ts_new.djrepo           | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 117_Ts/Ts_new_new.djrepo       | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 118_Og/Og-spdf.djrepo          | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 118_Og/Og.djrepo               | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 118_Og/Og_new.djrepo           | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 118_Og/Og_origin.djrepo        | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+ 98_Cf/Cf_5f.djrepo             | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # AE results
 
