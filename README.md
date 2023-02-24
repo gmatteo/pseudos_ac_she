@@ -39,6 +39,7 @@ DONE with abstol 1-e4
 85_At: OK: At-spd. May add At-d version
 87_Fr: OK: Take Fr.psp8. Smoother convergence 
 88_Ra: OK-Reasonable: Ra_origin ?
+
 89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Take my version. Much better
 91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df.
@@ -65,6 +66,8 @@ DONE with abstol 1-e4
         ITWAS_FIXME: Now the AE EOS is slightly better (a bit smoother but jumps are still visible) df 0.66.  
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
 103_Lr: OK: Take: my Lr_5f, smoother convergece
+
+Begin_SHE
 104_Rf: OK: Take Rf.psp8 (1.47 vs 2.58 from origin)
 105_Db: OK: Take Db.psp8
 106_Sg: OK: Take Sg_origin.psp8
@@ -89,36 +92,6 @@ DONE with abstol 1-e4
         Now using AE NOMAG as reference, best df ~ 0.84 but PS EOS is completely off (small b0 here)
         RERUNNING WITH NEW DATA
 ```
-
- 100_Fm/Fm-5spdf-6spd-7s.djrepo | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 100_Fm/Fm_5f.djrepo            | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 100_Fm/Fm_5f_origin.djrepo     | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 117_Ts/Ts.djrepo               | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 117_Ts/Ts_high.djrepo          | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 117_Ts/Ts_new.djrepo           | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 117_Ts/Ts_new_new.djrepo       | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 118_Og/Og-spdf.djrepo          | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 118_Og/Og.djrepo               | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 118_Og/Og_new.djrepo           | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 118_Og/Og_origin.djrepo        | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
- 98_Cf/Cf_5f.djrepo             | 520 +++++++++++++++++++++++++++++++++++++-------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # AE results
 
