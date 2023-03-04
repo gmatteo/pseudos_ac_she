@@ -1,0 +1,50 @@
+{
+"basename": "U_chris.psp8",
+"ecuts": [
+80.0,
+82.0,
+84.0,
+86.0,
+88.0,
+90.0,
+92.0,
+94.0,
+96.0,
+98.0,
+100.0,
+108.0,
+110.0
+],
+"md5": "530af070dab90726ca4905b1fec47d5e",
+"ppgen_hints": {
+"high": {
+"ecut": 90.0,
+"pawecutdg": 90.0
+},
+"low": {
+"ecut": 79.0,
+"pawecutdg": 79.0
+},
+"normal": {
+"ecut": 85.0,
+"pawecutdg": 85.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "U",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}
