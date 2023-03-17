@@ -42,16 +42,22 @@ DONE with abstol 1-e4
 
 89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Take my version. Much better
+
+
+# REMOVE ME
 91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df.
        Tested with nsppol 2 and spinat (0 0 8). No significant change
        Now using new AE NOMAG as reference but results do not change.
        Running _new_new with 0.1 e in 5f. Small improvemente. Tried other configurations.
+
 92_U:  FIXME: AE EOS looks OK but best pseudo has 6.63 df.
        Now using AE NOMAG as reference but results do not change.
 93_Np: FIXME: AE EOS looks OK but best pseudo has 33.67 df
        Now using new AE NOMAG as reference but results do not change. PS EOS significantly overestimates V0.
        RUNNING: Np_5f_new with 1f electron promoted to 6d
 94_Pu: OK: Take my version. Much better.
+# REMOVE ME
+
 95_Am: OK-Reasonable. Take Am_5f_origin?
 96_Cm: OK: Take my version. Harder but more accurate.
 97_Bk: FIXME AE EOS looks suspicious. 
@@ -64,6 +70,7 @@ DONE with abstol 1-e4
        RERUNNING WITH NEW DATA (NO IMPROVEMENT)
 101_Md: FIXME: AE EOS is suspicious and should be recomputed. df 1.41
         ITWAS_FIXME: Now the AE EOS is slightly better (a bit smoother but jumps are still visible) df 0.66.  
+        Need new AE results
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
 103_Lr: OK: Take: my Lr_5f, smoother convergece
 
@@ -91,6 +98,8 @@ Begin_SHE
         running with nsppol 2 and spinat (0 0 8). No significant change
         Now using AE NOMAG as reference, best df ~ 0.84 but PS EOS is completely off (small b0 here)
         RERUNNING WITH NEW DATA
+
+119: TODO: Change pymatgen
 ```
 
 # AE results
