@@ -392,6 +392,7 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
     coords = [[0, 0, 0]]
 
     structure = Structure(lattice, species=[pseudo.symbol], coords=coords)
+    #print(structure.volue, float(a_ang) **3 * 2**(-1/2))
 
     # Initialize the input
     inp = AbinitInput(structure, pseudos=pseudo)
@@ -612,7 +613,14 @@ def check_data(z, data, verbose=0):
             1,  1,  0]) / np.sqrt(2.0)
         lattice = Lattice(lattice)
 
+        # V = l**3 2 * (-1/2)
+        #print(lattice.volume, float(a_ang) **3 * 2**(-1/2))
+        #print(lattice.volume * np.sqrt(2),  float(a_ang) ** 3)
+        #print(lattice.volume ** (1/3) * (2 ** (1/6)), float(a_ang))
+        #print(float(a_ang) / lattice.volume ** 1/3)
+
         adiff = abs(vol - lattice.volume)
+        print("adiff:", adiff)
         if adiff > tol:
             print(f"Inexact a/vol for z: {z}: volume from file:", vol, ", volume from a", lattice.volume, "adiff", adiff)
 
@@ -620,5 +628,5 @@ if __name__ == "__main__":
     from pprint import pprint, pformat
     aedf_z = get_aedf_z()
     for z, data in aedf_z.items():
-        #print(z, pformat(data))
+        print("Checking z:", z) #, pformat(data))
         check_data(z, data, verbose=0)
