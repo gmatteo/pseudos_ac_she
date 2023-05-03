@@ -414,6 +414,12 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
     nband = inp.num_valence_electrons // 2
     nband = max(np.ceil(nband * 1.2), nband + 10)
 
+    ngkpt = [15, 15, 15]
+    if pseudo.symbol in ("Bk", "Fm", "Md", "Nh"):
+        # Calculations done by BANDS developers with densified sampling.
+        ngkpt = [17, 17, 17]
+        print("Using densified ngkpt", ngkpt, "for symbol:", pseudo.symbol)
+
     inp.set_vars(
         paral_kgb=0,
         #rmm_diis=1,
@@ -429,8 +435,7 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
         nsppol=nsppol,
         spinat=spinat,
         # k-point grid
-        #ngkpt=[1, 1, 1], # FIXME
-        ngkpt=[15, 15, 15],
+        ngkpt=ngkpt,
         nshiftk=1,
         shiftk=[0.0, 0.0, 0.0],
         prtwf=0,
