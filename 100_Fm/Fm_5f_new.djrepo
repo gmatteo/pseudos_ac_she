@@ -15,15 +15,15 @@
 94.0,
 96.0
 ],
-"md5": "603e6c350c69d26ac6e50f862ba0b0b3",
+"md5": "e2a025ff66b4dd88829baa32dcf705dc",
 "ppgen_hints": {
 "high": {
 "ecut": 76.0,
 "pawecutdg": 76.0
 },
 "low": {
-"ecut": 69.0,
-"pawecutdg": 69.0
+"ecut": 70.0,
+"pawecutdg": 70.0
 },
 "normal": {
 "ecut": 72.0,
