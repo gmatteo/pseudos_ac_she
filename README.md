@@ -62,10 +62,11 @@ DONE with abstol 1-e4
 96_Cm: OK: Take my version. Harder but more accurate.
 97_Bk: FIXME AE EOS looks suspicious. 
        TODO: New AE results are needed.
+       Now excellent agreement with new AE results for NM configuration and 17 17 17 k-mesh
 98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
        Now using new AE NOMAG as reference but MAG VERSION GAVE BETTER RESULTS
        RERUNNING WITH NEW DATA (NO IMPROVEMENT)
-99_Es: ITWAS_FIXME: Now using AE NOMAG as reference. Kind of Ok with df 0.51
+99_Es: ITWAS_FIXME: Now using AE NOMAG as reference. Kind of Ok with df 0.51 for Es_5f_origin
 100_Fm: XXX FIXME: AE EOS now looks good but pseudos are not!
        RERUNNING WITH NEW DATA (NO IMPROVEMENT)
 101_Md: FIXME: AE EOS is suspicious and should be recomputed. df 1.41
