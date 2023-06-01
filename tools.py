@@ -415,10 +415,10 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
     nband = max(np.ceil(nband * 1.2), nband + 10)
 
     ngkpt = [15, 15, 15]
-    if pseudo.symbol in ("Bk", "Fm", "Md", "Nh"):
-        # Calculations done by BANDS developers with densified sampling.
-        ngkpt = [17, 17, 17]
-        print("Using densified ngkpt", ngkpt, "for symbol:", pseudo.symbol)
+    #if pseudo.symbol in ("Bk", "Fm", "Md", "Nh"):
+    #    # Calculations done by BANDS developers with densified sampling.
+    #    ngkpt = [17, 17, 17]
+    #    print("Using densified ngkpt", ngkpt, "for symbol:", pseudo.symbol)
 
     inp.set_vars(
         paral_kgb=0,
