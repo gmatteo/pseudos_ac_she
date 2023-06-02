@@ -17,7 +17,7 @@ from monty.termcolor import cprint
 from monty.functools import prof_main
 from monty.os.path import find_exts
 from tabulate import tabulate
-from abipy.tools.plotting import MplExpose, PanelExpose, get_ax_fig_plt, get_axarray_fig_plt
+from abipy.tools.plotting import MplExposer, PanelExposer, get_ax_fig_plt, get_axarray_fig_plt
 
 from pseudo_dojo.core.pseudos import dojopseudo_from_file, DojoTable
 from tools import DfEcutFlow, MyDojoReport
@@ -89,8 +89,8 @@ def dojo_plot(options):
         #last_deltaf = df["dfact_meV"].values[-1]
         #last_delta_prime = df["dfactprime_meV"].values[-1]
 
-        #with MplExpose() as e:
-        with PanelExpose(title=path) as e:
+        #with MplExposer() as e:
+        with PanelExposer(title=path) as e:
             #e(djrepo.plot_ae_eos(text=f"Delta = {last_deltaf: .2f}, Delta' = {last_delta_prime: .2f}", show=False))
             e(_plot_ae_eos_from_djrepo(djrepo))
             e(djrepo.plot_etotal_vs_ecut(show=False))
@@ -111,8 +111,8 @@ def dojo_compare(options):
         path = pseudo.filepath.replace(".psp8", ".djrepo")
         djrepo_list.append(MyDojoReport.from_file(path))
 
-    #with MplExpose() as e:
-    with PanelExpose(title="Compare Pseudos") as e:
+    #with MplExposer() as e:
+    with PanelExposer(title="Compare Pseudos") as e:
         e(pseudos.dojo_compare(what=options.what_plot, show=False)[0])
         e(_plot_from_djrepos(djrepo_list, options.pseudos, "eos"))
         e(_plot_from_djrepos(djrepo_list, options.pseudos, "conv"))
