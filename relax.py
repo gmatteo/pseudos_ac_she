@@ -18,8 +18,11 @@ from monty.functools import prof_main
 from monty.os.path import find_exts
 from tabulate import tabulate
 from abipy.tools.plotting import get_ax_fig_plt, get_axarray_fig_plt
-from abipy.tools.plotting import MplExpose as MplExposer
-from abipy.tools.plotting import PanelExpose as PanelExposer
+try:
+    from abipy.tools.plotting import MplExpose as MplExposer, PanelExpose as PanelExposer
+except ImportError:
+    from abipy.tools.plotting import MplExposer, PanelExposer
+
 
 from pseudo_dojo.core.pseudos import dojopseudo_from_file, DojoTable
 from tools import DfEcutFlow, MyDojoReport
