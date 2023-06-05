@@ -124,7 +124,8 @@ class AeDfZ(dict):
              "91_ae.txt",
              "92_ae.txt",
              "93_ae.txt",
-             "98_ae.txt",
+             #"98_ae.txt",
+             "98_ae_NM.txt",  # Use magnetic config for 98_Cf
              "113_ae.txt",
              "117_ae.txt",
              "118_ae.txt",

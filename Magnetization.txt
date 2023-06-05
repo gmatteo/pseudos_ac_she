@@ -1,6 +1,7 @@
 # Magnetization taken from Hirshfeld 
 # null means that the calculation is still running
 {
+"98_Cf": -4.164,
 "95_Am": -7.321
 }
 <END JSON>
@@ -11,7 +12,7 @@
 "93_Np": -2.695,
 "94_Pu": -5.785, 
 "96_Cm": -7.026,
-"98_Cf": -4.164
+#"98_Cf": -4.164
 "99_Es": -2.906,
 "100_Fm": -1.643,
 "101_Md": -0.419

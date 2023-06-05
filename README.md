@@ -39,12 +39,10 @@ DONE with abstol 1-e4
 85_At: OK: At-spd. May add At-d version
 87_Fr: OK: Take Fr.psp8. Smoother convergence 
 88_Ra: OK-Reasonable: Ra_origin ?
-
 89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Take my version. Much better
 
-
-# REMOVE ME
+# THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df.
        Tested with nsppol 2 and spinat (0 0 8). No significant change
        Now using new AE NOMAG as reference but results do not change.
@@ -56,22 +54,17 @@ DONE with abstol 1-e4
        Now using new AE NOMAG as reference but results do not change. PS EOS significantly overestimates V0.
        RUNNING: Np_5f_new with 1f electron promoted to 6d
 94_Pu: OK: Take my version. Much better.
-# REMOVE ME
+# END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
 95_Am: OK-Reasonable. Take Am_5f_origin?
 96_Cm: OK: Take my version. Harder but more accurate.
-97_Bk: FIXME AE EOS looks suspicious. 
-       TODO: New AE results are needed.
-       Now excellent agreement with new AE results for NM configuration and 17 17 17 k-mesh
-98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
-       Now using new AE NOMAG as reference but MAG VERSION GAVE BETTER RESULTS
-       RERUNNING WITH NEW DATA (NO IMPROVEMENT)
-99_Es: ITWAS_FIXME: Now using AE NOMAG as reference. Kind of Ok with df 0.51 for Es_5f_origin
-100_Fm: XXX FIXME: AE EOS now looks good but pseudos are not!
-       RERUNNING WITH NEW DATA (NO IMPROVEMENT)
-101_Md: FIXME: AE EOS is suspicious and should be recomputed. df 1.41
-        ITWAS_FIXME: Now the AE EOS is slightly better (a bit smoother but jumps are still visible) df 0.66.  
-        Need new AE results
+97_Bk: Now excellent agreement with new AE results for NM configuration
+       Take Bk_5f_new.psp8
+98_Cf: FIXME: Now using new AE NOMAG as reference but MAG VERSION GAVE BETTER RESULTS
+       OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
+99_Es: Now using AE NOMAG as reference. Kind of Ok with df 0.51 for Es_5f_origin 
+100_Fm: FIXME: RERUNNING WITH NEW DATA (NO IMPROVEMENT)
+101_Md: AE EOS now looks OK, pseudos is decent with df ~ 2.0
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
 103_Lr: OK: Take: my Lr_5f, smoother convergece
 
@@ -85,9 +78,7 @@ Begin_SHE
 110_Ds: OK: Take my version with smoother MCC and 0.93 vs 2.79 from origin
 111_Rg: OK: Take my Rg. Much smoother
 112_Cn: OK-TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
-113_Nh: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
-        Tested with nsppol 2 and spinat (0 0 8). No significant change
-        Now using AE NOMAG as reference but df ~ 1.2
+113_Nh: AE EOS looks ok. Using new AE NOMAG as reference. Nh_origin.psp8 gives df 1.18
 114_Fl: OK: Take my Fl.psp8 with f-projector (0.42 vs 1.25)
 115_Mc: OK: Take Mc_new.psp8 with f-projector (1.56 vs 3.08 origin)
 116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
