@@ -60,11 +60,10 @@ DONE with abstol 1-e4
 96_Cm: OK: Take my version. Harder but more accurate.
 97_Bk: Now excellent agreement with new AE results for NM configuration
        Take Bk_5f_new.psp8
-98_Cf: FIXME: Now using new AE NOMAG as reference but MAG VERSION GAVE BETTER RESULTS
-       OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
+98_Cf: OK when using AE with magnetic configuration
 99_Es: Now using AE NOMAG as reference. Kind of Ok with df 0.51 for Es_5f_origin 
-100_Fm: FIXME: RERUNNING WITH NEW DATA (NO IMPROVEMENT)
-101_Md: AE EOS now looks OK, pseudos is decent with df ~ 2.0
+100_Fm: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
+101_Md: FIXME-ACCEPT AE EOS now looks OK, pseudos is decent with df ~ 1.9
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
 103_Lr: OK: Take: my Lr_5f, smoother convergece
 

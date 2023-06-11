@@ -428,6 +428,7 @@ Usage example:
                 pseudos.append(pseudo)
 
             except Exception as exc:
+                print(exc)
                 cprint("[%s] Python exception. This pseudo will be ignored" % p, "red")
                 if options.verbose: print(exc)
 
