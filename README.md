@@ -57,9 +57,8 @@ DONE with abstol 1-e4
 # END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
 95_Am: TODO: OK-Reasonable. 
-96_Cm: OK: Take my version. Harder but more accurate.
+96_Cm: OK for SR, very bad if FC wo SOC
 97_Bk: OK Now excellent agreement with new AE results for NM configuration
-
 98_Cf: OK when using AE with magnetic configuration
 99_Es: Now using AE NOMAG as reference. Kind of Ok with df 0.51 for Es_5f_origin 
        TODO: Running new Es_5f
