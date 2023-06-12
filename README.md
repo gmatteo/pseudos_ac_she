@@ -56,7 +56,7 @@ DONE with abstol 1-e4
 94_Pu: OK: Take my version. Much better.
 # END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
-95_Am: OK-Reasonable. Take Am_5f_origin?
+95_Am: TODO: OK-Reasonable. Take Am_5f_origin?
 96_Cm: OK: Take my version. Harder but more accurate.
 97_Bk: Now excellent agreement with new AE results for NM configuration
        Take Bk_5f_new.psp8
