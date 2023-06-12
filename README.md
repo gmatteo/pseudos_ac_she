@@ -76,7 +76,7 @@ Begin_SHE
 106_Sg: OK: Take Sg_origin.psp8
 107_Bh: OK: Take my version (1.50 vs 3.89 from origin)
 108_Hs: OK: Take my Hs.psp8: (0.65 vs 2.82 from origin)  Perhaps, one can accelerate a bit the convergence.
-109_Mt: OK: Take my Mt.psp8 (2.8 vs 4.99) and improve convergence rate.
+109_Mt: OK: Take my Mt.psp8 (2.8 vs 4.99) and improved convergence rate.
 110_Ds: OK: Take my version with smoother MCC and 0.93 vs 2.79 from origin
 111_Rg: OK: Take my Rg. Much smoother
 112_Cn: OK-TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
