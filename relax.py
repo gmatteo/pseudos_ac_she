@@ -85,22 +85,28 @@ def _plot_from_djrepos(djrepo_list, pseudos, what):
 
 
 def dojo_plot(options):
+
+    djrepo_list = []
     for pseudo in options.pseudos:
         path = pseudo.filepath.replace(".psp8", ".djrepo")
         djrepo = MyDojoReport.from_file(path)
+        djrepo_list.append(djrepo)
 
         #df = djrepo.get_pdframe("deltafactor")
         #df = df[["ecut", "dfact_meV", "dfactprime_meV", "v0", "b0_GPa", "b1"]]
         #last_deltaf = df["dfact_meV"].values[-1]
         #last_delta_prime = df["dfactprime_meV"].values[-1]
 
-        #with MplExposer() as e:
-        with PanelExposer(title=path) as e:
-            #e(djrepo.plot_ae_eos(text=f"Delta = {last_deltaf: .2f}, Delta' = {last_delta_prime: .2f}", show=False))
+    #with MplExposer() as e:
+    with PanelExposer(title=path) as e:
+        for djrepo in djrepo_list:
             e(_plot_ae_eos_from_djrepo(djrepo))
+        for djrepo in djrepo_list:
             e(djrepo.plot_etotal_vs_ecut(show=False))
+        for djrepo in djrepo_list:
             e(djrepo.plot_deltafactor_convergence(xc=pseudo.xc, what=("-dfact_meV", "-dfactprime_meV"), show=False))
-            #djrepo.plot_deltafactor_eos()
+        #e(djrepo.plot_ae_eos(text=f"Delta = {last_deltaf: .2f}, Delta' = {last_delta_prime: .2f}", show=False))
+        #djrepo.plot_deltafactor_eos()
 
     return 0
 
