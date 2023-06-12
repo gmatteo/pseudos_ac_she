@@ -58,8 +58,8 @@ DONE with abstol 1-e4
 
 95_Am: TODO: OK-Reasonable. Take Am_5f_origin?
 96_Cm: OK: Take my version. Harder but more accurate.
-97_Bk: Now excellent agreement with new AE results for NM configuration
-       Take Bk_5f_new.psp8
+97_Bk: OK Now excellent agreement with new AE results for NM configuration
+
 98_Cf: OK when using AE with magnetic configuration
 99_Es: Now using AE NOMAG as reference. Kind of Ok with df 0.51 for Es_5f_origin 
 100_Fm: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
