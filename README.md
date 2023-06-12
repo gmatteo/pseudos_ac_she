@@ -71,7 +71,8 @@ DONE with abstol 1-e4
 
 Begin_SHE
 104_Rf: OK: Take Rf.psp8 (1.47 vs 2.58 from origin)
-105_Db: OK: Take Db.psp8
+105_Db: ALMOST-OK: Take Db.psp8
+        Running Db_new
 106_Sg: OK: Take Sg_origin.psp8
 107_Bh: OK: Take my version (1.50 vs 3.89 from origin)
 108_Hs: OK: Take my Hs.psp8: (0.65 vs 2.82 from origin)  Perhaps, one can accelerate a bit the convergence.
