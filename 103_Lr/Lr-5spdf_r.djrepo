@@ -1,0 +1,50 @@
+{
+"basename": "Lr-5spdf_r.psp8",
+"ecuts": [
+85.0,
+87.0,
+89.0,
+91.0,
+93.0,
+95.0,
+97.0,
+99.0,
+101.0,
+103.0,
+105.0,
+113.0,
+115.0
+],
+"md5": "b88738d3290ab1b591451ae7f1e10db3",
+"ppgen_hints": {
+"high": {
+"ecut": 95.0,
+"pawecutdg": 95.0
+},
+"low": {
+"ecut": 87.0,
+"pawecutdg": 87.0
+},
+"normal": {
+"ecut": 91.0,
+"pawecutdg": 91.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "Lr",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}

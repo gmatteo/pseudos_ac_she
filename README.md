@@ -66,6 +66,7 @@ DONE with abstol 1-e4
 100_Fm: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
 101_Md: FIXME-ACCEPT AE EOS now looks OK, pseudos is decent with df ~ 1.9
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
+        Running No-5f_new
 103_Lr: OK: Take: my Lr_5f, smoother convergece
 
 Begin_SHE
