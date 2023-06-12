@@ -1,0 +1,50 @@
+{
+"basename": "Mt-5spdf_r.psp8",
+"ecuts": [
+100.0,
+102.0,
+104.0,
+106.0,
+108.0,
+110.0,
+112.0,
+114.0,
+116.0,
+118.0,
+120.0,
+128.0,
+130.0
+],
+"md5": "3e48e96ff737dbaaf4f37da23eb5e789",
+"ppgen_hints": {
+"high": {
+"ecut": 110.0,
+"pawecutdg": 110.0
+},
+"low": {
+"ecut": 103.0,
+"pawecutdg": 103.0
+},
+"normal": {
+"ecut": 107.0,
+"pawecutdg": 107.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "Mt",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}
