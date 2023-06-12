@@ -62,6 +62,7 @@ DONE with abstol 1-e4
 
 98_Cf: OK when using AE with magnetic configuration
 99_Es: Now using AE NOMAG as reference. Kind of Ok with df 0.51 for Es_5f_origin 
+       TODO: Running new Es_5f
 100_Fm: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
 101_Md: FIXME-ACCEPT AE EOS now looks OK, pseudos is decent with df ~ 1.9
 102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
