@@ -36,11 +36,11 @@ DONE with abstol 1-e4
 2) Use nsppol 2 with spinat 6. Usually 8 for all SHEs
 
 ```
-85_At: OK: Use At-5spd. May add At-5d version
-87_Fr: OK: Fr-5spd.psp8 
-88_Ra: TODO: OK-Reasonable: Ra_origin ?
+85_At: OK: At-5spd. May add At-5d version
+87_Fr: OK: Fr-5spd
+88_Ra: TODO: OK-Reasonable: Ra_origin without f?
 89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
-90_Th: OK: Take my version. Much better
+90_Th: OK: 
 
 # THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df.
@@ -56,7 +56,7 @@ DONE with abstol 1-e4
 94_Pu: OK: Take my version. Much better.
 # END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
-95_Am: TODO: OK-Reasonable. Take Am_5f_origin?
+95_Am: TODO: OK-Reasonable. 
 96_Cm: OK: Take my version. Harder but more accurate.
 97_Bk: OK Now excellent agreement with new AE results for NM configuration
 
@@ -177,6 +177,7 @@ Smearing Fermi-Dirac	0.001 Ha
 K-points	15 x 15 x 15
 
 ### OXIDES COMPUTATIONAL DETAILS
+
 ------- WE DO NOT USE THESE RESULTS FOR THE PAPER  #CT
 Spin Orbit Coupling no
 Spin Polarization   collinear (Z)
@@ -184,6 +185,7 @@ Smearing Fermi-Dirac    0.05 Ha
 K-points    5 x 5 x 5
 
 ### DATA FOR PAPERS
+
 1) Delta-Gauge (meV) (FCC system)
 2) Lattice percentage difference between AE and PW (FCC system)
 3) Plot of hints
