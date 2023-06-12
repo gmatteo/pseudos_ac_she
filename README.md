@@ -37,8 +37,8 @@ DONE with abstol 1-e4
 
 ```
 85_At: OK: Use At-5spd. May add At-d version
-87_Fr: OK: Fr.psp8
-88_Ra: OK-Reasonable: Ra_origin ?
+87_Fr: OK: Fr-5spd.psp8 
+88_Ra: TODO: OK-Reasonable: Ra_origin ?
 89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Take my version. Much better
 
