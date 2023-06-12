@@ -1,0 +1,50 @@
+{
+"basename": "Uue_new_new.psp8",
+"ecuts": [
+46.0,
+48.0,
+50.0,
+52.0,
+54.0,
+56.0,
+58.0,
+60.0,
+62.0,
+64.0,
+66.0,
+74.0,
+76.0
+],
+"md5": "f4326c0a5112daa43f0b42a63ff7d486",
+"ppgen_hints": {
+"high": {
+"ecut": 56.0,
+"pawecutdg": 56.0
+},
+"low": {
+"ecut": 50.0,
+"pawecutdg": 50.0
+},
+"normal": {
+"ecut": 53.0,
+"pawecutdg": 53.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "Uue",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}
