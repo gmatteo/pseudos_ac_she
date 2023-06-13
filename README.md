@@ -87,9 +87,8 @@ Begin_SHE
         NB: AE points deviate from the fit
 
 112_Cn: TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
-113_Nh: OK: Delta=1.18, Delta'=4.84
+113_Nh: OK: Delta=0.43, Delta'=1.10
         NB: Using new AE NOMAG as reference. Nh_origin.psp8 gives df 1.18
-
 114_Fl: OK: Delta=0.43, Delta'=1.10
         NB: Take my version with f-projector (0.43 vs 1.25)
 115_Mc: OK: Delta=1.56, Delta'=2.78

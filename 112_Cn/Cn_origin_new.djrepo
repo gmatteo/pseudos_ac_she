@@ -1,0 +1,50 @@
+{
+"basename": "Cn_origin_new.psp8",
+"ecuts": [
+122.0,
+124.0,
+126.0,
+128.0,
+130.0,
+132.0,
+134.0,
+136.0,
+138.0,
+140.0,
+142.0,
+150.0,
+152.0
+],
+"md5": "885ffe77b441d59c15eaa39f1c35eafb",
+"ppgen_hints": {
+"high": {
+"ecut": 132.0,
+"pawecutdg": 132.0
+},
+"low": {
+"ecut": 123.0,
+"pawecutdg": 123.0
+},
+"normal": {
+"ecut": 128.0,
+"pawecutdg": 128.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "Cn",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}
