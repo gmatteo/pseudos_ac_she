@@ -66,7 +66,8 @@ DONE with abstol 1-e4
        NB Had to use AE results with magnetic configuration
 99_Es: OK: Delta=0.51, Delta'=2.20
        NB: using AE NOMAG as reference. 
-100_Fm: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
+100_Fm: TODO: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
+        RUNNING: Fm-5spdf-6spd-7s_new.in
 101_Md: OK Delta=1.81, Delta'=12.25
         NB: I tried different version, this is quite hard (106 Ha) but it's the best I managed 
         to get in terms of delta and convergence profile.
@@ -86,7 +87,6 @@ Begin_SHE
 110_Ds: OK: Delta=0.97, Delta'=0.65
 111_Rg: OK: Delta=1.87, Delta'=2.16
         NB: AE points deviate from the fit
-
 112_Cn: TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
 113_Nh: OK: Delta=0.43, Delta'=1.10
         NB: Using new AE NOMAG as reference. Nh_origin.psp8 gives df 1.18
