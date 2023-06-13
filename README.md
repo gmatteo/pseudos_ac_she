@@ -76,7 +76,7 @@ DONE with abstol 1-e4
 Begin_SHE
 =========
 104_Rf: OK: Delta=1.47, Delta'=1.98
-        NB: AE EOS is not smooth.
+        NB: AE points deviate from the fit
 105_Db: OK: Delta=3.43, Delta'=2.8
 106_Sg: OK: Delta=1.41, Delta'=0.98
 107_Bh: OK: Delta=1.49, Delta'=0.75
@@ -84,14 +84,19 @@ Begin_SHE
 109_Mt: OK: Delta=2.80, Delta'=1.44
 110_Ds: OK: Delta=0.97, Delta'=0.65
 111_Rg: OK: Delta=1.87, Delta'=2.16
-        NB: AE EOS is not smooth.
+        NB: AE points deviate from the fit
 
 112_Cn: OK-TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
 113_Nh: AE EOS looks ok. Using new AE NOMAG as reference. Nh_origin.psp8 gives df 1.18
 
-114_Fl: OK: Take my Fl.psp8 with f-projector (0.42 vs 1.25)
-115_Mc: OK: Take Mc_new.psp8 with f-projector (1.56 vs 3.08 origin)
+114_Fl: OK: Delta=0.43, Delta'=1.10
+        NB: Take my version with f-projector (0.43 vs 1.25)
+115_Mc: OK: Delta=1.56, Delta'=2.78
+        NB: Take my version with f-projector (1.56 vs 3.08 origin)
+        NB: AE points deviate from the fit
+
 116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
+        RUNNING Lv_new
 117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
         tested with nsppol 2 and spinat (0 0 8). No significant change
         Now using AE NOMAG as reference but best df ~ 2.7
