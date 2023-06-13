@@ -67,8 +67,9 @@ DONE with abstol 1-e4
 99_Es: OK: Delta=0.51, Delta'=2.20
        NB: using AE NOMAG as reference. 
 100_Fm: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
-101_Md: FIXME-ACCEPT AE EOS now looks OK, pseudos is decent with df ~ 1.9
-        RUNNING: Md_5f_gs_new_new
+101_Md: OK Delta=1.81, Delta'=12.25
+        NB: I tried different version, this is quite hard (106 Ha) but it's the best I managed 
+        to get in terms of delta and convergence profile.
 102_No: OK: Delta=0.03, Delta'=0.14
 103_Lr: OK: Delta=0.43, Delta'=1.03
 
