@@ -43,17 +43,17 @@ DONE with abstol 1-e4
 90_Th: OK: Delta=0.6, Delta'=0.96.
 
 # THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
-91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df.
-       Tested with nsppol 2 and spinat (0 0 8). No significant change
-       Now using new AE NOMAG as reference but results do not change.
-       Running _new_new with 0.1 e in 5f. Small improvemente. Tried other configurations.
+    91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df.
+           Tested with nsppol 2 and spinat (0 0 8). No significant change
+           Now using new AE NOMAG as reference but results do not change.
+           Running _new_new with 0.1 e in 5f. Small improvemente. Tried other configurations.
 
-92_U:  FIXME: AE EOS looks OK but best pseudo has 6.63 df.
-       Now using AE NOMAG as reference but results do not change.
-93_Np: FIXME: AE EOS looks OK but best pseudo has 33.67 df
-       Now using new AE NOMAG as reference but results do not change. PS EOS significantly overestimates V0.
-       RUNNING: Np_5f_new with 1f electron promoted to 6d
-94_Pu: OK: Take my version. Much better.
+    92_U:  FIXME: AE EOS looks OK but best pseudo has 6.63 df.
+           Now using AE NOMAG as reference but results do not change.
+    93_Np: FIXME: AE EOS looks OK but best pseudo has 33.67 df
+           Now using new AE NOMAG as reference but results do not change. PS EOS significantly overestimates V0.
+           RUNNING: Np_5f_new with 1f electron promoted to 6d
+    94_Pu: OK: Take my version. Much better.
 # END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
 95_Am: OK Delta=0.14, Delta'=0.48
@@ -93,20 +93,19 @@ Begin_SHE
 115_Mc: OK: Delta=1.56, Delta'=2.78
         NB: Take my version with f-projector (1.56 vs 3.08 origin)
         NB: AE points deviate from the fit
-
 116_Lv: OK-REASONABLE: Delta=2.28, Delta'=3.75
 
-=========
-THESE PSEUDOS ARE EXCLUDED
-=========
-117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
-        tested with nsppol 2 and spinat (0 0 8). No significant change
-        Now using AE NOMAG as reference but best df ~ 2.7
-        RERUNNING WITH NEW DATA
-118_Og: FIXME: Can't manage to get decent pseudo for this!
-        running with nsppol 2 and spinat (0 0 8). No significant change
-        Now using AE NOMAG as reference, best df ~ 0.84 but PS EOS is completely off (small b0 here)
-        RERUNNING WITH NEW DATA
+=========================================
+THESE PSEUDOS ARE EXCLUDED FROM THE PAPER
+=========================================
+    117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
+            tested with nsppol 2 and spinat (0 0 8). No significant change
+            Now using AE NOMAG as reference but best df ~ 2.7
+            RERUNNING WITH NEW DATA
+    118_Og: FIXME: Can't manage to get decent pseudo for this!
+            running with nsppol 2 and spinat (0 0 8). No significant change
+            Now using AE NOMAG as reference, best df ~ 0.84 but PS EOS is completely off (small b0 here)
+            RERUNNING WITH NEW DATA
 
 119_Uue: FIXME: PROBLEMATIC
 120_Ubn: OK: Delta=0.29, Delta'=2.29
