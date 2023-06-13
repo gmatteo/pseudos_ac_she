@@ -38,7 +38,7 @@ DONE with abstol 1-e4
 ```
 85_At: OK: Delta=0.5, Delta'=1.58
 87_Fr: OK: Delta=0.13, Delta'=1.80
-88_Ra: TODO: OK-Reasonable: Ra_origin without f?
+88_Ra: TODO: OK-REASONABLE: Ra_origin without f?
 89_Ac: OK: Delta=0.77, Delta'=2.20. my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Delta=0.6, Delta'=0.96.
 
@@ -56,29 +56,39 @@ DONE with abstol 1-e4
 94_Pu: OK: Take my version. Much better.
 # END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
-95_Am: TODO: OK-Reasonable. 
-96_Cm: OK for SR, very bad if FC wo SOC
-97_Bk: OK Now excellent agreement with new AE results for NM configuration
-98_Cf: OK when using AE with magnetic configuration
-99_Es: Now using AE NOMAG as reference. Kind of Ok with df 0.51 for Es_5f_origin 
-       TODO: Running new Es_5f
+95_Am: OK-REASONABLE. 
+       RUNNING Am-5spdf_new
+
+96_Cm: OK-REASONABLE for SR, very bad if FC wo SOC
+
+97_Bk: OK: Delta=0.24, Delta'=0.43
+       NB: excellent agreement with new AE results if NM configuration is used
+98_Cf: OK: Delta=0.14, Delta'=0.48
+       NB Had to use AE results with magnetic configuration
+99_Es: OK: Delta=0.51, Delta'=2.20
+       NB: using AE NOMAG as reference. 
 100_Fm: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
 101_Md: FIXME-ACCEPT AE EOS now looks OK, pseudos is decent with df ~ 1.9
-102_No: OK
-103_Lr: OK: Take: my Lr_5f, smoother convergece
+102_No: OK: Delta=0.03, Delta'=0.14
+103_Lr: OK: Delta=0.43, Delta'=1.03
 
+=========
 Begin_SHE
-104_Rf: OK: Take Rf.psp8 (1.47 vs 2.58 from origin)
-105_Db: ALMOST-OK: Take Db.psp8
-        Running Db_new
-106_Sg: OK: Take Sg_origin.psp8
-107_Bh: OK: Take my version (1.50 vs 3.89 from origin)
-108_Hs: OK: Take my Hs.psp8: (0.65 vs 2.82 from origin)  Perhaps, one can accelerate a bit the convergence.
-109_Mt: OK: Take my Mt.psp8 (2.8 vs 4.99) and improved convergence rate.
-110_Ds: OK: Take my version with smoother MCC and 0.93 vs 2.79 from origin
-111_Rg: OK: Take my Rg. Much smoother
+=========
+104_Rf: OK: Delta=1.47, Delta'=1.98
+        NB: AE EOS is not smooth.
+105_Db: OK: Delta=3.43, Delta'=2.8
+106_Sg: OK: Delta=1.41, Delta'=0.98
+107_Bh: OK: Delta=1.49, Delta'=0.75
+108_Hs: OK: Delta=0.65, Delta'=0.31
+109_Mt: OK: Delta=2.80, Delta'=1.44
+110_Ds: OK: Delta=0.97, Delta'=0.65
+111_Rg: OK: Delta=1.87, Delta'=2.16
+        NB: AE EOS is not smooth.
+
 112_Cn: OK-TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
 113_Nh: AE EOS looks ok. Using new AE NOMAG as reference. Nh_origin.psp8 gives df 1.18
+
 114_Fl: OK: Take my Fl.psp8 with f-projector (0.42 vs 1.25)
 115_Mc: OK: Take Mc_new.psp8 with f-projector (1.56 vs 3.08 origin)
 116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
