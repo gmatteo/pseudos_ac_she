@@ -94,8 +94,11 @@ Begin_SHE
         NB: Take my version with f-projector (1.56 vs 3.08 origin)
         NB: AE points deviate from the fit
 
-116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
-        RUNNING Lv_new No improvement
+116_Lv: OK-REASONABLE: Delta=2.28, Delta'=3.75
+
+=========
+THESE PSEUDOS ARE EXCLUDED
+=========
 117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
         tested with nsppol 2 and spinat (0 0 8). No significant change
         Now using AE NOMAG as reference but best df ~ 2.7
