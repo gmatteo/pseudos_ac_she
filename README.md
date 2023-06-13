@@ -36,11 +36,11 @@ DONE with abstol 1-e4
 2) Use nsppol 2 with spinat 6. Usually 8 for all SHEs
 
 ```
-85_At: OK: At-5spd. May add At-5d version
-87_Fr: OK: Fr-5spd
+85_At: OK: Delta=0.5, Delta'=1.58
+87_Fr: OK: Delta=0.13, Delta'=1.80
 88_Ra: TODO: OK-Reasonable: Ra_origin without f?
-89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
-90_Th: OK: 
+89_Ac: OK: Delta=0.77, Delta'=2.20. my version with projector for empty f makes a huge difference wrt origin.
+90_Th: OK: Delta=0.6, Delta'=0.96.
 
 # THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df.
@@ -64,8 +64,7 @@ DONE with abstol 1-e4
        TODO: Running new Es_5f
 100_Fm: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
 101_Md: FIXME-ACCEPT AE EOS now looks OK, pseudos is decent with df ~ 1.9
-102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
-        Running No-5f_new (good compromise)
+102_No: OK
 103_Lr: OK: Take: my Lr_5f, smoother convergece
 
 Begin_SHE
