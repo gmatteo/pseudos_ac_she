@@ -57,9 +57,10 @@ DONE with abstol 1-e4
 # END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
 95_Am: OK-REASONABLE. 
-       RUNNING Am-5spdf_new
+       RUNNING Am-5spdf_new. Much better if smaller core radii.
 
 96_Cm: OK-REASONABLE for SR, very bad if FC wo SOC
+       RUNNING Cm-5spdf_new.
 
 97_Bk: OK: Delta=0.24, Delta'=0.43
        NB: excellent agreement with new AE results if NM configuration is used
