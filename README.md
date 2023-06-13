@@ -56,12 +56,10 @@ DONE with abstol 1-e4
 94_Pu: OK: Take my version. Much better.
 # END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
-95_Am: OK-REASONABLE. 
-       RUNNING Am-5spdf_new. Much better if smaller core radii.
-
-96_Cm: OK-REASONABLE for SR, very bad if FC wo SOC
-       RUNNING Cm-5spdf_new.
-
+95_Am: OK Delta=0.14, Delta'=0.48
+       Much better if smaller core radii (FR is problematic to generate)
+96_Cm: OK-REASONABLE: Delta=1.27, Delta'=3.61
+       NB: very bad if FR wo SOC
 97_Bk: OK: Delta=0.24, Delta'=0.43
        NB: excellent agreement with new AE results if NM configuration is used
 98_Cf: OK: Delta=0.14, Delta'=0.48
@@ -87,8 +85,8 @@ Begin_SHE
 111_Rg: OK: Delta=1.87, Delta'=2.16
         NB: AE points deviate from the fit
 
-112_Cn: OK-TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
-113_Nh: AE EOS looks ok. Using new AE NOMAG as reference. Nh_origin.psp8 gives df 1.18
+112_Cn: TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
+113_Nh: TODO: AE EOS looks ok. Using new AE NOMAG as reference. Nh_origin.psp8 gives df 1.18
 
 114_Fl: OK: Delta=0.43, Delta'=1.10
         NB: Take my version with f-projector (0.43 vs 1.25)
@@ -97,7 +95,7 @@ Begin_SHE
         NB: AE points deviate from the fit
 
 116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
-        RUNNING Lv_new
+        RUNNING Lv_new No improvement
 117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
         tested with nsppol 2 and spinat (0 0 8). No significant change
         Now using AE NOMAG as reference but best df ~ 2.7
@@ -107,8 +105,8 @@ Begin_SHE
         Now using AE NOMAG as reference, best df ~ 0.84 but PS EOS is completely off (small b0 here)
         RERUNNING WITH NEW DATA
 
-119: TODO: Change pymatgen
-120: OK, take Ubn_new.in
+119_Uue: FIXME: PROBLEMATIC
+120_Ubn: OK: Delta=0.29, Delta'=2.29
 ```
 
 # AE results
