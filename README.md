@@ -39,6 +39,7 @@ DONE with abstol 1-e4
 85_At: OK: Delta=0.5, Delta'=1.58
 87_Fr: OK: Delta=0.13, Delta'=1.80
 88_Ra: TODO: OK-REASONABLE: Ra_origin without f?
+       Running Ra_new_new
 89_Ac: OK: Delta=0.77, Delta'=2.20. my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Delta=0.6, Delta'=0.96.
 
@@ -88,6 +89,7 @@ Begin_SHE
 111_Rg: OK: Delta=1.87, Delta'=2.16
         NB: AE points deviate from the fit
 112_Cn: TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
+        RUNNING Cn_origin_new (even worse)
 113_Nh: OK: Delta=0.43, Delta'=1.10
         NB: Using new AE NOMAG as reference. Nh_origin.psp8 gives df 1.18
 114_Fl: OK: Delta=0.43, Delta'=1.10
