@@ -48,13 +48,12 @@ DONE with abstol 1-e4
            Tested with nsppol 2 and spinat (0 0 8). No significant change
            Now using new AE NOMAG as reference but results do not change.
            Running _new_new with 0.1 e in 5f. Small improvemente. Tried other configurations.
-
     92_U:  FIXME: AE EOS looks OK but best pseudo has 6.63 df.
            Now using AE NOMAG as reference but results do not change.
     93_Np: FIXME: AE EOS looks OK but best pseudo has 33.67 df
            Now using new AE NOMAG as reference but results do not change. PS EOS significantly overestimates V0.
            RUNNING: Np_5f_new with 1f electron promoted to 6d
-    94_Pu: OK: Take my version. Much better.
+    94_Pu: OK Delta=0.41, Delta'=1.35
 # END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
 95_Am: OK Delta=0.14, Delta'=0.48

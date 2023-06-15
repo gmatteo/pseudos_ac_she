@@ -179,13 +179,6 @@ def dojo_table(options):
         if options.verbose: print(exc)
 
     try:
-        for acc in accuracies:
-            data[acc + "_abs_fcc"] = abs(data[acc + "_gbrv_fcc_a0_rel_err"])
-            data[acc + "_abs_bcc"] = abs(data[acc + "_gbrv_bcc_a0_rel_err"])
-    except KeyError:
-        cprint('no GBRV data', "magenta")
-
-    try:
         wrong = data[data["high_b1"] < 0]
         if not wrong.empty:
             cprint("WRONG".center(80, "*"), "red")
@@ -200,10 +193,10 @@ def dojo_table(options):
                  [acc + "_dfact_meV" for acc in accuracies]
                + [acc + "_dfactprime_meV" for acc in accuracies]
                + [acc + "_ecut_deltafactor" for acc in accuracies]
-               + [acc + "_gbrv_fcc_a0_rel_err" for acc in accuracies]
-               + [acc + "_gbrv_bcc_a0_rel_err" for acc in accuracies]
-               + [acc + "_abs_fcc" for acc in accuracies]
-               + [acc + "_abs_bcc" for acc in accuracies]
+               #+ [acc + "_gbrv_fcc_a0_rel_err" for acc in accuracies]
+               #+ [acc + "_gbrv_bcc_a0_rel_err" for acc in accuracies]
+               #+ [acc + "_abs_fcc" for acc in accuracies]
+               #+ [acc + "_abs_bcc" for acc in accuracies]
                + [acc + "_ecut_hint" for acc in accuracies]
                    ]
     except KeyError:
