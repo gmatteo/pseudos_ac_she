@@ -398,9 +398,9 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
     # Initialize the input
     inp = AbinitInput(structure, pseudos=pseudo)
 
-    if pseudo.symbol in ("Ra", "Fm", "Cn", "Ts", "Og"):
-        print(f"Setting mag to None for {pseudo.symbol=}")
-        mag = None
+    #if pseudo.symbol in ("Ra", "Fm", "Cn", "Ts", "Og"):
+    #    print(f"Setting mag to None for {pseudo.symbol=}")
+    #    mag = None
 
     if mag == 0.0:
         nsppol, spinat = 1, None

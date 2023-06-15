@@ -38,8 +38,9 @@ DONE with abstol 1-e4
 ```
 85_At: OK: Delta=0.5, Delta'=1.58
 87_Fr: OK: Delta=0.13, Delta'=1.80
-88_Ra: TODO: OK-REASONABLE: Ra_origin without f?
-       Running Ra_new_new
+88_Ra: OK: Delta=0.48, Delta'=2.74
+       NB: Ra-5spd does not include extra projector for f unlike _Ra_with_f.in
+       I believe that _Ra_with_f.in should perform much better in oxides although the df is 0.82
 89_Ac: OK: Delta=0.77, Delta'=2.20. my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Delta=0.6, Delta'=0.96.
 
