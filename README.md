@@ -36,61 +36,83 @@ DONE with abstol 1-e4
 2) Use nsppol 2 with spinat 6. Usually 8 for all SHEs
 
 ```
-85_At: OK: At-spd. May add At-d version
-87_Fr: OK: Take Fr.psp8. Smoother convergence 
-88_Ra: OK-Reasonable: Ra_origin ?
+85_At: OK: Delta=0.5, Delta'=1.58
+87_Fr: OK: Delta=0.13, Delta'=1.80
+88_Ra: OK: Delta=0.48, Delta'=2.74
+       NB: Ra-5spd does not include extra projector for f unlike _Ra_with_f.in
+       I believe that _Ra_with_f.in should perform much better in oxides although the df is 0.82
+89_Ac: OK: Delta=0.77, Delta'=2.20. my version with projector for empty f makes a huge difference wrt origin.
+90_Th: OK: Delta=0.6, Delta'=0.96.
 
-89_Ac: OK: my version with projector for empty f makes a huge difference wrt origin.
-90_Th: OK: Take my version. Much better
-91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df.
-       Tested with nsppol 2 and spinat (0 0 8). No significant change
-       Now using new AE NOMAG as reference but results do not change.
-       Running _new_new with 0.1 e in 5f. Small improvemente. Tried other configurations.
-92_U:  FIXME: AE EOS looks OK but best pseudo has 6.63 df.
-       Now using AE NOMAG as reference but results do not change.
-93_Np: FIXME: AE EOS looks OK but best pseudo has 33.67 df
-       Now using new AE NOMAG as reference but results do not change. PS EOS significantly overestimates V0.
-       RUNNING: Np_5f_new with 1f electron promoted to 6d
-94_Pu: OK: Take my version. Much better.
-95_Am: OK-Reasonable. Take Am_5f_origin?
-96_Cm: OK: Take my version. Harder but more accurate.
-97_Bk: FIXME AE EOS looks suspicious. 
-       TODO: New AE results are needed.
-98_Cf: OK: take Cf_5f.psp8, slightly better than Cf_origin_5f.psp8
-       Now using new AE NOMAG as reference but MAG VERSION GAVE BETTER RESULTS
-       RERUNNING WITH NEW DATA (NO IMPROVEMENT)
-99_Es: ITWAS_FIXME: Now using AE NOMAG as reference. Kind of Ok with df 0.51
-100_Fm: XXX FIXME: AE EOS now looks good but pseudos are not!
-       RERUNNING WITH NEW DATA (NO IMPROVEMENT)
-101_Md: FIXME: AE EOS is suspicious and should be recomputed. df 1.41
-        ITWAS_FIXME: Now the AE EOS is slightly better (a bit smoother but jumps are still visible) df 0.66.  
-102_No: OK: All pseudos are good, should find compromise btw accuracy and convergence ratio
-103_Lr: OK: Take: my Lr_5f, smoother convergece
+# THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
+    91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df.
+           Tested with nsppol 2 and spinat (0 0 8). No significant change
+           Now using new AE NOMAG as reference but results do not change.
+           Running _new_new with 0.1 e in 5f. Small improvemente. Tried other configurations.
+    92_U:  FIXME: AE EOS looks OK but best pseudo has 6.63 df.
+           Now using AE NOMAG as reference but results do not change.
+    93_Np: FIXME: AE EOS looks OK but best pseudo has 33.67 df
+           Now using new AE NOMAG as reference but results do not change. PS EOS significantly overestimates V0.
+           RUNNING: Np_5f_new with 1f electron promoted to 6d
+    94_Pu: OK Delta=0.41, Delta'=1.35
+# END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
+95_Am: OK Delta=0.14, Delta'=0.48
+       Much better if smaller core radii (FR is problematic to generate)
+96_Cm: OK-REASONABLE: Delta=1.27, Delta'=3.61
+       NB: very bad if FR wo SOC
+97_Bk: OK: Delta=0.24, Delta'=0.43
+       NB: excellent agreement with new AE results if NM configuration is used
+98_Cf: OK: Delta=0.14, Delta'=0.48
+       NB Had to use AE results with magnetic configuration
+99_Es: OK: Delta=0.51, Delta'=2.20
+       NB: using AE NOMAG as reference. 
+100_Fm: TODO: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
+        RUNNING: Fm-5spdf-6spd-7s_new.in
+101_Md: OK Delta=1.81, Delta'=12.25
+        NB: I tried different version, this is quite hard (106 Ha) but it's the best I managed 
+        to get in terms of delta and convergence profile.
+102_No: OK: Delta=0.03, Delta'=0.14
+103_Lr: OK: Delta=0.43, Delta'=1.03
+
+=========
 Begin_SHE
-104_Rf: OK: Take Rf.psp8 (1.47 vs 2.58 from origin)
-105_Db: OK: Take Db.psp8
-106_Sg: OK: Take Sg_origin.psp8
-107_Bh: OK: Take my version (1.50 vs 3.89 from origin)
-108_Hs: OK: Take my Hs.psp8: (0.65 vs 2.82 from origin)  Perhaps, one can accelerate a bit the convergence.
-109_Mt: OK: Take my Mt.psp8 (2.8 vs 4.99) and improve convergence rate.
-110_Ds: OK: Take my version with smoother MCC and 0.93 vs 2.79 from origin
-111_Rg: OK: Take my Rg. Much smoother
-112_Cn: OK-TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
-113_Nh: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
-        Tested with nsppol 2 and spinat (0 0 8). No significant change
-        Now using AE NOMAG as reference but df ~ 1.2
-114_Fl: OK: Take my Fl.psp8 with f-projector (0.42 vs 1.25)
-115_Mc: OK: Take Mc_new.psp8 with f-projector (1.56 vs 3.08 origin)
-116_Lv: OK: Take my version (2.27 vs 3.24 from origin)
-117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
-        tested with nsppol 2 and spinat (0 0 8). No significant change
-        Now using AE NOMAG as reference but best df ~ 2.7
-        RERUNNING WITH NEW DATA
-118_Og: FIXME: Can't manage to get decent pseudo for this!
-        running with nsppol 2 and spinat (0 0 8). No significant change
-        Now using AE NOMAG as reference, best df ~ 0.84 but PS EOS is completely off (small b0 here)
-        RERUNNING WITH NEW DATA
+=========
+104_Rf: OK: Delta=1.47, Delta'=1.98
+        NB: AE points deviate from the fit
+105_Db: OK: Delta=3.43, Delta'=2.8
+106_Sg: OK: Delta=1.41, Delta'=0.98
+107_Bh: OK: Delta=1.49, Delta'=0.75
+108_Hs: OK: Delta=0.65, Delta'=0.31
+109_Mt: OK: Delta=2.80, Delta'=1.44
+110_Ds: OK: Delta=0.97, Delta'=0.65
+111_Rg: OK: Delta=1.87, Delta'=2.16
+        NB: AE points deviate from the fit
+112_Cn: TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
+        RUNNING Cn_origin_new (even worse)
+113_Nh: OK: Delta=0.43, Delta'=1.10
+        NB: Using new AE NOMAG as reference. Nh_origin.psp8 gives df 1.18
+114_Fl: OK: Delta=0.43, Delta'=1.10
+        NB: Take my version with f-projector (0.43 vs 1.25)
+115_Mc: OK: Delta=1.56, Delta'=2.78
+        NB: Take my version with f-projector (1.56 vs 3.08 origin)
+        NB: AE points deviate from the fit
+116_Lv: OK-REASONABLE: Delta=2.28, Delta'=3.75
+
+=========================================
+THESE PSEUDOS ARE EXCLUDED FROM THE PAPER
+=========================================
+    117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
+            tested with nsppol 2 and spinat (0 0 8). No significant change
+            Now using AE NOMAG as reference but best df ~ 2.7
+            RERUNNING WITH NEW DATA
+    118_Og: FIXME: Can't manage to get decent pseudo for this!
+            running with nsppol 2 and spinat (0 0 8). No significant change
+            Now using AE NOMAG as reference, best df ~ 0.84 but PS EOS is completely off (small b0 here)
+            RERUNNING WITH NEW DATA
+
+119_Uue: FIXME: PROBLEMATIC
+120_Ubn: OK: Delta=0.29, Delta'=2.29
 ```
 
 # AE results
@@ -173,6 +195,7 @@ Smearing Fermi-Dirac	0.001 Ha
 K-points	15 x 15 x 15
 
 ### OXIDES COMPUTATIONAL DETAILS
+
 ------- WE DO NOT USE THESE RESULTS FOR THE PAPER  #CT
 Spin Orbit Coupling no
 Spin Polarization   collinear (Z)
@@ -180,6 +203,7 @@ Smearing Fermi-Dirac    0.05 Ha
 K-points    5 x 5 x 5
 
 ### DATA FOR PAPERS
+
 1) Delta-Gauge (meV) (FCC system)
 2) Lattice percentage difference between AE and PW (FCC system)
 3) Plot of hints

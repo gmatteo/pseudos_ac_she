@@ -17,7 +17,12 @@ from monty.termcolor import cprint
 from monty.functools import prof_main
 from monty.os.path import find_exts
 from tabulate import tabulate
-from abipy.tools.plotting import MplExpose, PanelExpose, get_ax_fig_plt, get_axarray_fig_plt
+from abipy.tools.plotting import get_ax_fig_plt, get_axarray_fig_plt
+try:
+    from abipy.tools.plotting import MplExpose as MplExposer, PanelExpose as PanelExposer
+except ImportError:
+    from abipy.tools.plotting import MplExposer, PanelExposer
+
 
 from pseudo_dojo.core.pseudos import dojopseudo_from_file, DojoTable
 from tools import DfEcutFlow, MyDojoReport
@@ -80,22 +85,28 @@ def _plot_from_djrepos(djrepo_list, pseudos, what):
 
 
 def dojo_plot(options):
+
+    djrepo_list = []
     for pseudo in options.pseudos:
         path = pseudo.filepath.replace(".psp8", ".djrepo")
         djrepo = MyDojoReport.from_file(path)
+        djrepo_list.append(djrepo)
 
         #df = djrepo.get_pdframe("deltafactor")
         #df = df[["ecut", "dfact_meV", "dfactprime_meV", "v0", "b0_GPa", "b1"]]
         #last_deltaf = df["dfact_meV"].values[-1]
         #last_delta_prime = df["dfactprime_meV"].values[-1]
 
-        #with MplExpose() as e:
-        with PanelExpose(title=path) as e:
-            #e(djrepo.plot_ae_eos(text=f"Delta = {last_deltaf: .2f}, Delta' = {last_delta_prime: .2f}", show=False))
+    #with MplExposer() as e:
+    with PanelExposer(title=path) as e:
+        for djrepo in djrepo_list:
             e(_plot_ae_eos_from_djrepo(djrepo))
+        for djrepo in djrepo_list:
             e(djrepo.plot_etotal_vs_ecut(show=False))
+        for djrepo in djrepo_list:
             e(djrepo.plot_deltafactor_convergence(xc=pseudo.xc, what=("-dfact_meV", "-dfactprime_meV"), show=False))
-            #djrepo.plot_deltafactor_eos()
+        #e(djrepo.plot_ae_eos(text=f"Delta = {last_deltaf: .2f}, Delta' = {last_delta_prime: .2f}", show=False))
+        #djrepo.plot_deltafactor_eos()
 
     return 0
 
@@ -111,8 +122,8 @@ def dojo_compare(options):
         path = pseudo.filepath.replace(".psp8", ".djrepo")
         djrepo_list.append(MyDojoReport.from_file(path))
 
-    #with MplExpose() as e:
-    with PanelExpose(title="Compare Pseudos") as e:
+    #with MplExposer() as e:
+    with PanelExposer(title="Compare Pseudos") as e:
         e(pseudos.dojo_compare(what=options.what_plot, show=False)[0])
         e(_plot_from_djrepos(djrepo_list, options.pseudos, "eos"))
         e(_plot_from_djrepos(djrepo_list, options.pseudos, "conv"))
@@ -168,13 +179,6 @@ def dojo_table(options):
         if options.verbose: print(exc)
 
     try:
-        for acc in accuracies:
-            data[acc + "_abs_fcc"] = abs(data[acc + "_gbrv_fcc_a0_rel_err"])
-            data[acc + "_abs_bcc"] = abs(data[acc + "_gbrv_bcc_a0_rel_err"])
-    except KeyError:
-        cprint('no GBRV data', "magenta")
-
-    try:
         wrong = data[data["high_b1"] < 0]
         if not wrong.empty:
             cprint("WRONG".center(80, "*"), "red")
@@ -189,10 +193,10 @@ def dojo_table(options):
                  [acc + "_dfact_meV" for acc in accuracies]
                + [acc + "_dfactprime_meV" for acc in accuracies]
                + [acc + "_ecut_deltafactor" for acc in accuracies]
-               + [acc + "_gbrv_fcc_a0_rel_err" for acc in accuracies]
-               + [acc + "_gbrv_bcc_a0_rel_err" for acc in accuracies]
-               + [acc + "_abs_fcc" for acc in accuracies]
-               + [acc + "_abs_bcc" for acc in accuracies]
+               #+ [acc + "_gbrv_fcc_a0_rel_err" for acc in accuracies]
+               #+ [acc + "_gbrv_bcc_a0_rel_err" for acc in accuracies]
+               #+ [acc + "_abs_fcc" for acc in accuracies]
+               #+ [acc + "_abs_bcc" for acc in accuracies]
                + [acc + "_ecut_hint" for acc in accuracies]
                    ]
     except KeyError:
@@ -423,6 +427,7 @@ Usage example:
                 pseudos.append(pseudo)
 
             except Exception as exc:
+                print(exc)
                 cprint("[%s] Python exception. This pseudo will be ignored" % p, "red")
                 if options.verbose: print(exc)
 

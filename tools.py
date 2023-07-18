@@ -124,7 +124,8 @@ class AeDfZ(dict):
              "91_ae.txt",
              "92_ae.txt",
              "93_ae.txt",
-             "98_ae.txt",
+             #"98_ae.txt",
+             "98_ae_NM.txt",  # Use magnetic config for 98_Cf
              "113_ae.txt",
              "117_ae.txt",
              "118_ae.txt",
@@ -392,9 +393,14 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
     coords = [[0, 0, 0]]
 
     structure = Structure(lattice, species=[pseudo.symbol], coords=coords)
+    #print(structure.volue, float(a_ang) **3 * 2**(-1/2))
 
     # Initialize the input
     inp = AbinitInput(structure, pseudos=pseudo)
+
+    #if pseudo.symbol in ("Ra", "Fm", "Cn", "Ts", "Og"):
+    #    print(f"Setting mag to None for {pseudo.symbol=}")
+    #    mag = None
 
     if mag == 0.0:
         nsppol, spinat = 1, None
@@ -413,6 +419,12 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
     nband = inp.num_valence_electrons // 2
     nband = max(np.ceil(nband * 1.2), nband + 10)
 
+    ngkpt = [15, 15, 15]
+    #if pseudo.symbol in ("Bk", "Fm", "Md", "Nh"):
+    #    # Calculations done by BANDS developers with densified sampling.
+    #    ngkpt = [17, 17, 17]
+    #    print("Using densified ngkpt", ngkpt, "for symbol:", pseudo.symbol)
+
     inp.set_vars(
         paral_kgb=0,
         #rmm_diis=1,
@@ -428,8 +440,7 @@ def make_input_unary(pseudo, a_ang, mag, do_relax=False, ecut=None):
         nsppol=nsppol,
         spinat=spinat,
         # k-point grid
-        #ngkpt=[1, 1, 1], # FIXME
-        ngkpt=[15, 15, 15],
+        ngkpt=ngkpt,
         nshiftk=1,
         shiftk=[0.0, 0.0, 0.0],
         prtwf=0,
@@ -612,7 +623,14 @@ def check_data(z, data, verbose=0):
             1,  1,  0]) / np.sqrt(2.0)
         lattice = Lattice(lattice)
 
+        # V = l**3 2 * (-1/2)
+        #print(lattice.volume, float(a_ang) **3 * 2**(-1/2))
+        #print(lattice.volume * np.sqrt(2),  float(a_ang) ** 3)
+        #print(lattice.volume ** (1/3) * (2 ** (1/6)), float(a_ang))
+        #print(float(a_ang) / lattice.volume ** 1/3)
+
         adiff = abs(vol - lattice.volume)
+        print("adiff:", adiff)
         if adiff > tol:
             print(f"Inexact a/vol for z: {z}: volume from file:", vol, ", volume from a", lattice.volume, "adiff", adiff)
 
@@ -620,5 +638,5 @@ if __name__ == "__main__":
     from pprint import pprint, pformat
     aedf_z = get_aedf_z()
     for z, data in aedf_z.items():
-        #print(z, pformat(data))
+        print("Checking z:", z) #, pformat(data))
         check_data(z, data, verbose=0)
