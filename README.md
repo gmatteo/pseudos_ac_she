@@ -47,14 +47,9 @@ DONE with abstol 1-e4
            Promoting 1e from 5f to 6d gave the best df.
            Pseudo with atomic GS as reference is also provided.
 92_U:  OK. Delta=0.37, Delta'=0.43
-           
+93_Np: OK: Delta=0.43,  Delta'=0.49
            
 # THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
-
-           
-    93_Np: FIXME: AE EOS looks OK but best pseudo has 33.67 df
-           Now using new AE NOMAG as reference but results do not change. PS EOS significantly overestimates V0.
-           RUNNING: Np_5f_new with 1f electron promoted to 6d
     94_Pu: OK Delta=0.41, Delta'=1.35
 # END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
