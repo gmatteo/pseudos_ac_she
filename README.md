@@ -1,39 +1,3 @@
-# Finalized
-
-```
-# Magnetization taken from Hirshfeld 
-# null means that the calculation is still running
-
-{
-"92_U": -0.892,   FIXME
-"93_Np": -2.695,  FIXME
-"94_Pu": -5.785,  OK
-"95_Am": -7.321,  OK
-"96_Cm": -7.026,  OK
-"97_Bk": -5.459,  FIXME
-"98_Cf": -4.164,  OK
-"99_Es": -2.906,  FIXME  NOW OK WITH Es_5f_origin and NOMAG Reference
-"100_Fm": -1.643, FIXME  delta with NM reference is better than previous one but not perfect
-"101_Md": -0.419  FIXME  delta with NM reference is better than previous one but not perfect
-}
-```
-
-Non-magnetic elelements for which we still have strong disagreement between AE and NC PS:
-
-113_Nh
-117_Ts
-118_Og
-
-
-TODO: 
-
-1) Check FCC lattice parameters and V0
-
-DONE with abstol 1-e4 
-
-    Inexact a/vol for z: 99: volume from file: 27.76 , volume from a 27.764687391143916 adiff 0.004687391143914255
-
-2) Use nsppol 2 with spinat 6. Usually 8 for all SHEs
 
 ```
 85_At: OK: Delta=0.5, Delta'=1.58
@@ -49,7 +13,7 @@ DONE with abstol 1-e4
 92_U:  OK. Delta=0.37, Delta'=0.43
 93_Np: OK: Delta=0.43,  Delta'=0.49
            
-# THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
+# THESE PSEUDOS WON'T BE REPORTED IN THE PAPER  ???
     94_Pu: OK Delta=0.41, Delta'=1.35
 # END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
 
