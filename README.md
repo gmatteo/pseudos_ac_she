@@ -43,12 +43,13 @@ DONE with abstol 1-e4
        I believe that _Ra_with_f.in should perform much better in oxides although the df is 0.82
 89_Ac: OK: Delta=0.77, Delta'=2.20. my version with projector for empty f makes a huge difference wrt origin.
 90_Th: OK: Delta=0.6, Delta'=0.96.
-
+91_Pa: OK: Delta=0.15, Delta'=0.18
+           Promoting 1e from 5f to 6d gave the best df.
+           Pseudo with atomic GS as reference is also provided.
+           
+           
+           
 # THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
-    91_Pa: FIXME: AE EOS looks OK but best pseudo has 5.44 df.
-           Tested with nsppol 2 and spinat (0 0 8). No significant change
-           Now using new AE NOMAG as reference but results do not change.
-           Running _new_new with 0.1 e in 5f. Small improvemente. Tried other configurations.
     92_U:  FIXME: AE EOS looks OK but best pseudo has 6.63 df.
            Now using AE NOMAG as reference but results do not change.
     93_Np: FIXME: AE EOS looks OK but best pseudo has 33.67 df
