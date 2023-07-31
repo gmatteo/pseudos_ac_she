@@ -71,7 +71,7 @@ THESE PSEUDOS ARE EXCLUDED FROM THE PAPER
             Now using AE NOMAG as reference, best df ~ 0.84 but PS EOS is completely off (small b0 here)
             RERUNNING WITH NEW DATA
 
-119_Uue: FIXME: PROBLEMATIC
+119_Uue: OK: Delta=0.43, Delta'=4.93
 120_Ubn: OK: Delta=0.29, Delta'=2.29
 ```
 
