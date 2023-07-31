@@ -12,11 +12,7 @@
            Pseudo with atomic GS as reference is also provided.
 92_U:  OK. Delta=0.37, Delta'=0.43
 93_Np: OK: Delta=0.43,  Delta'=0.49
-           
-# THESE PSEUDOS WON'T BE REPORTED IN THE PAPER  ???
-    94_Pu: OK Delta=0.41, Delta'=1.35
-# END: THESE PSEUDOS WON'T BE REPORTED IN THE PAPER 
-
+94_Pu: OK Delta=0.41, Delta'=1.35
 95_Am: OK Delta=0.14, Delta'=0.48
        Much better if smaller core radii (FR is problematic to generate)
 96_Cm: OK-REASONABLE: Delta=1.27, Delta'=3.61
