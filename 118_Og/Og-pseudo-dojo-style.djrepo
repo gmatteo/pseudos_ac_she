@@ -1,0 +1,50 @@
+{
+"basename": "Og-pseudo-dojo-style.psp8",
+"ecuts": [
+94.0,
+96.0,
+98.0,
+100.0,
+102.0,
+104.0,
+106.0,
+108.0,
+110.0,
+112.0,
+114.0,
+122.0,
+124.0
+],
+"md5": "5ff11f999c80e9bbb9810824355c9dde",
+"ppgen_hints": {
+"high": {
+"ecut": 104.0,
+"pawecutdg": 104.0
+},
+"low": {
+"ecut": 39.0,
+"pawecutdg": 39.0
+},
+"normal": {
+"ecut": 53.0,
+"pawecutdg": 53.0
+}
+},
+"pseudo_type": "NC",
+"symbol": "Og",
+"version": "1.0",
+"xc": {
+"@class": "XcFunc",
+"@module": "pymatgen.core.xcfunc",
+"c": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_C_PBE"
+},
+"x": {
+"@class": "LibxcFunc",
+"@module": "pymatgen.core.libxcfunc",
+"name": "GGA_X_PBE"
+}
+}
+}
