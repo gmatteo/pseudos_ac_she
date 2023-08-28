@@ -23,8 +23,8 @@
        NB Had to use AE results with magnetic configuration
 99_Es: OK: Delta=0.51, Delta'=2.20
        NB: using AE NOMAG as reference. 
-100_Fm: TODO: FIXME-ACCEPT?: AE EOS now looks OK, pseudo is not optimal but df 3
-        RUNNING: Fm-5spdf-6spd-7s_new.in
+100_Fm: OK: AE EOS now looks OK, pseudo is not optimal but df 2.54
+        NB: Fm-5spdf-armageddon is the best one to be used.
 101_Md: OK Delta=1.81, Delta'=12.25
         NB: I tried different version, this is quite hard (106 Ha) but it's the best I managed 
         to get in terms of delta and convergence profile.
@@ -44,8 +44,8 @@ Begin_SHE
 110_Ds: OK: Delta=0.97, Delta'=0.65
 111_Rg: OK: Delta=1.87, Delta'=2.16
         NB: AE points deviate from the fit
-112_Cn: TODO: Slow ecut conv, df good but there are discrepancies wrt AE. Cn_new.in is the best so far.
-        RUNNING Cn_origin_new (even worse)
+112_Cn: OK: Delta=0.18, Delta'=4.55
+        NB: The best one is the Cn origin_new_new to be sued.
 113_Nh: OK: Delta=0.43, Delta'=1.10
         NB: Using new AE NOMAG as reference. Nh_origin.psp8 gives df 1.18
 114_Fl: OK: Delta=0.43, Delta'=1.10
@@ -55,35 +55,29 @@ Begin_SHE
         NB: AE points deviate from the fit
 116_Lv: OK-REASONABLE: Delta=2.28, Delta'=3.75
 
+117_Ts: OK: Delta=2.15, Delta'=5.42
+        NB: AE EOS looks ok, version 6spd is the best one.
+ 
 =========================================
 THESE PSEUDOS ARE EXCLUDED FROM THE PAPER
 =========================================
-    117_Ts: FIXME: AE EOS looks ok but pseudos do not get V0 right (underestimated by ~one point)
-            tested with nsppol 2 and spinat (0 0 8). No significant change
-            Now using AE NOMAG as reference but best df ~ 2.7
-            RERUNNING WITH NEW DATA
     118_Og: FIXME: Can't manage to get decent pseudo for this!
             running with nsppol 2 and spinat (0 0 8). No significant change
             Now using AE NOMAG as reference, best df ~ 0.84 but PS EOS is completely off (small b0 here)
             RERUNNING WITH NEW DATA
+=========================================
 
-119_Uue: OK: Delta=0.43, Delta'=4.93
+119_Uue: OK: Delta=0.44, Delta'=5.02
 120_Ubn: OK: Delta=0.29, Delta'=2.29
 ```
 
 # AE results
 
-Weird results for AE EOS of 100_Fm  ------> REDONE AND UPDATED #CT
+All AE are fine and the EOS looks perfect and were obtained with TZ2P
 
 # pseudos_ac_she
 
-5f 91-92 rifare 
-
-118-119 rifare
-
-no5f da 90 a 102 guardare attentamente
-
-no 5f 103 fare 
+118 non si ottiene niente di buono Matteo e Christian hanno provato di tutto.
 
 # MG CHANGELOG
 
